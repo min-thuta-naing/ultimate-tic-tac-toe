@@ -46,15 +46,25 @@ public class TictactoeController{
     }
 
     @GetMapping("/ScoreX")
-public ScoreList(Model model) {
+public int ScoreList(Model model) {
     model.addAttribute("ScoreX", ScoreXRepository.findAll());
-    return "board";
+    return "ScoreX";
 }
 @GetMapping("/ScoreY")
-public char ScoreList(Model model) {
-    model.addAttribute("ScoreX", ScoreXRepository.findAll());
-    return "board";
+public int ScoreList(Model model) {
+    model.addAttribute("ScoreY", ScoreYRepository.findAll());
+    return "ScoreY";
 }
+@GetMapping("/PlayerXdeletename")
+public string Deletename(Model model) {
+    model.addAttribute("PlayerXdeletename", PlayerXRepository.findAll());
+    return "PlayerX";
 
+}
+@GetMapping("/PlayerYdeleteYdeletename")
+public string Deletename(Model model) {
+    model.addAttribute("PlayerYdeletename", PlayerYRepository.findAll());
+    return "PlayerY";
+}
 }
 
