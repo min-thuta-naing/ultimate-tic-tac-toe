@@ -1,0 +1,50 @@
+html {
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('img/bg.png');
+  
+}
+
+ 
+.wrapper {
+  width: 400px;
+}
+.wrapper h1 {
+  font-size: 80px;
+  text-align: center;
+}
+.wrapper h2 {
+  margin-top: 10px;
+  font-size: 20px;
+  margin-left: 43%;
+}
+.wrapper h3 {
+  font-size: 15px;
+  margin-left: 90%;
+}
+.wrapper .btn {
+
+  width: 80px;
+  height: 35px;
+  background: gray;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 18px;
+  color: white;
+  margin-left: 40%;
+  margin-top: 30px;
+}
