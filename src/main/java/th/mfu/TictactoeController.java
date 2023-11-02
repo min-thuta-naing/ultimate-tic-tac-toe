@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import th.mfu.domain.PlayerO;
+
 @Controller 
 public class TictactoeController{
     @Autowired
@@ -45,23 +47,16 @@ public class TictactoeController{
 
     @PostMapping("/play")
     public String createName(Model model){
-        
+        model.addAttribute("newNameO", new PlayerO());
+        model.addAttribute("newNameX", new PlayerX());
+        return "main.html";
     }
 
     @PostMapping("/play")
     public String updateName(Model model){
-        
-    }
-
-
-    @PostMapping 
-    public String createName(Model model){
-
-    }
-
-    @PostMapping 
-    public String updateName(Model model){
-        
+        model.addAttribute("newNameO", new PlayerO());
+        model.addAttribute("newNameX", new PlayerX());
+        return "main.html";
     }
 
     @GetMapping("/ScoreX")
