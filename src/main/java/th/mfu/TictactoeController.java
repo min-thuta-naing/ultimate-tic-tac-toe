@@ -75,10 +75,10 @@ public string Deletename(Model model) {
     return "PlayerX";
 
 }
-@GetMapping("/PlayerYdeleteYdeletename")
+@GetMapping("/PlayerOdeleteYdeletename")
 public string Deletename(Model model) {
-    model.addAttribute("PlayerYdeletename", PlayerYRepository.findAll());
-    return "PlayerY";
+    model.addAttribute("PlayerOdeletename", PlayerORepository.findAll());
+    return "PlayerO";
 }
 }
 
