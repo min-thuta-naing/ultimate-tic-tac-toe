@@ -20,7 +20,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller 
 public class TictactoeController{
+    @Autowired
+    RoundRepository roundRepo; 
 
+    @Autowired
+    PlayerXRepository playerXRepo; 
+
+    @Autowired
+    PlayerORepository playerORepo;
+    
+    @Autowired
+    ScoreXRepository scoreXRepo; 
+
+    @Autowired
+    ScoreYRepository scoreYRepo; 
+
+    @PostMapping 
+    public String createName(Model model){
+
+    }
+
+    @PostMapping 
+    public String updateName(Model model){
+        
+    }
 }
 
 @GetMapping("/board")
