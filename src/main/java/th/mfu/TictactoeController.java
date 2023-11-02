@@ -64,10 +64,10 @@ public int ScoreList(Model model) {
     model.addAttribute("ScoreX", ScoreXRepository.findAll());
     return "ScoreX";
 }
-@GetMapping("/ScoreY")
+@GetMapping("/ScoreO")
 public int ScoreList(Model model) {
-    model.addAttribute("ScoreY", ScoreYRepository.findAll());
-    return "ScoreY";
+    model.addAttribute("ScoreO", ScoreORepository.findAll());
+    return "ScoreO";
 }
 @GetMapping("/PlayerXdeletename")
 public string Deletename(Model model) {
@@ -75,7 +75,7 @@ public string Deletename(Model model) {
     return "PlayerX";
 
 }
-@GetMapping("/PlayerOdeleteYdeletename")
+@GetMapping("/PlayerOdeletename")
 public string Deletename(Model model) {
     model.addAttribute("PlayerOdeletename", PlayerORepository.findAll());
     return "PlayerO";
