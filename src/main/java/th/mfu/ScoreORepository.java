@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import th.mfu.domain.Reservation;
 
-public interface ScoreYRepository extends CrudRepository<Reservation, Long> {
+public interface ScoreORepository extends CrudRepository<Reservation, Long> {
     
 }

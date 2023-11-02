@@ -33,7 +33,26 @@ public class TictactoeController{
     ScoreXRepository scoreXRepo; 
 
     @Autowired
-    ScoreYRepository scoreYRepo; 
+    ScoreORepository scoreORepo; 
+
+    public TictactoeController(PlayerORepository playerORepo, PlayerXRepository playerXRepo, ScoreXRepository scoreXRepo, ScoreORepository scoreORepo, RoundRepository roundRepo) {
+        this.playerORepo = playerORepo;
+        this.playerXRepo = playerXRepo;
+        this.scoreXRepo = scoreXRepo; 
+        this.scoreORepo = scoreORepo; 
+        this.roundRepo = roundRepo; 
+    }
+
+    @PostMapping("/play")
+    public String createName(Model model){
+        
+    }
+
+    @PostMapping("/play")
+    public String updateName(Model model){
+        
+    }
+
 
     @PostMapping 
     public String createName(Model model){
