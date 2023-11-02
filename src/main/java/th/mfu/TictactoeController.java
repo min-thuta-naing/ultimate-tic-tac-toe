@@ -44,9 +44,17 @@ public class TictactoeController{
     public String updateName(Model model){
         
     }
+
+    @GetMapping("/ScoreX")
+public ScoreList(Model model) {
+    model.addAttribute("ScoreX", ScoreXRepository.findAll());
+    return "board";
+}
+@GetMapping("/ScoreY")
+public char ScoreList(Model model) {
+    model.addAttribute("ScoreX", ScoreXRepository.findAll());
+    return "board";
 }
 
-@GetMapping("/board")
-public char[][] getBoard(){
-    return
 }
+
