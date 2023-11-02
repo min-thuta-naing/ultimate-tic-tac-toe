@@ -1,4 +1,4 @@
-package th.mfu.Domain;
+package th.mfu.domain;
 
 import java.util.*;
 
