@@ -22,3 +22,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class TictactoeController{
 
 }
+
+@GetMapping("/board")
+public char[][] getBoard(){
+    return
+}
