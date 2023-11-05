@@ -18,11 +18,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import th.mfu.domain.PlayerO;
+
 
 @Controller 
 public class TictactoeController{
-    @Autowired
+    
+    @GetMapping(/tictactoe)
+    Public String displayGameboard(Model model){
+        return "ticTacToe";
+    }
+
+    /*@Autowired
     RoundRepository roundRepo; 
 
     @Autowired
@@ -60,25 +66,25 @@ public class TictactoeController{
     }
 
     @GetMapping("/ScoreX")
-public int ScoreList(Model model) {
-    model.addAttribute("ScoreX", ScoreXRepository.findAll());
-    return "ScoreX";
-}
-@GetMapping("/ScoreO")
-public int ScoreList(Model model) {
-    model.addAttribute("ScoreO", ScoreORepository.findAll());
-    return "ScoreO";
-}
-@GetMapping("/PlayerXdeletename")
-public string Deletename(Model model) {
-    model.addAttribute("PlayerXdeletename", PlayerXRepository.findAll());
-    return "PlayerX";
+    public int ScoreList(Model model) {
+        model.addAttribute("ScoreX", ScoreXRepository.findAll());
+        return "ScoreX";
+    }
+    @GetMapping("/ScoreO")
+    public int ScoreList(Model model) {
+        model.addAttribute("ScoreO", ScoreORepository.findAll());
+        return "ScoreO";
+    }
+    @GetMapping("/PlayerXdeletename")
+    public string Deletename(Model model) {
+        model.addAttribute("PlayerXdeletename", PlayerXRepository.findAll());
+        return "PlayerX";
 
-}
-@GetMapping("/PlayerOdeletename")
-public string Deletename(Model model) {
-    model.addAttribute("PlayerOdeletename", PlayerORepository.findAll());
-    return "PlayerO";
-}
+    }
+    @GetMapping("/PlayerOdeletename")
+    public string Deletename(Model model) {
+        model.addAttribute("PlayerOdeletename", PlayerORepository.findAll());
+        return "PlayerO";
+    }*/
 }
 
