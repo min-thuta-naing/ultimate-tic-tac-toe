@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller 
 public class TictactoeController{
     
-    @GetMapping(/tictactoe)
-    Public String displayGameboard(Model model){
+    @GetMapping("/tictactoe")
+    public String displayGameboard(Model model){
         return "ticTacToe";
     }
 
