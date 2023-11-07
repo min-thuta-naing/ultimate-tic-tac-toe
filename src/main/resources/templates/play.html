@@ -3,22 +3,27 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="play.css">
-	
 	<title>Ultimate Tic-Tac-Toe Pro</title>
 </head>
 <body>
-	
-	<div class="wrapper">
-	<div class="username">
-		<input type="text" placeholder="Player X" required>
-	</div>
-	<div class="username">
-		<input type="text" placeholder="Player O" required>
-	</div>
-	<div class="play">
-	<button type="play" class="btn">Play</button>
-	</div>
-	</div>
+	<h1>Add name here!</h1>
+
+	<form th:action="@{/name-list}" th:object="${nameX}" method="post">
+		<label for="nameX">NameX</label>
+		<input type="text" id="nameX" th:field="*{nameX}" required><br> 
+		<button type="submit">Play</button>
+	</form>
+	<!-- <div class="wrapper">
+		<div class="username">
+			<input type="text" placeholder="Player X" required>
+		</div>
+		<div class="username">
+			<input type="text" placeholder="Player O" required>
+		</div>
+		<div class="play">
+			<button type="play" class="btn">Play</button>
+		</div>
+	</div>-->
 	
 </body>
 </html>

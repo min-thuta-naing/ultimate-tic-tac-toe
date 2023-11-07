@@ -18,15 +18,42 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
+import th.mfu.domain.PlayerX; 
 
 @Controller 
 public class TictactoeController{
-    
+    @Autowired
+    private PlayerXRepository repoX;
+
+    public TictactoeController(PlayerXRepository repoX){
+        this.repoX = repoX;
+    }
+
     @GetMapping("/tictactoe")
     public String displayGameboard(Model model){
         return "ticTacToe";
     }
+
+    @GetMapping("/name-list")
+    public String nameList(Model model){
+        model.addAttribute("nameX", repoX.findAll());
+        return "list";
+    }
+
+    @GetMapping("/name-entry")
+    public String addNameX(Model model){
+        model.addAttribute("nameX", new PlayerX());
+        return "play";
+    }
+
+    @PostMapping("/name-list")
+    public String saveNameX(@ModelAttribute PlayerX nameX){
+        //add nameX to db 
+        repoX.save(nameX);
+        //retun to sth 
+        return "redirect:/name-list";
+    }
+
 
     /*@Autowired
     RoundRepository roundRepo; 

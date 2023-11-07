@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name List</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Name list</h1>
+    <a class="btn btn-primary" href="/name-entry">Add Name</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Names</th>
+                <!--button for update (remaing button) is here-->
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="nameX : ${nameX}">
+                <td th:text="${nameX.id}"></td>
+                <td th:text="${nameX.nameX}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
