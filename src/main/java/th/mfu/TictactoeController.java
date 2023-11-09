@@ -67,6 +67,25 @@ public class TictactoeController{
         return "ticTacToe";
     }
 
+    /*@GetMapping("/rename/{id}")
+    public String displayRenamePage(@PathVariable Long id, Model model) {
+        PlayerX nameX = repoX.findById(id).orElse(null);
+        if (nameX != null) {
+            model.addAttribute("playerX", nameX);
+            return "rename"; // Create a Thymeleaf template for the rename page
+        } else {
+            // Handle the case where the player with the given id is not found
+            return "redirect:/name-list";
+        }
+    }
+
+    // Add a controller method to handle the update after renaming
+    @PostMapping("/rename")
+    public String updateNameX(@ModelAttribute PlayerX nameX) {
+        repoX.save(nameX);
+        return "redirect:/name-list";
+    }*/
+
     /*@Autowired
     RoundRepository roundRepo; 
 

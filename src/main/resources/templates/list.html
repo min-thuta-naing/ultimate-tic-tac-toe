@@ -16,14 +16,13 @@
             <tr>
                 <th>Id</th>
                 <th>Names</th>
-                <!--<th>Rename</th>-->
                 <!--button for update (remaing button) is here-->
             </tr>
         </thead>
         <tbody>
-            <tr th:each="nameX : ${nameX}">
-                <td th:text="${nameX.id}"></td>
-                <td th:text="${nameX.nameX}"></td>
+            <tr th:each="playerX : ${nameX}">
+                <td th:text="${playerX.id}"></td>
+                <td th:text="${playerX.nameX}"></td>
             </tr>
             <!--<td>
                 <form th:action="@{/rename}" method="post" th:if="${newName != null}">
