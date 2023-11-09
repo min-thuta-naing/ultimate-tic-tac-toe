@@ -1,49 +1,38 @@
-html {
+html, body {
   height: 100%;
-}
-
-* {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   background-image: url('img/bg.png');
-  
+  background-size: cover;
 }
 
- 
-.wrapper {
-  width: 400px;
-}
-.wrapper h1 {
-  font-size: 80px;
+.container {
   text-align: center;
 }
-.wrapper h2 {
-  margin-top: 10px;
-  font-size: 20px;
-  margin-left: 43%;
-}
-.wrapper h3 {
-  font-size: 15px;
-  margin-left: 90%;
-}
-.wrapper .btn {
 
-  width: 80px;
-  height: 35px;
+.wrapper {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper img {
+  margin-bottom: 20px; /* Adjust the space between the image and the button */
+}
+
+.wrapper .btn {
+  width: 100px;
+  height: 40px;
   background: gray;
   border: none;
   outline: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 18px;
   color: white;
-  margin-left: 40%;
-  margin-top: 30px;
+  cursor: pointer;
 }
