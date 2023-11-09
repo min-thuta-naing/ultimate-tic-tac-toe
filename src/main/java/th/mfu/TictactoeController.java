@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -144,5 +145,80 @@ public class TictactoeController{
         model.addAttribute("PlayerOdeletename", PlayerORepository.findAll());
         return "PlayerO";
     }*/
+    private String[] gameBoard;
+    private String currentPlayer;
+    private boolean gameActive;
+
+    public TictactoeController() {
+        gameBoard = new String[]{"", "", "", "", "", "", "", "", ""};
+        currentPlayer = "X";
+        gameActive = true;
+    }
+
+    public void startGame() {
+        Scanner scanner = new Scanner(System.in);
+
+        while (gameActive) {
+            printBoard();
+            System.out.println("Player " + currentPlayer + ", enter your move (1-9): ");
+            int move = scanner.nextInt();
+
+            if (isValidMove(move)) {
+                makeMove(move);
+                if (checkWinner()) {
+                    printBoard();
+                    System.out.println("Player " + currentPlayer + " wins!");
+                    gameActive = false;
+                } else if (isBoardFull()) {
+                    printBoard();
+                    System.out.println("It's a draw!");
+                    gameActive = false;
+                } else {
+                    currentPlayer = currentPlayer.equals("X") ? "O" : "X";
+                }
+            } else {
+                System.out.println("Invalid move. Try again.");
+            }
+        }
+
+        scanner.close();
+    }
+
+    private void printBoard() {
+        System.out.println(" " + gameBoard[0] + " | " + gameBoard[1] + " | " + gameBoard[2]);
+        System.out.println("-----------");
+        System.out.println(" " + gameBoard[3] + " | " + gameBoard[4] + " | " + gameBoard[5]);
+        System.out.println("-----------");
+        System.out.println(" " + gameBoard[6] + " | " + gameBoard[7] + " | " + gameBoard[8]);
+    }
+
+    private boolean isValidMove(int move) {
+        return move >= 1 && move <= 9 && gameBoard[move - 1].equals("");
+    }
+
+    private void makeMove(int move) {
+        gameBoard[move - 1] = currentPlayer;
+    }
+
+    private boolean checkWinner() {
+        // Implement your winning conditions here
+        return false;
+    }
+
+    private boolean isBoardFull() {
+        for (String cell : gameBoard) {
+            if (cell.equals("")) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        TictactoeController game = new TictactoeController();
+        game.startGame();
+    }
+
+
 }
 
