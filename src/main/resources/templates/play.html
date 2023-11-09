@@ -6,8 +6,7 @@
 	<title>Ultimate Tic-Tac-Toe Pro</title>
 </head>
 <body>
-	<h1>Add name here!</h1>
-
+	
 	<form th:action="@{/name-list}" th:object="${nameX}" method="post">
 		<label for="nameX">NameX</label>
 		<input type="text" id="nameX" th:field="*{nameX}" required><br> 

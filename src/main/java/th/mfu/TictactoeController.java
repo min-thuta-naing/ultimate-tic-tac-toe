@@ -29,23 +29,17 @@ public class TictactoeController{
         this.repoX = repoX;
     }
 
-    @GetMapping("/tictactoe")
-    public String displayGameboard(Model model){
-        return "ticTacToe";
+    //method for start page 
+    @GetMapping("/start-game")
+    public String displayStartPage(Model model){
+        return "start";
     }
-
-    @GetMapping("/name-list")
-    public String nameList(Model model){
-        model.addAttribute("nameX", repoX.findAll());
-        return "list";
-    }
-
+    //method for play page (name entry page)
     @GetMapping("/name-entry")
     public String addNameX(Model model){
         model.addAttribute("nameX", new PlayerX());
         return "play";
     }
-
     @PostMapping("/name-list")
     public String saveNameX(@ModelAttribute PlayerX nameX){
         //add nameX to db 
@@ -54,6 +48,24 @@ public class TictactoeController{
         return "redirect:/name-list";
     }
 
+    //method for scoreboard page (listing)
+    @GetMapping("/name-list")
+    public String nameList(Model model){
+        model.addAttribute("nameX", repoX.findAll());
+        return "list";
+    }
+
+    //method for renaming players(updating)
+   /* @PostMapping("/rename")
+    public String renameThePlayers (@ModelAttribute PlayerX nameX){
+        repoX.updateNameById(nameX.getId(), nameX.getNameX());
+        return "redirect:/name-list";
+    } */
+
+    @GetMapping("/tictactoe")
+    public String displayGameboard(Model model){
+        return "ticTacToe";
+    }
 
     /*@Autowired
     RoundRepository roundRepo; 
