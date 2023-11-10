@@ -24,6 +24,10 @@
                 <td th:text="${playerX.id}"></td>
                 <td th:text="${playerX.nameX}"></td>
             </tr>
+            <tr th:each="playerO : ${nameO}">
+                <td th:text="${playerO.id}"></td>
+                <td th:text="${playerO.nameO}"></td>
+            </tr>
             <!--<td>
                 <form th:action="@{/rename}" method="post" th:if="${newName != null}">
                     <input type="hidden" th:field="*{id}" th:value="${newName.id}" /> 

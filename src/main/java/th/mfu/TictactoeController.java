@@ -46,11 +46,11 @@ public class TictactoeController{
         model.addAttribute("nameX", new PlayerX());
         return "play1";
     }
-    @PostMapping("/name-list")
+    @PostMapping("/save-name-x")
     public String saveNameX(@ModelAttribute PlayerX nameX){
         //add nameX to db 
         repoX.save(nameX);
-        //retun to sth 
+        //retun to sth
         return "redirect:/name-entry-o";
     }
 
@@ -60,7 +60,7 @@ public class TictactoeController{
         model.addAttribute("nameO", new PlayerO());
         return "play2";
     }
-    @PostMapping("/name-list")
+    @PostMapping("/save-name-o")
     public String saveNameO(@ModelAttribute PlayerO nameO){
         //add nameX to db 
         repoO.save(nameO);
