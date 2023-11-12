@@ -6,18 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class PlayerO {
+public class Players {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nameO;
-    
+    private String name;
+
     // Constructor
-    public PlayerO(){
+    public Players(){
     }
-    public PlayerO(Long id, String nameO) {
-        this.id = id;
-        this.nameO = nameO;
+    public Players(String name) {
+        this.name = name;
     }
 
     // Getter setter for id
@@ -29,10 +28,11 @@ public class PlayerO {
     }
 
     // Getter setter for nameX
-    public String getNameO() {
-        return nameO;
+    public String getName() {
+        return name;
     }
-    public void setNameY(String nameO) {
-        this.nameO = nameO;
+    public void setName(String name) {
+        this.name = name;
     }
+
 }
