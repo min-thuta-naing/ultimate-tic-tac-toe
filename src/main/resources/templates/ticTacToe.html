@@ -64,7 +64,7 @@ position: relative;
 
 
 .blue {
-background-color: blue;
+background-color: #0274FB;
 }
 
 
@@ -103,17 +103,27 @@ display: none;
 
 
 .player1 {
-background-color: #00f;
+    border: 1px solid #0274FB;
+    border-radius: 30px;
+    padding: 5px 10px;
+    width: 150px;
+    font-size: 15px;
+    background-color: #0274FB;
 }
 
 
 .player2 {
-background-color: #f00;
+background-color: #FFE70C;
+border: 1px solid #FFE70C;
+    border-radius: 30px;
+    padding: 5px 10px;
+    width: 150px;
+    font-size: 15px;
 }
 
 
 .red {
-background-color: #f00;
+background-color: #FFE70C;
 }
 
 
@@ -209,6 +219,10 @@ margin-bottom: 10px;
 </head>
 <body>
 <div id="container">
+    <div id="options">
+        <button class="player1" th:text="${players[0].name}"></button>
+            
+    </div>
 <div id="game">
 <div class="game-overlay"></div>
 <div id="winner">
@@ -216,7 +230,7 @@ margin-bottom: 10px;
 </div>
 </div>
 <div id="options">
-    <button class="player1" th:text="${players[0].name}"></button>
+   
     <button class="player2" th:text="${players[1].name}"></button>    
 </div>
 
