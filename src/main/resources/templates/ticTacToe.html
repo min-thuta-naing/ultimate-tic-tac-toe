@@ -135,7 +135,6 @@
   margin-top: 20px; /* Adjust the margin as needed */
   font-size: 18px; /* Adjust the font size as needed */
   font-family: Arial, sans-serif; 
-  background-color: #f0f0f0; /* Background color */
   padding: 10px; /* Padding around the content */
   border-radius: 10px; /* Rounded border */
   text-align: center; /* Center-align the text */
@@ -442,7 +441,14 @@ showPopup('Player X wins');
 function updateTurnDisplay() {
     var currentPlayerName = $('.current').text();
     $('#turn-display').text(currentPlayerName + "'s Turn");
-  }
+
+    if ($('.current').hasClass('player1')) {
+        $('#turn-display').css('background-color', '#0274FB'); // Blue color for Player 1
+    } else if ($('.current').hasClass('player2')) {
+        $('#turn-display').css('background-color', '#FFE70C'); // Yellow color for Player 2
+    }
+}
+
 
   $('.player1, .player2').click(function() {
     $(this).addClass('current');
