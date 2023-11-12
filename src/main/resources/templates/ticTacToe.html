@@ -1,232 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <style>
-       
-        * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tic Tac Toe</title>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
+
 
 body {
-  background-color: #3c3c3c;
+background-image: url("img/bg.png");
 }
+
 
 button {
-  padding: 5px;
-  margin: 20px;
-  color: #fff;
+padding: 5px;
+margin: 20px;
+color: #fff;
 }
+
 
 .cell {
-  width: 33.3%;
-  height: 33.3%;
-  background-color: #ccc;
-  border: 1px solid #666;
-  display: flex;
-  flex-wrap: wrap;
+width: 33.3%;
+height: 33.3%;
+/* game background color */
+background-color: #999;
+border: 1px solid #666;
+display: flex;
+flex-wrap: wrap;
 }
 
+
 .blue {
-  background-color: #00f;
+background-color: #00f;
 }
+
 
 .draw-overlay {
-  background-color: green;
+background-color: green;
 }
+
 
 .gray-overlay {
-  background-color: rgba(0, 0, 0, 0.2);
+background-color: rgba(0, 0, 0, 0.2);
 }
+
 
 .box {
-  width: 150px;
-  display: flex;
-  flex-wrap: wrap;
-  border: 2px solid black;
-  position: relative;
+width: 150px;
+display: flex;
+flex-wrap: wrap;
+border: 2px solid black;
+position: relative;
 }
+
 
 .blue {
-  background-color: blue;
+background-color: blue;
 }
+
 
 .blue-overlay {
-  background-color: rgba(0, 0, 255);
+background-image: url("img/x.jpeg");
+background-size: cover;
+background-position: center;
 }
 
-.btn-info {
-  background-color: purple;
-}
 
-.info {
-  width: 470px;
-  height: 470px;
-  display: none;
-  background-color: #ccc;
-  padding: 10px;
-}
 
-.info p {
-  padding: 5px 0;
-}
 
-.info.active {
-  display: block;
-}
 
-.info-close {
-  background-color: purple;
-  margin-left: 44%;
-}
+
+
 
 .overlay {
-  width: 150px;
-  height: 150px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
+width: 150px;
+height: 150px;
+position: absolute;
+top: 0;
+left: 0;
+display: none;
 }
+
 
 .game-overlay {
-  width: 450px;
-  height: 450px;
-  position: absolute;
-  top: 10;
-  left: 10;
-  z-index: 10;
-  display: none;
+width: 450px;
+height: 450px;
+position: absolute;
+top: 10;
+left: 10;
+z-index: 10;
+display: none;
 }
+
 
 .player1 {
-  background-color: #00f;
+background-color: #00f;
 }
+
 
 .player2 {
-  background-color: #f00;
+background-color: #f00;
 }
+
 
 .red {
-  background-color: #f00;
+background-color: #f00;
 }
+
 
 .red-overlay {
-  background-color: rgba(255, 0, 0);
+background-image: url("img/o.jpeg");
+background-size: cover;
+background-position: center;
 }
+
 
 #container {
-  width: 70%;
-  margin: 100px auto;
-  display: flex;
-  justify-content: space-around;
+width: 70%;
+margin: 100px auto;
+display: flex;
+justify-content: space-around;
 }
+
 
 #container.active {
-  width: 90%;
+width: 90%;
 }
+
 
 #game {
-  width: 470px;
-  height: 470px;
-  padding: 10px;
-  background-color: #999;
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
+width: 470px;
+height: 470px;
+padding: 10px;
+background-color: #999;
+display: flex;
+flex-wrap: wrap;
+position: relative;
 }
+
 
 #options {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
+
 
 #winner {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: yellow;
-  z-index: 11;
+display: none;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: yellow;
+z-index: 11;
 }
 
-    </style>
+
+.popup {
+display: none;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: white;
+padding: 20px;
+z-index: 12;
+text-align: center;
+}
+
+
+.popup button {
+padding: 10px;
+margin-top: 10px;
+background-color: #3498db;
+color: #fff;
+border: none;
+cursor: pointer;
+}
+.popup button:hover {
+background-color: #2980b9;
+}
+
+
+.star-photo {
+width: 50px; /* Adjust the size as needed */
+height: 50px;
+background-image: url("img/champion.png");
+background-size: cover;
+background-position: center;
+margin-bottom: 10px;
+}
+
+
+
+
+</style>
 </head>
 <body>
-    <div id="container">
-        <div class="info">
-       
-            <button class="info-close">Close</button>
-        </div>
-        <div id="game">
-            <div class="game-overlay"></div>
-            <div id="winner">
-                <h1></h1>
-            </div>
-        </div>
-    
-        <div id="options">
-            <button class="btn-info">Instructions</button>
-            <button class="player1">Blue starts</button>
-            <button class="player2">Red starts</button>
-        </div>
-    </div>
+<div id="container">
+<div id="game">
+<div class="game-overlay"></div>
+<div id="winner">
+<h1></h1>
+</div>
+</div>
+<div id="options">
+<button class="player1">Blue starts</button>
+<button class="player2">Red starts</button>
+</div>
 
-    <script>
-        $(document).ready(function() {
-           
-            $(document).ready(function() {
 
+<div class="popup" id="popup">
+<h1 id="popup-message"></h1>
+<button id="redirect-button">View your scores</button>
+</div>
+</div>
+
+
+<script>
+$(document).ready(function() {
+$(document).ready(function() {
 for (var i = 0; i < 9; i++) {
-  $('#game').prepend('<div class="box"><div class="overlay gray-overlay"></div></div>');
+$('#game').prepend('<div class="box"><div class="overlay gray-overlay"></div></div>');
 };
 
 
 for (var i = 0; i < 9; i++) {
- $('.box').prepend('<div class="cell"></div>');
+$('.box').prepend('<div class="cell"></div>');
 };
 
 
 $('.player1').click(function() {
-  $(this).addClass('current');
+$(this).addClass('current');
 });
 
 
 $('.player2').click(function() {
-  $(this).addClass('current');
+$(this).addClass('current');
 });
 
 
-$('.btn-info').click(function() {
-  $('#container').addClass('active');
-  $('.info').addClass('active');
-});
-
-
-$('.info-close').click(function() {
-  $('#container').removeClass('active');
-  $('.info').removeClass('active');
-});
 
 
 var blueMoves = [
-  [],[],[],[],[],[],[],[],[]
+[],[],[],[],[],[],[],[],[]
 ];
 var redMoves = [
-  [],[],[],[],[],[],[],[],[]
+[],[],[],[],[],[],[],[],[]
 ];
 var boxLimit = [
-  [],[],[],[],[],[],[],[],[]
+[],[],[],[],[],[],[],[],[]
 ];
 var blueGlobal = [];
 var redGlobal = [];
@@ -235,162 +269,171 @@ var blueWinsGame = false;
 var redWinsGame = false;
 
 
+
+
 $('.cell').click(function() {
-  
-  if ($(this).hasClass('blue')||$(this).hasClass('red')){
+if ($(this).hasClass('blue')||$(this).hasClass('red')){
 
-    alert('Someone has already claimed this cell!');
-   
-  } else {
 
-    var cellIndex = $(this).index();
-  
-    var boxIndex = $(this).parent().index();
-   
-    if ($('.player1').hasClass('current')) {
-      $(this).addClass('blue');
+alert('Someone has already claimed this cell!');
+} else {
 
-      var currentArray = blueMoves[boxIndex];
-  
-      blueMoves[boxIndex].push(cellIndex);
-      boxLimit[boxIndex].push(cellIndex);
-       var boxLimitCheck = boxLimit[boxIndex].length;
-     
-      let blueWinsBox = isWinner(currentArray);
-    
-      if (blueWinsBox == true) {
-     
-        $(this).siblings('.overlay').removeClass('gray-overlay').addClass('blue-overlay').show();
-      
-        blueGlobal.push(boxIndex);
-        globalLimit.push('globalLimit: ' + boxIndex);
-     
-        var blueWinsGame = isWinner(blueGlobal);
 
-      } else if (blueWinsBox == false && (boxLimit[boxIndex].length) == 9) {
-        isBoxDraw(boxIndex, this, globalLimit);
-      }
-      
-      if (blueWinsGame === true) {
-        youWin('blue');
-      }
-     
-      isGameDraw(blueWinsGame);
+var cellIndex = $(this).index();
+var boxIndex = $(this).parent().index();
+if ($('.player1').hasClass('current')) {
+$(this).addClass('blue').css({
+'background-image': 'url("img/x.jpeg")',
+'background-size': 'cover',
+'background-position': 'center',
+});
 
-  
-      $('.player1').toggleClass('current');
-      $('.player2').toggleClass('current');
 
-    } else if ($('.player2').hasClass('current')) {
-  
-      $(this).addClass('red');
-    
-      var currentArray = redMoves[boxIndex];
-   
-      redMoves[boxIndex].push(cellIndex);
-      boxLimit[boxIndex].push(cellIndex);
-       var boxLimitCheck = boxLimit[boxIndex].length;
-    
-      let redWinsBox = isWinner(currentArray);
-      
-      if (redWinsBox == true) {
-        
-        $(this).siblings('.overlay').removeClass('gray-overlay').addClass('red-overlay').show();
-        
-        redGlobal.push(boxIndex);
-        globalLimit.push(boxIndex);
-       
-        redWinsGame = isWinner(redGlobal);
-        
+var currentArray = blueMoves[boxIndex];
+blueMoves[boxIndex].push(cellIndex);
+boxLimit[boxIndex].push(cellIndex);
+var boxLimitCheck = boxLimit[boxIndex].length;
+let blueWinsBox = isWinner(currentArray);
+if (blueWinsBox == true) {
+$(this).siblings('.overlay').removeClass('gray-overlay').addClass('blue-overlay').show();
+blueGlobal.push(boxIndex);
+globalLimit.push('globalLimit: ' + boxIndex);
+var blueWinsGame = isWinner(blueGlobal);
 
-      } else if (redWinsBox == false && (boxLimit[boxIndex].length) == 9) {
-        isBoxDraw(boxIndex, this, globalLimit);
-      }
-      
-      if (redWinsGame == true) {
-        youWin('red');
-      }
-      
-      isGameDraw(redWinsGame);
 
-     
-      $('.player1').toggleClass('current');
-      $('.player2').toggleClass('current');
+} else if (blueWinsBox == false && (boxLimit[boxIndex].length) == 9) {
+isBoxDraw(boxIndex, this, globalLimit);
+}
+if (blueWinsGame === true) {
+youWin('blue');
+}
+isGameDraw(blueWinsGame);
 
-    } else {
-      alert('Choose starting player.')
-    }
-  } 
 
-  
-  if (($('.player1').hasClass('current') || $('.player2').hasClass('current')) && (!$(this).hasClass('blue') || !$(this).hasClass('red'))) {
-    
-    if ($('.overlay').eq(cellIndex).hasClass('blue-overlay')||$('.overlay').eq(cellIndex).hasClass('red-overlay')||(boxLimit[cellIndex].length) == 9) {
-      $('.overlay.gray-overlay:not(.blue-overlay):not(.red-overlay)').hide();
-    } else {
-      
-      $('.overlay').show();
-      $('.overlay').eq(cellIndex).hide();
-    }
-  }
+$('.player1').toggleClass('current');
+$('.player2').toggleClass('current');
+
+
+} else if ($('.player2').hasClass('current')) {
+$(this).addClass('red').css({
+'background-image': 'url("img/o.jpeg")',
+'background-size': 'cover',
+'background-position': 'center',
+});
+
+
+var currentArray = redMoves[boxIndex];
+redMoves[boxIndex].push(cellIndex);
+boxLimit[boxIndex].push(cellIndex);
+var boxLimitCheck = boxLimit[boxIndex].length;
+let redWinsBox = isWinner(currentArray);
+if (redWinsBox == true) {
+$(this).siblings('.overlay').removeClass('gray-overlay').addClass('red-overlay').show();
+redGlobal.push(boxIndex);
+globalLimit.push(boxIndex);
+redWinsGame = isWinner(redGlobal);
+
+
+} else if (redWinsBox == false && (boxLimit[boxIndex].length) == 9) {
+isBoxDraw(boxIndex, this, globalLimit);
+}
+if (redWinsGame == true) {
+youWin('red');
+}
+isGameDraw(redWinsGame);
+
+
+$('.player1').toggleClass('current');
+$('.player2').toggleClass('current');
+
+
+} else {
+alert('Choose starting player.')
+}
+}
+
+
+if (($('.player1').hasClass('current') || $('.player2').hasClass('current')) && (!$(this).hasClass('blue') || !$(this).hasClass('red'))) {
+if ($('.overlay').eq(cellIndex).hasClass('blue-overlay')||$('.overlay').eq(cellIndex).hasClass('red-overlay')||(boxLimit[cellIndex].length) == 9) {
+$('.overlay.gray-overlay:not(.blue-overlay):not(.red-overlay)').hide();
+} else {
+$('.overlay').show();
+$('.overlay').eq(cellIndex).hide();
+}
+}
 })
+
+
+function showPopup(message) {
+$('#popup-message').text(message);
+$('#popup').show();
+}
+
+
+$('#redirect-button').click(function() {
+// Redirect to /name-list
+window.location.href = "/name-list";
+});
 
 
 
 
 function isBoxDraw(boxIndex, element, globalArray){
-    $(element).siblings('.overlay').removeClass('gray-overlay').addClass('draw-overlay').show();
-    globalArray.push(boxIndex);
-    isGameDraw(globalArray);
+$(element).siblings('.overlay').removeClass('gray-overlay').addClass('draw-overlay').show();
+globalArray.push(boxIndex);
+isGameDraw(globalArray);
 }
+
+
 
 
 function isGameDraw(winStatus) {
-  if (winStatus == false && globalLimit.length == 9) {
- 
-    $('.game-overlay').addClass('draw-overlay').show();
-    
-    $('#winner h1').text("It's a draw!").show();
-    $('#winner').show();
-  }
+if (winStatus == false && globalLimit.length == 9) {
+$('.game-overlay').addClass('draw-overlay').show();
+/*$('#winner h1').text("It's a draw!").show();
+$('#winner').show();*/
+showPopup("It is a draw!");
 }
+}
+
+
 
 
 function isWinner(array) {
-  if((array.includes(0))&&(array.includes(1))&&(array.includes(2)) ||
-  (array.includes(3))&&(array.includes(4))&&(array.includes(5)) ||
-  (array.includes(6))&&(array.includes(7))&&(array.includes(8)) ||
-  (array.includes(0))&&(array.includes(3))&&(array.includes(6)) ||
-  (array.includes(1))&&(array.includes(4))&&(array.includes(7)) ||
-  (array.includes(2))&&(array.includes(5))&&(array.includes(8)) ||
-  (array.includes(0))&&(array.includes(4))&&(array.includes(8)) ||
-  (array.includes(2))&&(array.includes(4))&&(array.includes(6))) {
-    return true;
-  } else {
-    return false;
-  }
+if((array.includes(0))&&(array.includes(1))&&(array.includes(2)) ||
+(array.includes(3))&&(array.includes(4))&&(array.includes(5)) ||
+(array.includes(6))&&(array.includes(7))&&(array.includes(8)) ||
+(array.includes(0))&&(array.includes(3))&&(array.includes(6)) ||
+(array.includes(1))&&(array.includes(4))&&(array.includes(7)) ||
+(array.includes(2))&&(array.includes(5))&&(array.includes(8)) ||
+(array.includes(0))&&(array.includes(4))&&(array.includes(8)) ||
+(array.includes(2))&&(array.includes(4))&&(array.includes(6))) {
+return true;
+} else {
+return false;
 }
+}
+
+
 
 
 function youWin(color) {
-  if (color == 'red') {
-    
-    $('.game-overlay').addClass('red-overlay').show();
-  
-    $('#winner h1').text('Red wins').show();
-    $('#winner').show();
-  } else if (color == 'blue') {
-   
-    $('.game-overlay').addClass('blue-overlay').show();
-  
-    $('#winner h1').text('Blue wins').show();
-    $('#winner').show();
-    
-  }
+if (color == 'red') {
+$('.game-overlay').addClass('red-overlay').show();
+/*$('#winner h1').text('Red wins').show();
+$('#winner').show();*/
+showPopup('Player O wins');
+} else if (color == 'blue') {
+$('.game-overlay').addClass('blue-overlay').show();
+/*$('#winner h1').text('Blue wins').show();
+$('#winner').show();*/
+showPopup('Player X wins');
+}
 }
 
+
 });
-        });
-    </script>
+});
+</script>
 </body>
 </html>

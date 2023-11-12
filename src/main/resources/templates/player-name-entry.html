@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+height: 100%;
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+background-image: url("img/bg.png");
+background-size: cover;
+}
+
+
+.centered {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+}
+
+
+</style>
+</head>
+<body>
+
+
+<div class="centered">
+<form th:action="@{/name-entry}" th:object="${name}" method="post">
+<input type="text" placeholder="Player X" id="name" th:field="*{name}" required><br>
+<button type="submit">Click me to play as a player X</button>
+</form>
+<form th:action="@{/name-entry}" th:object="${name}" method="post">
+<input type="text" placeholder="Player O" id="name" th:field="*{name}" required><br>
+<button type="submit">Click me to play as a player O</button>
+</form>
+<button type="button" class="btn" onclick="location.href='/tictactoe'">Play</button>
+</div>
+</body>
+</html>
