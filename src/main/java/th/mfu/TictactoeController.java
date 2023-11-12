@@ -44,10 +44,15 @@ public class TictactoeController {
 
 
     @PostMapping("/name-entry")
-    public String saveNameX(@ModelAttribute Players name){
+    public String saveNameX(@ModelAttribute Players name, Model model){
     playersRepository.save(name);
+
+
+    Iterable<Players> playersList = playersRepository.findAll();
+    model.addAttribute("players", playersList);
     return "redirect:/name-entry";
     }
+
 
 
     //method for help page (help page)
@@ -68,7 +73,12 @@ public class TictactoeController {
     //method for displaying gameboard
     @GetMapping("/tictactoe")
     public String displayGameboard(Model model){
+        Iterable<Players> playersList = playersRepository.findAll();
+        model.addAttribute("players", playersList);
     return "ticTacToe";
+
+
+
     }
         //method for renaming (updating)
 
