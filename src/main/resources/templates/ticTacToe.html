@@ -8,78 +8,78 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <style>
       * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
       }
 
       body {
-      background-image: url("img/bg.png");
+          background-image: url("img/bg.png");
       }
 
       button {
-      padding: 5px;
-      margin: 20px;
-      color: #fff;
+          padding: 5px;
+          margin: 20px;
+          color: #fff;
       }
 
       .cell {
-      width: 33.3%;
-      height: 33.3%;
-      /* game background color */
-      background-color: #999;
-      border: 1px solid #666;
-      display: flex;
-      flex-wrap: wrap;
+          width: 33.3%;
+          height: 33.3%;
+          /* game background color */
+          background-color: #999;
+          border: 1px solid #666;
+          display: flex;
+          flex-wrap: wrap;
       }
 
       .blue {
-      background-color: #00f;
+          background-color: #00f;
       }
 
       .draw-overlay {
-      background-color: green;
+          background-color: green;
       }
 
       .gray-overlay {
-      background-color: rgba(0, 0, 0, 0.2);
+          background-color: rgba(0, 0, 0, 0.2);
       }
 
       .box {
-      width: 150px;
-      display: flex;
-      flex-wrap: wrap;
-      border: 2px solid black;
-      position: relative;
+          width: 150px;
+          display: flex;
+          flex-wrap: wrap;
+          border: 2px solid black;
+          position: relative;
       }
 
       .blue {
-      background-color: #0274FB;
+          background-color: #0274FB;
       }
 
       .blue-overlay {
-      background-image: url("img/x.jpeg");
-      background-size: cover;
-      background-position: center;
+          background-image: url("img/x.jpeg");
+          background-size: cover;
+          background-position: center;
       }
 
       .overlay {
-      width: 150px;
-      height: 150px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: none;
+          width: 150px;
+          height: 150px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: none;
       }
 
       .game-overlay {
-      width: 450px;
-      height: 450px;
-      position: absolute;
-      top: 10;
-      left: 10;
-      z-index: 10;
-      display: none;
+          width: 450px;
+          height: 450px;
+          position: absolute;
+          top: 10;
+          left: 10;
+          z-index: 10;
+          display: none;
       }
 
       .player1 {
@@ -92,8 +92,8 @@
       }
 
       .player2 {
-      background-color: #FFE70C;
-      border: 1px solid #FFE70C;
+          background-color: #FFE70C;
+          border: 1px solid #FFE70C;
           border-radius: 30px;
           padding: 5px 10px;
           width: 150px;
@@ -101,97 +101,97 @@
       }
 
       .red {
-      background-color: #FFE70C;
+          background-color: #FFE70C;
       }
 
       .red-overlay {
-      background-image: url("img/o.jpeg");
-      background-size: cover;
-      background-position: center;
+          background-image: url("img/o.jpeg");
+          background-size: cover;
+          background-position: center;
       }
 
       #container {
-      width: 70%;
-      margin: 100px auto;
-      display: flex;
-      justify-content: space-around;
+          width: 70%;
+          margin: 100px auto;
+          display: flex;
+          justify-content: space-around;
       }
 
       #container.active {
-      width: 90%;
+          width: 90%;
       }
 
       #game {
-      width: 470px;
-      height: 470px;
-      padding: 10px;
-      background-color: #999;
-      display: flex;
-      flex-wrap: wrap;
-      position: relative;
+          width: 470px;
+          height: 470px;
+          padding: 10px;
+          background-color: #999;
+          display: flex;
+          flex-wrap: wrap;
+          position: relative;
       }
 
       #turn-display {
-  margin-top: 20px; /* Adjust the margin as needed */
-  font-size: 18px; /* Adjust the font size as needed */
-  font-family: Arial, sans-serif; 
-  padding: 10px; /* Padding around the content */
-  border-radius: 10px; /* Rounded border */
-  text-align: center; /* Center-align the text */
-  max-width: 200px;
-  margin-left: auto;
-  margin-right: auto;
-}
+          margin-top: 20px; /* Adjust the margin as needed */
+          font-size: 18px; /* Adjust the font size as needed */
+          font-family: Arial, sans-serif; 
+          padding: 10px; /* Padding around the content */
+          border-radius: 10px; /* Rounded border */
+          text-align: center; /* Center-align the text */
+          max-width: 200px;
+          margin-left: auto;
+          margin-right: auto;
+      }
 
       #options {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
       }
 
       #winner {
-      display: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: yellow;
-      z-index: 11;
+          display: none;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: yellow;
+          z-index: 11;
       }
 
       .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: white;
-      padding: 20px;
-      z-index: 12;
-      text-align: center;
+          display: none;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: white;
+          padding: 20px;
+          z-index: 12;
+          text-align: center;
       }
 
       .popup button {
-      padding: 10px;
-      margin-top: 10px;
-      background-color: #3498db;
-      color: #fff;
-      border: none;
-      cursor: pointer;
+          padding: 10px;
+          margin-top: 10px;
+          background-color: #3498db;
+          color: #fff;
+          border: none;
+          cursor: pointer;
       }
 
       .popup button:hover {
-      background-color: #2980b9;
+          background-color: #2980b9;
       }
 
       .star-photo {
-      width: 50px; /* Adjust the size as needed */
-      height: 50px;
-      background-image: url("img/champion.png");
-      background-size: cover;
-      background-position: center;
-      margin-bottom: 10px;
+          width: 50px; /* Adjust the size as needed */
+          height: 50px;
+          background-image: url("img/champion.png");
+          background-size: cover;
+          background-position: center;
+          margin-bottom: 10px;
       }
   </style>
 </head>
@@ -217,247 +217,252 @@
       <button class="player2" th:text="${players[1].name}" style="background-color: #FFE70C; color:black">Player O</button>
     </div>
 
-    <div class="popup" id="popup">
+    <!--<div class="popup" id="popup">
       <h1 id="popup-message"></h1>
-      <button id="redirect-button">View your scores</button>
-    </div>
+      <button id="redirect-button" style="display:none">View your scores</button>
+    </div>-->
     
 </div>
 
 <div id="turn-display"></div> 
 
 <script>
-$(document).ready(function() {
-$(document).ready(function() {
-for (var i = 0; i < 9; i++) {
-$('#game').prepend('<div class="box"><div class="overlay gray-overlay"></div></div>');
-};
+    $(document).ready(function() {
+        $(document).ready(function() {
+            console.log($('#popup .redirect-button').length || 0);
+            //creating grids 
+            for (var i = 0; i < 9; i++) {
+                $('#game').prepend('<div class="box"><div class="overlay gray-overlay"></div></div>');
+            };
+
+            for (var i = 0; i < 9; i++) {
+                $('.box').prepend('<div class="cell"></div>');
+            };
+
+            $('.player1').click(function() {
+                $(this).addClass('current');
+            });
+
+            $('.player2').click(function() {
+                $(this).addClass('current');
+            });
+
+            // Show the popup when the page is loaded
+            showPopup('Choose starting player');
+
+            // Handle player button clicks
+            $('.player1, .player2').click(function() {
+                $(this).addClass('current');
+                $('#popup').hide();
+                updateTurnDisplay();
+            });
+
+            /*$('#redirect-button').click(function() {
+                // Redirect to /name-list
+                window.location.href = "/name-list";
+            });*/
+
+            function showPopup(message) {
+                $('#popup-message').text(message);
+                $('#popup').show();
+            }
+            
+            var blueMoves = [
+                [],[],[],[],[],[],[],[],[]
+            ];
+            var redMoves = [
+                [],[],[],[],[],[],[],[],[]
+            ];
+            var boxLimit = [
+                [],[],[],[],[],[],[],[],[]
+            ];
+            var blueGlobal = [];
+            var redGlobal = [];
+            var globalLimit = [];
+            var blueWinsGame = false;
+            var redWinsGame = false;
+
+            $('.cell').click(function() {
+                if ($(this).hasClass('blue')||$(this).hasClass('red')){
+                    alert('Someone has already claimed this cell!');
+                } else {
+                    var cellIndex = $(this).index();
+                    var boxIndex = $(this).parent().index();
+                    if ($('.player1').hasClass('current')) {
+                        $(this).addClass('blue').css({
+                            'background-image': 'url("img/x.jpeg")',
+                            'background-size': 'cover',
+                            'background-position': 'center',
+                        });
+
+                        var currentArray = blueMoves[boxIndex];
+                        blueMoves[boxIndex].push(cellIndex);
+                        boxLimit[boxIndex].push(cellIndex);
+                        var boxLimitCheck = boxLimit[boxIndex].length;
+                        let blueWinsBox = isWinner(currentArray);
+
+                        if (blueWinsBox == true) {
+                            $(this).siblings('.overlay').removeClass('gray-overlay').addClass('blue-overlay').show();
+                            blueGlobal.push(boxIndex);
+                            globalLimit.push('globalLimit: ' + boxIndex);
+                            var blueWinsGame = isWinner(blueGlobal);
+                        } else if (blueWinsBox == false && (boxLimit[boxIndex].length) == 9) {
+                            isBoxDraw(boxIndex, this, globalLimit);
+                        }
+                        if (blueWinsGame === true) {
+                            youWin('blue');
+                        }
+                        isGameDraw(blueWinsGame);
+
+                        $('.player1').toggleClass('current');
+                        $('.player2').toggleClass('current');
+                    } else if ($('.player2').hasClass('current')) {
+                        $(this).addClass('red').css({
+                        'background-image': 'url("img/o.jpeg")',
+                        'background-size': 'cover',
+                        'background-position': 'center',
+                        });
+
+                        var currentArray = redMoves[boxIndex];
+                        redMoves[boxIndex].push(cellIndex);
+                        boxLimit[boxIndex].push(cellIndex);
+                        var boxLimitCheck = boxLimit[boxIndex].length;
+                        let redWinsBox = isWinner(currentArray);
+                        if (redWinsBox == true) {
+                        $(this).siblings('.overlay').removeClass('gray-overlay').addClass('red-overlay').show();
+                        redGlobal.push(boxIndex);
+                        globalLimit.push(boxIndex);
+                        redWinsGame = isWinner(redGlobal);
+
+                        } else if (redWinsBox == false && (boxLimit[boxIndex].length) == 9) {
+                        isBoxDraw(boxIndex, this, globalLimit);
+                        }
+                        if (redWinsGame == true) {
+                        youWin('red');
+                        }
+                        isGameDraw(redWinsGame);
+
+                        $('.player1').toggleClass('current');
+                        $('.player2').toggleClass('current');
+
+                    } else {
+                        alert('Choose starting player.')
+                    }
+                }
 
 
-for (var i = 0; i < 9; i++) {
-$('.box').prepend('<div class="cell"></div>');
-};
+                if (($('.player1').hasClass('current') || $('.player2').hasClass('current')) && (!$(this).hasClass('blue') || !$(this).hasClass('red'))) {
+                    if ($('.overlay').eq(cellIndex).hasClass('blue-overlay')||$('.overlay').eq(cellIndex).hasClass('red-overlay')||(boxLimit[cellIndex].length) == 9) {
+                        $('.overlay.gray-overlay:not(.blue-overlay):not(.red-overlay)').hide();
+                    } else {
+                        $('.overlay').show();
+                        $('.overlay').eq(cellIndex).hide();
+                    }
+                }
+
+                <!--new nainai-->
+                updateTurnDisplay();
+            })
 
 
-$('.player1').click(function() {
-$(this).addClass('current');
-});
+            function isBoxDraw(boxIndex, element, globalArray){
+                $(element).siblings('.overlay').removeClass('gray-overlay').addClass('draw-overlay').show();
+                globalArray.push(boxIndex);
+                isGameDraw(globalArray);
+            }
+
+            function isGameDraw(winStatus) {
+                if (winStatus == false && globalLimit.length == 9) {
+                    $('.game-overlay').addClass('draw-overlay').show();
+                    $('#popup-message').text("It is a draw!").append('<br>View your scores in');
+                    $('#popup button.player1, #popup button.player2').hide();
+                    //$('#popup button#redirect-button').show();
+
+                    // Show the popup
+                    $('#popup').show();
+
+                    /*setTimeout(function() {
+                    window.location.href = "/name-list";
+                    }, 4000);*/
+                    var countdown = 4;
+                    var countdownInterval = setInterval(function() {
+                        $('#popup-message').append(countdown + '...');
+
+                        countdown--;
+
+                        if (countdown < 0) {
+                        clearInterval(countdownInterval);
+
+                        // Automatically redirect after countdown
+                        window.location.href = "/name-list";
+                        }
+                    }, 1000);
+                }
+            }
+
+            function isWinner(array) {
+                if((array.includes(0))&&(array.includes(1))&&(array.includes(2)) ||
+                (array.includes(3))&&(array.includes(4))&&(array.includes(5)) ||
+                (array.includes(6))&&(array.includes(7))&&(array.includes(8)) ||
+                (array.includes(0))&&(array.includes(3))&&(array.includes(6)) ||
+                (array.includes(1))&&(array.includes(4))&&(array.includes(7)) ||
+                (array.includes(2))&&(array.includes(5))&&(array.includes(8)) ||
+                (array.includes(0))&&(array.includes(4))&&(array.includes(8)) ||
+                (array.includes(2))&&(array.includes(4))&&(array.includes(6))) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function youWin(color) {
+                var winnerMessage = '';
+                if (color === 'red') {
+                    $('.game-overlay').addClass('red-overlay').show();
+                    winnerMessage = 'Player O wins';
+                } else if (color === 'blue') {
+                    $('.game-overlay').addClass('blue-overlay').show();
+                    winnerMessage = 'Player X wins';
+                }
+
+                // Set the text content of the popup with the winning message and the "View Your Scores" button
+                $('#popup-message').text(winnerMessage).append('<br>View your scores in');
+                $('#popup button.player1, #popup button.player2').hide();
+                //$('#popup button#redirect-button').show();
+
+                // Show the popup
+                $('#popup').show();
+
+                var countdown = 4;
+                var countdownInterval = setInterval(function() {
+                    $('#popup-message').append(countdown + '...');
+
+                    countdown--;
+
+                    if (countdown < 0) {
+                    clearInterval(countdownInterval);
+
+                    // Automatically redirect after countdown
+                    window.location.href = "/name-list";
+                    }
+                }, 1000);
+            }
 
 
-$('.player2').click(function() {
-$(this).addClass('current');
-});
+            function updateTurnDisplay() {
+                var currentPlayerName = $('.current').text();
+                $('#turn-display').text(currentPlayerName + "'s Turn");
 
-// Show the popup when the page is loaded
-showPopup('Choose starting player');
+                if ($('.current').hasClass('player1')) {
+                    $('#turn-display').css('background-color', '#0274FB'); // Blue color for Player 1
+                } else if ($('.current').hasClass('player2')) {
+                    $('#turn-display').css('background-color', '#FFE70C'); // Yellow color for Player 2
+                }
+            }
 
-// Handle player button clicks
-$('.player1, .player2').click(function() {
-    $(this).addClass('current');
-    $('#popup').hide();
-});
-
-
-var blueMoves = [
-[],[],[],[],[],[],[],[],[]
-];
-var redMoves = [
-[],[],[],[],[],[],[],[],[]
-];
-var boxLimit = [
-[],[],[],[],[],[],[],[],[]
-];
-var blueGlobal = [];
-var redGlobal = [];
-var globalLimit = [];
-var blueWinsGame = false;
-var redWinsGame = false;
-
-
-
-
-$('.cell').click(function() {
-if ($(this).hasClass('blue')||$(this).hasClass('red')){
-
-
-alert('Someone has already claimed this cell!');
-} else {
-
-
-var cellIndex = $(this).index();
-var boxIndex = $(this).parent().index();
-if ($('.player1').hasClass('current')) {
-$(this).addClass('blue').css({
-'background-image': 'url("img/x.jpeg")',
-'background-size': 'cover',
-'background-position': 'center',
-});
-
-
-var currentArray = blueMoves[boxIndex];
-blueMoves[boxIndex].push(cellIndex);
-boxLimit[boxIndex].push(cellIndex);
-var boxLimitCheck = boxLimit[boxIndex].length;
-let blueWinsBox = isWinner(currentArray);
-if (blueWinsBox == true) {
-$(this).siblings('.overlay').removeClass('gray-overlay').addClass('blue-overlay').show();
-blueGlobal.push(boxIndex);
-globalLimit.push('globalLimit: ' + boxIndex);
-var blueWinsGame = isWinner(blueGlobal);
-
-
-} else if (blueWinsBox == false && (boxLimit[boxIndex].length) == 9) {
-isBoxDraw(boxIndex, this, globalLimit);
-}
-if (blueWinsGame === true) {
-youWin('blue');
-}
-isGameDraw(blueWinsGame);
-
-
-$('.player1').toggleClass('current');
-$('.player2').toggleClass('current');
-
-
-} else if ($('.player2').hasClass('current')) {
-$(this).addClass('red').css({
-'background-image': 'url("img/o.jpeg")',
-'background-size': 'cover',
-'background-position': 'center',
-});
-
-
-var currentArray = redMoves[boxIndex];
-redMoves[boxIndex].push(cellIndex);
-boxLimit[boxIndex].push(cellIndex);
-var boxLimitCheck = boxLimit[boxIndex].length;
-let redWinsBox = isWinner(currentArray);
-if (redWinsBox == true) {
-$(this).siblings('.overlay').removeClass('gray-overlay').addClass('red-overlay').show();
-redGlobal.push(boxIndex);
-globalLimit.push(boxIndex);
-redWinsGame = isWinner(redGlobal);
-
-
-} else if (redWinsBox == false && (boxLimit[boxIndex].length) == 9) {
-isBoxDraw(boxIndex, this, globalLimit);
-}
-if (redWinsGame == true) {
-youWin('red');
-}
-isGameDraw(redWinsGame);
-
-
-$('.player1').toggleClass('current');
-$('.player2').toggleClass('current');
-
-
-} else {
-alert('Choose starting player.')
-}
-}
-
-
-if (($('.player1').hasClass('current') || $('.player2').hasClass('current')) && (!$(this).hasClass('blue') || !$(this).hasClass('red'))) {
-if ($('.overlay').eq(cellIndex).hasClass('blue-overlay')||$('.overlay').eq(cellIndex).hasClass('red-overlay')||(boxLimit[cellIndex].length) == 9) {
-$('.overlay.gray-overlay:not(.blue-overlay):not(.red-overlay)').hide();
-} else {
-$('.overlay').show();
-$('.overlay').eq(cellIndex).hide();
-}
-}
-<!--new nainai-->
-updateTurnDisplay();
-})
-
-
-function showPopup(message) {
-$('#popup-message').text(message);
-$('#popup').show();
-}
-
-
-$('#redirect-button').click(function() {
-// Redirect to /name-list
-window.location.href = "/name-list";
-});
-
-
-
-
-function isBoxDraw(boxIndex, element, globalArray){
-$(element).siblings('.overlay').removeClass('gray-overlay').addClass('draw-overlay').show();
-globalArray.push(boxIndex);
-isGameDraw(globalArray);
-}
-
-
-
-
-function isGameDraw(winStatus) {
-if (winStatus == false && globalLimit.length == 9) {
-$('.game-overlay').addClass('draw-overlay').show();
-/*$('#winner h1').text("It's a draw!").show();
-$('#winner').show();*/
-showPopup("It is a draw!");
-}
-}
-
-
-
-
-function isWinner(array) {
-if((array.includes(0))&&(array.includes(1))&&(array.includes(2)) ||
-(array.includes(3))&&(array.includes(4))&&(array.includes(5)) ||
-(array.includes(6))&&(array.includes(7))&&(array.includes(8)) ||
-(array.includes(0))&&(array.includes(3))&&(array.includes(6)) ||
-(array.includes(1))&&(array.includes(4))&&(array.includes(7)) ||
-(array.includes(2))&&(array.includes(5))&&(array.includes(8)) ||
-(array.includes(0))&&(array.includes(4))&&(array.includes(8)) ||
-(array.includes(2))&&(array.includes(4))&&(array.includes(6))) {
-return true;
-} else {
-return false;
-}
-}
-
-
-
-
-function youWin(color) {
-if (color == 'red') {
-$('.game-overlay').addClass('red-overlay').show();
-/*$('#winner h1').text('Red wins').show();
-$('#winner').show();*/
-showPopup('Player O wins');
-} else if (color == 'blue') {
-$('.game-overlay').addClass('blue-overlay').show();
-/*$('#winner h1').text('Blue wins').show();
-$('#winner').show();*/
-showPopup('Player X wins');
-}
-}
-
-function updateTurnDisplay() {
-    var currentPlayerName = $('.current').text();
-    $('#turn-display').text(currentPlayerName + "'s Turn");
-
-    if ($('.current').hasClass('player1')) {
-        $('#turn-display').css('background-color', '#0274FB'); // Blue color for Player 1
-    } else if ($('.current').hasClass('player2')) {
-        $('#turn-display').css('background-color', '#FFE70C'); // Yellow color for Player 2
-    }
-}
-
-
-  $('.player1, .player2').click(function() {
-    $(this).addClass('current');
-    $('#popup').hide();
-    updateTurnDisplay();
-  });
-
-});
-});
+        });
+    });
 </script>
 </body>
 </html>
+
