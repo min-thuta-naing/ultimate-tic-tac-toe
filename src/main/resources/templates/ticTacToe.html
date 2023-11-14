@@ -196,6 +196,13 @@
           background-position: center;
           margin-bottom: 10px;
       }
+
+      .turn-display{
+        background-color: black;
+        color: white;
+        border-radius: 10px;
+      }
+
   </style>
 </head>
 
@@ -227,7 +234,9 @@
     
 </div>
 
-<div id="turn-display"></div> 
+
+<div  id="turn-display"></div> 
+    <button class="turn-display" id="restartButton"> Restart Game</button>
 
 <script>
     $(document).ready(function() {
@@ -259,6 +268,11 @@
                 $('#popup').hide();
                 updateTurnDisplay();
             });
+
+            
+            $('#restartButton').click(function(){
+                            location.reload();
+                        });
 
             /*$('#redirect-button').click(function() {
                 // Redirect to /name-list
@@ -387,38 +401,11 @@
                         youWin('red')
                     }else {
                         $('.game-overlay').addClass('draw-overlay').show();
-                    $('#popup-message').text("It is a draw!").append('<br>View your scores in<br>');
-                    $('#popup button.player1, #popup button.player2').hide();
-                    //$('#popup button#redirect-button').show();
-
-                    var blueWinsCount = blueGlobal.length;
-                    var redWinsCount=redGlobal.length;
-
-                    /*setTimeout(function() {
-                    window.location.href = "/name-list";
-                    }, 4000);*/
-                    var countdown = 4;
-                    var countdownInterval = setInterval(function() {
-                        $('#popup-message').append('<br>' +countdown + '...<br>');
-                    if (blueWinsCount > redWinsCount){
-                        youWin('blue');
-
-                    }else if(redWinsCount> blueWinsCount){
-                        youWin('red')
-                    }else {
-                        $('.game-overlay').addClass('draw-overlay').show();
-                        $('#popup-message').text("It is a draw!").append('<br>View your scores in');
+                        $('#popup-message').text("It is a draw!").append('<br>View your scores in<br>');
                         $('#popup button.player1, #popup button.player2').hide();
                         //$('#popup button#redirect-button').show();
                         $('#popup').show();
 
-                        /*setTimeout(function() {
-                        window.location.href = "/name-list";
-                        }
-                    }, 1000);
-
-
-                        }, 4000);*/
                         var countdown = 4;
                         var countdownInterval = setInterval(function() {
                             $('#popup-message').append(countdown + '...');
@@ -464,7 +451,6 @@
                 $('#popup-message').text(winnerMessage).append('<br>View your scores in<br>');
                 $('#popup button.player1, #popup button.player2').hide();
                 //$('#popup button#redirect-button').show();
-
                 // Show the popup
                 $('#popup').show();
 
