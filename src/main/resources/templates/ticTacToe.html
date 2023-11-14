@@ -368,35 +368,44 @@
             function isBoxDraw(boxIndex, element, globalArray){
                 $(element).siblings('.overlay').removeClass('gray-overlay').addClass('draw-overlay').show();
                 globalArray.push(boxIndex);
-                isGameDraw(globalArray);
+            
             }
 
             function isGameDraw(winStatus) {
                 if (winStatus == false && globalLimit.length == 9) {
-                    $('.game-overlay').addClass('draw-overlay').show();
-                    $('#popup-message').text("It is a draw!").append('<br>View your scores in');
-                    $('#popup button.player1, #popup button.player2').hide();
-                    //$('#popup button#redirect-button').show();
 
-                    // Show the popup
-                    $('#popup').show();
+                    var blueWinsCount = blueGlobal.length;
+                    var redWinsCount=redGlobal.length;
 
-                    /*setTimeout(function() {
-                    window.location.href = "/name-list";
-                    }, 4000);*/
-                    var countdown = 4;
-                    var countdownInterval = setInterval(function() {
-                        $('#popup-message').append(countdown + '...');
+                    if (blueWinsCount > redWinsCount){
+                        youWin('blue');
 
-                        countdown--;
+                    }else if(redWinsCount> blueWinsCount){
+                        youWin('red')
+                    }else {
+                        $('.game-overlay').addClass('draw-overlay').show();
+                        $('#popup-message').text("It is a draw!").append('<br>View your scores in');
+                        $('#popup button.player1, #popup button.player2').hide();
+                        //$('#popup button#redirect-button').show();
+                        $('#popup').show();
 
-                        if (countdown < 0) {
-                        clearInterval(countdownInterval);
-
-                        // Automatically redirect after countdown
+                        /*setTimeout(function() {
                         window.location.href = "/name-list";
-                        }
-                    }, 1000);
+                        }, 4000);*/
+                        var countdown = 4;
+                        var countdownInterval = setInterval(function() {
+                            $('#popup-message').append(countdown + '...');
+
+                            countdown--;
+
+                            if (countdown < 0) {
+                            clearInterval(countdownInterval);
+
+                            // Automatically redirect after countdown
+                            window.location.href = "/name-list";
+                            }
+                        }, 1000);
+                    }
                 }
             }
 
