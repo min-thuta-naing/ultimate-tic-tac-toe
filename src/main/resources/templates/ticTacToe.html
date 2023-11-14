@@ -161,6 +161,8 @@
       }
 
       .popup {
+        font-family: "Poppins", sans-serif;
+        border-radius: 10px;
           display: none;
           position: fixed;
           top: 50%;
@@ -171,6 +173,7 @@
           z-index: 12;
           text-align: center;
       }
+
 
       .popup button {
           padding: 10px;
@@ -368,13 +371,23 @@
             function isBoxDraw(boxIndex, element, globalArray){
                 $(element).siblings('.overlay').removeClass('gray-overlay').addClass('draw-overlay').show();
                 globalArray.push(boxIndex);
-                isGameDraw(globalArray);
+            
             }
 
             function isGameDraw(winStatus) {
                 if (winStatus == false && globalLimit.length == 9) {
-                    $('.game-overlay').addClass('draw-overlay').show();
-                    $('#popup-message').text("It is a draw!").append('<br>View your scores in');
+
+                    var blueWinsCount = blueGlobal.length;
+                    var redWinsCount=redGlobal.length;
+
+                    if (blueWinsCount > redWinsCount){
+                        youWin('blue');
+
+                    }else if(redWinsCount> blueWinsCount){
+                        youWin('red')
+                    }else {
+                        $('.game-overlay').addClass('draw-overlay').show();
+                    $('#popup-message').text("It is a draw!").append('<br>View your scores in<br>');
                     $('#popup button.player1, #popup button.player2').hide();
                     //$('#popup button#redirect-button').show();
 
@@ -386,7 +399,7 @@
                     }, 4000);*/
                     var countdown = 4;
                     var countdownInterval = setInterval(function() {
-                        $('#popup-message').append(countdown + '...');
+                        $('#popup-message').append('<br>' +countdown + '...<br>');
 
                         countdown--;
 
@@ -397,6 +410,9 @@
                         window.location.href = "/name-list";
                         }
                     }, 1000);
+
+
+                    }
                 }
             }
 
@@ -425,8 +441,7 @@
                     winnerMessage = 'Player X wins';
                 }
 
-                // Set the text content of the popup with the winning message and the "View Your Scores" button
-                $('#popup-message').text(winnerMessage).append('<br>View your scores in');
+                $('#popup-message').text(winnerMessage).append('<br>View your scores in<br>');
                 $('#popup button.player1, #popup button.player2').hide();
                 //$('#popup button#redirect-button').show();
 
@@ -435,7 +450,7 @@
 
                 var countdown = 4;
                 var countdownInterval = setInterval(function() {
-                    $('#popup-message').append(countdown + '...');
+                    $('#popup-message').append('<br>'+countdown + '...');
 
                     countdown--;
 
@@ -446,6 +461,7 @@
                     window.location.href = "/name-list";
                     }
                 }, 1000);
+
             }
 
 
