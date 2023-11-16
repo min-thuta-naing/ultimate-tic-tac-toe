@@ -67,8 +67,11 @@ public class TictactoeController {
     //method for scoreboard page (listing)
     @GetMapping("/name-list")
     public String nameList(Model model){
-    //model.addAttribute("name", playersRepository.findAll());
-    return "list";
+        //model.addAttribute("rounds", roundsRepository.findAll());    
+        //return "list";
+        Iterable<Rounds> roundsList = roundsRepository.findAll();
+        model.addAttribute("rounds", roundsList);
+        return "list"; 
     }
 
 
@@ -102,18 +105,15 @@ public class TictactoeController {
 
 
 
+
+
         //method for renaming (updating)
 
 
 
 
         /*
-        //method for scoreboard page (listing)
-        @GetMapping("/name-list")
-        public String nameList(Model model){
-        model.addAttribute("nameX", repoX.findAll());
-        return "list";
-        }
+        
 
         //method for renaming players(updating)
         /* @PostMapping("/rename")

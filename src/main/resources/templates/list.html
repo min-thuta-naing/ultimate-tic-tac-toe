@@ -9,27 +9,22 @@
 </head>
 <body>
     <h1>Name list</h1>
-    <!--a class="btn btn-primary" href="/name-entry">Add Name</a>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Names</th>
-                
+                <th>rounds</th>
+                <th>winners</th>
+                <th>prizes</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="playerX : ${nameX}">
-                <td th:text="${playerX.id}"></td>
-                <td th:text="${playerX.nameX}"></td>
+            <tr th:each="rounds : ${rounds}">
+                <td th:text="${rounds.roundId}"></td>
+                <td th:text="${rounds.winner}"></td>
+                <!--<td th:text="${rounds.winner}"></td>-->
             </tr>
-            <tr th:each="playerO : ${nameO}">
-                <td th:text="${playerO.id}"></td>
-                <td th:text="${playerO.nameO}"></td>
-            </tr>
-               
         </tbody>
-    </table>-->
+    </table>
 </body>
 </html>
