@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;  
 import org.springframework.web.bind.annotation.ModelAttribute;  
 import org.springframework.web.bind.annotation.PathVariable;  
-import org.springframework.web.bind.annotation.PostMapping;  
-import th.mfu.domain.Players;   
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import th.mfu.domain.Players;
+import th.mfu.domain.Rounds;   
 @Controller
 public class TictactoeController {
     @Autowired
@@ -75,10 +78,28 @@ public class TictactoeController {
         Iterable<Players> playersList = playersRepository.findAll();
         model.addAttribute("players", playersList);
     return "ticTacToe";
-
-
-
     }
+    
+    @Autowired
+    private RoundsRepository roundsRepository;
+
+    @PostMapping("/save-result")
+    public String saveGameResult(@RequestParam("winner") String winner, Model model) {
+        if ("tie".equals(winner)) {
+            Rounds tieRound = new Rounds();
+            tieRound.setWinner("tie");
+            roundsRepository.save(tieRound);
+        } else {
+            // Assuming player1 and player2 names are stored in the player1Name and player2Name variables
+            Rounds winningRound = new Rounds();
+            winningRound.setWinner(winner);
+            roundsRepository.save(winningRound);
+        }
+        return "redirect:/name-list";
+    }
+
+
+
 
 
         //method for renaming (updating)

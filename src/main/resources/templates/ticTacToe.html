@@ -12,17 +12,14 @@
           padding: 0;
           box-sizing: border-box;
       }
-
       body {
           background-image: url("img/bg.png");
       }
-
       button {
           padding: 5px;
           margin: 20px;
           color: #fff;
       }
-
       .cell {
           width: 33.3%;
           height: 33.3%;
@@ -32,19 +29,15 @@
           display: flex;
           flex-wrap: wrap;
       }
-
       .blue {
           background-color: #00f;
       }
-
       .draw-overlay {
           background-color: green;
       }
-
       .gray-overlay {
           background-color: rgba(0, 0, 0, 0.2);
       }
-
       .box {
           width: 150px;
           display: flex;
@@ -52,17 +45,14 @@
           border: 2px solid black;
           position: relative;
       }
-
       .blue {
           background-color: #0274FB;
       }
-
       .blue-overlay {
           background-image: url("img/x.jpeg");
           background-size: cover;
           background-position: center;
       }
-
       .overlay {
           width: 150px;
           height: 150px;
@@ -71,7 +61,6 @@
           left: 0;
           display: none;
       }
-
       .game-overlay {
           width: 450px;
           height: 450px;
@@ -81,7 +70,6 @@
           z-index: 10;
           display: none;
       }
-
       .player1 {
           border: 1px solid #0274FB;
           border-radius: 30px;
@@ -90,7 +78,6 @@
           font-size: 15px;
           background-color: #0274FB;
       }
-
       .player2 {
           background-color: #FFE70C;
           border: 1px solid #FFE70C;
@@ -99,28 +86,23 @@
           width: 150px;
           font-size: 15px;
       }
-
       .red {
           background-color: #FFE70C;
       }
-
       .red-overlay {
           background-image: url("img/o.jpeg");
           background-size: cover;
           background-position: center;
       }
-
       #container {
           width: 70%;
           margin: 100px auto;
           display: flex;
           justify-content: space-around;
       }
-
       #container.active {
           width: 90%;
       }
-
       #game {
           width: 470px;
           height: 470px;
@@ -130,7 +112,6 @@
           flex-wrap: wrap;
           position: relative;
       }
-
       #turn-display {
           margin-top: 20px; /* Adjust the margin as needed */
           font-size: 18px; /* Adjust the font size as needed */
@@ -142,14 +123,12 @@
           margin-left: auto;
           margin-right: auto;
       }
-
       #options {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
       }
-
       #winner {
           display: none;
           position: absolute;
@@ -159,7 +138,6 @@
           background-color: yellow;
           z-index: 11;
       }
-
       .starting-popup {
           font-family: "Poppins", sans-serif;
           border-radius: 10px;
@@ -173,7 +151,6 @@
           z-index: 12;
           text-align: center;
       }
-
       .closing-popup {
           font-family: "Poppins", sans-serif;
           border-radius: 10px;
@@ -187,7 +164,6 @@
           z-index: 12;
           text-align: center;
       }
-
       .closing-popup-button{
           border: 1px solid #999;
           border-radius: 30px;
@@ -195,7 +171,6 @@
           width: 150px;
           font-size: 15px;
       }
-
       .popup button {
           padding: 10px;
           margin-top: 10px;
@@ -204,20 +179,16 @@
           border: none;
           cursor: pointer;
       }
-
       .popup button:hover {
           background-color: #2980b9;
       }
-
       .turn-display{
         background-color: black;
         color: white;
         border-radius: 10px;
       }
-
   </style>
 </head>
-
 <body>
 <div id="container">
     <!--<div id="options">
@@ -238,22 +209,17 @@
       <button class="player1" th:text="${players[0].name}" style="background-color: #0274FB; color: black">Player X</button>
       <button class="player2" th:text="${players[1].name}" style="background-color: #FFE70C; color:black">Player O</button>
     </div>
-
     <div class="closing-popup" id="closing-popup">
       <h1 id="closing-popup-message"></h1>
       <button class="closing-popup-button" id="redirect-button" style="background-color: #999; color:black">View the leaderboard</button>
     </div>
     
 </div>
-
-
 <div  id="turn-display"></div> 
 <button class="turn-display" id="restartButton"> Restart Game</button>
-
 <script>
     $(document).ready(function() {
         $(document).ready(function() {
-
             //creating grids 
             for (var i = 0; i < 9; i++) {
                 $('#game').prepend('<div class="box"><div class="overlay gray-overlay"></div></div>');
@@ -261,10 +227,8 @@
             for (var i = 0; i < 9; i++) {
                 $('.box').prepend('<div class="cell"></div>');
             };
-
             // Show the popup as soon as the page is loaded
             showStartingPopup('Choose starting player');
-
             // player clicks button on popup (deciding who starts first)
             $('.player1, .player2').click(function() {
                 $(this).addClass('current');
@@ -273,24 +237,20 @@
                 player2Name = $('.player2').text();
                 updateTurnDisplay();
             });
-
             // game restart button 
             $('#restartButton').click(function(){
                 location.reload();
             });
-
             // redirect to /name-list page 
             $('#redirect-button').click(function() { 
                 // Redirect to /name-list
                 window.location.href = "/name-list";
             });
-
             //show starting popup function (Choose starting player!)
             function showStartingPopup(message) {
                 $('#starting-popup-message').text(message);
                 $('#starting-popup').show();
             }
-
             //show closing popup function (at the end of the game)
             function showClosingPopup(message){
                 $('#closing-popup-message').text(message);
@@ -311,7 +271,6 @@
             var globalLimit = [];
             var blueWinsGame = false;
             var redWinsGame = false;
-
             $('.cell').click(function() {
                 if ($(this).hasClass('blue')||$(this).hasClass('red')){
                     alert('This cell is already claimed!');
@@ -324,13 +283,11 @@
                             'background-size': 'cover',
                             'background-position': 'center',
                         });
-
                         var currentArray = blueMoves[boxIndex];
                         blueMoves[boxIndex].push(cellIndex);
                         boxLimit[boxIndex].push(cellIndex);
                         var boxLimitCheck = boxLimit[boxIndex].length;
                         let blueWinsBox = isWinner(currentArray);
-
                         if (blueWinsBox == true) {
                             $(this).siblings('.overlay').removeClass('gray-overlay').addClass('blue-overlay').show();
                             blueGlobal.push(boxIndex);
@@ -343,7 +300,6 @@
                             youWin('blue');
                         }
                         isGameDraw(blueWinsGame);
-
                         $('.player1').toggleClass('current');
                         $('.player2').toggleClass('current');
                     } else if ($('.player2').hasClass('current')) {
@@ -352,7 +308,6 @@
                         'background-size': 'cover',
                         'background-position': 'center',
                         });
-
                         var currentArray = redMoves[boxIndex];
                         redMoves[boxIndex].push(cellIndex);
                         boxLimit[boxIndex].push(cellIndex);
@@ -363,7 +318,6 @@
                         redGlobal.push(boxIndex);
                         globalLimit.push(boxIndex);
                         redWinsGame = isWinner(redGlobal);
-
                         } else if (redWinsBox == false && (boxLimit[boxIndex].length) == 9) {
                         isBoxDraw(boxIndex, this, globalLimit);
                         }
@@ -371,16 +325,12 @@
                         youWin('red');
                         }
                         isGameDraw(redWinsGame);
-
                         $('.player1').toggleClass('current');
                         $('.player2').toggleClass('current');
-
                     } else {
                         alert('Choose starting player.')
                     }
                 }
-
-
                 if (($('.player1').hasClass('current') || $('.player2').hasClass('current')) && (!$(this).hasClass('blue') || !$(this).hasClass('red'))) {
                     if ($('.overlay').eq(cellIndex).hasClass('blue-overlay')||$('.overlay').eq(cellIndex).hasClass('red-overlay')||(boxLimit[cellIndex].length) == 9) {
                         $('.overlay.gray-overlay:not(.blue-overlay):not(.red-overlay)').hide();
@@ -389,27 +339,21 @@
                         $('.overlay').eq(cellIndex).hide();
                     }
                 }
-
                 <!--new nainai-->
                 updateTurnDisplay();
             })
-
             
             function isBoxDraw(boxIndex, element, globalArray){
                 $(element).siblings('.overlay').removeClass('gray-overlay').addClass('draw-overlay').show();
                 //globalArray.push(boxIndex);
                 globalArray.push('globalLimit: ' + boxIndex); 
             }
-
             function isGameDraw(winStatus) {
                 if (winStatus == false && globalLimit.length == 9) {
-
                     var blueWinsCount = blueGlobal.length;
                     var redWinsCount=redGlobal.length;
-
                     if (blueWinsCount > redWinsCount){
                         youWin('blue', player1Name);
-
                     }else if(redWinsCount> blueWinsCount){
                         youWin('red', player2Name);
                     }else {
@@ -420,16 +364,12 @@
                         $('#popup button.player1, #popup button.player2').hide();
                         //$('#popup button#redirect-button').show();
                         $('#popup').show();
-
                         var countdown = 4;
                         var countdownInterval = setInterval(function() {
                             $('#popup-message').append(countdown + '...');
-
                             countdown--;
-
                             if (countdown < 0) {
                             clearInterval(countdownInterval);
-
                             // Automatically redirect after countdown
                             window.location.href = "/name-list";
                             }
@@ -437,7 +377,6 @@
                     }
                 }
             }
-
             function isWinner(array) {
                 if((array.includes(0))&&(array.includes(1))&&(array.includes(2)) ||
                 (array.includes(3))&&(array.includes(4))&&(array.includes(5)) ||
@@ -452,53 +391,72 @@
                     return false;
                 }
             }
-
             function youWin(color) {
                 var winnerMessage = '';
                 if (color === 'red') {
                     $('.game-overlay').addClass('red-overlay').show();
                     winnerMessage = 'Player O ' + player2Name + ' wins';
+                    //saving winner names to Rounds entity table 
+                    $.ajax({
+                        type: "POST",
+                        url: "/save-result",
+                        data: { winner: player2Name },
+                        success: function(response) {
+                            // Handle the response if needed
+                            console.log(response);
+                        },
+                        error: function(error) {
+                            // Handle the error if needed
+                            console.error(error);
+                        }
+                    });
                 } else if (color === 'blue') {
                     $('.game-overlay').addClass('blue-overlay').show();
                     winnerMessage = 'Player X ' + player1Name + ' wins';
+                    //saving winner names to Rounds entity table 
+                    $.ajax({
+                        type: "POST",
+                        url: "/save-result",
+                        data: { winner: player1Name },
+                        success: function(response) {
+                            // Handle the response if needed
+                            console.log(response);
+                        },
+                        error: function(error) {
+                            // Handle the error if needed
+                            console.error(error);
+                        }
+                    });
                 }
-
+            
                 showClosingPopup(winnerMessage);
                 //$('#popup-message').text(winnerMessage).append('<br>View your scores in<br>');
                 //$('#popup button.player1, #popup button.player2').hide();
                 //$('#popup button#redirect-button').show();
                 // Show the popup
                 //$('#popup').show();
-
                 /*var countdown = 4;
                 var countdownInterval = setInterval(function() {
                     $('#popup-message').append('<br>'+countdown + '<br>');
-
                     countdown--;
-
                     if (countdown < 0) {
                     clearInterval(countdownInterval);
-
                     // Automatically redirect after countdown
                     window.location.href = "/name-list";
                     }
                 }, 1000);*/
             }
-
             function updateTurnDisplay() {
                 var currentPlayerName = $('.current').text();
                 $('#turn-display').text(currentPlayerName + "'s Turn");
-
                 if ($('.current').hasClass('player1')) {
                     $('#turn-display').css('background-color', '#0274FB'); // Blue color for Player 1
                 } else if ($('.current').hasClass('player2')) {
                     $('#turn-display').css('background-color', '#FFE70C'); // Yellow color for Player 2
                 }
             }
-
         });
     });
 </script>
 </body>
 </html>
-
