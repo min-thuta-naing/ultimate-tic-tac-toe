@@ -87,24 +87,21 @@
         <h1>Leaderboards</h1>
     </div>
 
-    <table id="leaderboard-table">
-        <tr>
-            <th>Round</th>
-            <th>Winner</th>
-             <!-- Add more columns as needed -->
-        </tr>
-        <!-- Add data dynamically based on your game's leaderboards -->
-        <tr>
-            <td>1</td>
-            <td>Player A</td>
-            
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Player B</td>
-            
-        </tr>
-        <!-- Add more rows as needed -->
+    <table class="table" id="leaderboard-table">
+        <thead>
+            <tr>
+                <th>Round</th>
+                <th>Winner</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr th:each="rounds : ${rounds}">
+                <td th:text="${rounds.roundId}"></td>
+                <td th:text="${rounds.winner}"></td>
+                
+            </tr>
+        </tbody>
     </table>
 
     <div id="buttons-container">
@@ -112,5 +109,4 @@
         <button id="quit-button">Quit</button>
     </div>
 </body>
-
 </html>

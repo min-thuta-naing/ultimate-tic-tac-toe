@@ -493,32 +493,58 @@
                 if (color === 'red') {
                     $('.game-overlay').addClass('red-overlay').show();
                     winnerMessage = 'Player O ' + player2Name + ' wins';
+                    //saving winner names to Rounds entity table 
+                    $.ajax({
+                        type: "POST",
+                        url: "/save-result",
+                        data: { winner: player2Name },
+                        success: function(response) {
+                            // Handle the response if needed
+                            console.log(response);
+                        },
+                        error: function(error) {
+                            // Handle the error if needed
+                            console.error(error);
+                        }
+                    });
                 } else if (color === 'blue') {
                     $('.game-overlay').addClass('blue-overlay').show();
                     winnerMessage = 'Player X ' + player1Name + ' wins';
+                    //saving winner names to Rounds entity table 
+                    $.ajax({
+                        type: "POST",
+                        url: "/save-result",
+                        data: { winner: player1Name },
+                        success: function(response) {
+                            // Handle the response if needed
+                            console.log(response);
+                        },
+                        error: function(error) {
+                            // Handle the error if needed
+                            console.error(error);
+                        }
+                    });
                 }
-
+            
                 showClosingPopup(winnerMessage);
                 //$('#popup-message').text(winnerMessage).append('<br>View your scores in<br>');
                 //$('#popup button.player1, #popup button.player2').hide();
                 //$('#popup button#redirect-button').show();
                 // Show the popup
                 //$('#popup').show();
-
                 /*var countdown = 4;
                 var countdownInterval = setInterval(function() {
                     $('#popup-message').append('<br>'+countdown + '<br>');
-
                     countdown--;
-
                     if (countdown < 0) {
                     clearInterval(countdownInterval);
-
                     // Automatically redirect after countdown
                     window.location.href = "/name-list";
                     }
                 }, 1000);*/
             }
+
+
 
             function updateTurnDisplay() {
                 var currentPlayerName = $('.current').text();
