@@ -19,9 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import th.mfu.domain.Players;   
 @Controller
 public class TictactoeController {
-        @Autowired
+    @Autowired
     private PlayersRepository playersRepository;
-
 
     public TictactoeController(PlayersRepository playersRepository){
     this.playersRepository = playersRepository;
@@ -80,6 +79,8 @@ public class TictactoeController {
 
 
     }
+
+
         //method for renaming (updating)
 
 
