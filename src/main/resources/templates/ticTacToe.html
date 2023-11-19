@@ -288,7 +288,10 @@
 <script>
     $(document).ready(function() {
         $(document).ready(function() {
-
+            //new code 18Nov 
+            var startTime; 
+            var endTime; 
+            
             //creating grids 
             for (var i = 0; i < 9; i++) {
                 $('#game').prepend('<div class="box"><div class="overlay gray-overlay"></div></div>');
@@ -302,12 +305,15 @@
 
             // player clicks button on popup (deciding who starts first)
             $('.player1, .player2').click(function() {
+                startTime = new Date().getTime(); //record the starting time 
                 $(this).addClass('current');
                 $('#starting-popup').hide();
                 player1Name = $('.player1').text();
                 player2Name = $('.player2').text();
                 updateTurnDisplay();
             });
+
+            
 
             // game restart button 
             $('#restartButton').click(function(){
@@ -493,11 +499,15 @@
                 if (color === 'red') {
                     $('.game-overlay').addClass('red-overlay').show();
                     winnerMessage = 'Player O ' + player2Name + ' wins';
+                    //record the ending time 
+                    endTime = new Date().getTime(); 
+                    var durationInSeconds = Math.floor((endTime-startTime)/1000); 
+                    console.log('Elapsed Time: ' + durationInSeconds + ' seconds'); 
                     //saving winner names to Rounds entity table 
                     $.ajax({
                         type: "POST",
                         url: "/save-result",
-                        data: { winner: player2Name },
+                        data: { winner: player2Name , durationInSeconds: durationInSeconds},
                         success: function(response) {
                             // Handle the response if needed
                             console.log(response);
@@ -510,11 +520,15 @@
                 } else if (color === 'blue') {
                     $('.game-overlay').addClass('blue-overlay').show();
                     winnerMessage = 'Player X ' + player1Name + ' wins';
+                    //record the ending time 
+                    endTime = new Date().getTime(); 
+                    var durationInSeconds = Math.floor((endTime-startTime)/1000); 
+                    console.log('Elapsed Time: ' + durationInSeconds + ' seconds'); 
                     //saving winner names to Rounds entity table 
                     $.ajax({
                         type: "POST",
                         url: "/save-result",
-                        data: { winner: player1Name },
+                        data: { winner: player1Name , durationInSeconds: durationInSeconds},
                         success: function(response) {
                             // Handle the response if needed
                             console.log(response);
@@ -525,7 +539,7 @@
                         }
                     });
                 }
-            
+
                 showClosingPopup(winnerMessage);
                 //$('#popup-message').text(winnerMessage).append('<br>View your scores in<br>');
                 //$('#popup button.player1, #popup button.player2').hide();
@@ -543,8 +557,6 @@
                     }
                 }, 1000);*/
             }
-
-
 
             function updateTurnDisplay() {
                 var currentPlayerName = $('.current').text();

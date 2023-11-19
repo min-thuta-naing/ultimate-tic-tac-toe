@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html> 
+<head>
+    <title>users feedback and comments</title>
+    <style>
+         #feedback-table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        #feedback-table th, #feedback-table td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+        }
+
+        #feedback-table th {
+            background-color: #808080; /* Change to gray color */
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Users feedbacks</h1>
+    <table class="table" id="feedback-table">
+        <thead>
+            <tr>
+                <th>Sir No.</th>
+                <th>Feedbacks</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr th:each="comments : ${comments}">
+                <td th:text="${comments.commentId}"></td>
+                <td th:text="${comments.comment}"></td>
+                
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
