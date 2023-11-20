@@ -1,5 +1,7 @@
 package th.mfu;   
 
+import javax.transaction.Transactional;
+
 import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.beans.propertyeditors.CustomDateEditor;  
@@ -57,16 +59,22 @@ public class TictactoeController {
     }
 
     // Method to update leaderboard statistics
+    @Transactional 
     public void updateLeaderboardStats() {
-        Iterable<Leaderboard> leaderboards = leaderboardRepository.findAllWithPlayers();
-
-        for (Leaderboard leaderboard : leaderboards) {
-            Long playerId = leaderboard.getPlayer().getId();
-            Iterable<Rounds> playerRounds = roundsRepository.findByWinner_Id(playerId);
-            leaderboard.updateStats(playerRounds);
+        try {
+            Iterable<Leaderboard> leaderboards = leaderboardRepository.findAllWithPlayers();
+    
+            for (Leaderboard leaderboard : leaderboards) {
+                Long playerId = leaderboard.getPlayer().getId();
+                Iterable<Rounds> playerRounds = roundsRepository.findByWinner_Id(playerId);
+                leaderboard.updateStats(playerRounds);
+            }
+    
+            leaderboardRepository.saveAll(leaderboards);
+        } catch (Exception e) {
+            // Log the exception for debugging
+            e.printStackTrace();
         }
-
-        leaderboardRepository.saveAll(leaderboards);
     }
 
     //method for help page (help page)

@@ -181,7 +181,42 @@
             align-items: center;
             margin: 0 auto;
             text-align: center;
-}
+        }
+
+        /* Style for the rating container */
+        .rating {
+        display: inline-block;
+        }
+
+        /* Style for the individual rating stars */
+        .rating input {
+        display: none;
+        }
+
+        .rating label {
+        font-size: 30px;
+        color: #ddd;
+        cursor: pointer;
+        }
+
+        .rating label:hover,
+        .rating label:hover ~ label,
+        .rating input:checked ~ label {
+        color: #fdd835; /* Change this color to your desired highlight color */
+        }
+
+        .rate-popup{
+            display: none;
+            position: fixed;
+            top: 30%;
+            left: 39%;
+            width: 300px;
+            height: 200px;
+            background-color: silver;
+            z-index: 1000;
+            text-align: center;
+            border-radius: 15px;
+        }
 
 
     </style>
@@ -200,14 +235,10 @@
             </tr>
         </thead>
         <tbody>
+           
             <tr th:each="rounds : ${rounds}">
                 <td th:text="${rounds.roundId}"></td>
-                <td>
-                    <!-- Iterate through players to find the winner's name -->
-                    <span th:each="player : ${playersList}" th:if="${player.id == round.winner}">
-                        <span th:text="${player.playerName}"></span>
-                    </span>
-                </td>
+                <td th:text="${rounds.winner}"></td>
                 
             </tr>
         </tbody>
@@ -277,7 +308,7 @@
             <h1 class="warn">Warning</h1>
             <p>All your data will be deleted when you quit?<br>Do you really want to quit the game?</p>
             <button class="modal-button" onclick="closeQuitPopup()">Cancel</button>
-            <button class="modal-button" onclick="confirmQuit()">Quit</button>
+            <button class="modal-button" onclick="goRate()">Quit</button>
         </div>
     </div>
 
@@ -292,7 +323,7 @@
             document.getElementById('overlay').style.display = 'none'; 
             document.getElementById('quit-modal').style.display='none';
         }
-        function confirmQuit() { 
+        function goRate() { 
             location.href='/quit-delete';
         }
         //code for commnet popup 
@@ -324,6 +355,29 @@
                 alert("Please enter comments before submitting.");
             }
         }
+       
     </script>
+
+    <div class="rate-popup" id="rate">
+        <div class="rating" id="rate-model">
+        <input type="radio" id="star5" name="rating" value="5">
+        <label for="star5">&#9733;</label>
+        <input type="radio" id="star4" name="rating" value="4">
+        <label for="star4">&#9733;</label>
+        <input type="radio" id="star3" name="rating" value="3">
+        <label for="star3">&#9733;</label>
+        <input type="radio" id="star2" name="rating" value="2">
+        <label for="star2">&#9733;</label>
+        <input type="radio" id="star1" name="rating" value="1">
+        <label for="star1">&#9733;</label>
+        </div>
+    </div>
+    
+  <script>
+    function goRate() { 
+            document.getElementById('rate').style.display = 'block'; 
+            document.getElementById('rate-modal').style.display='block';
+        }
+  </script>
 </body>
 </html>
