@@ -4,14 +4,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import ch.qos.logback.core.util.Duration;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Time {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY) 
     private Long timeId;
+
+    @OneToOne
+    @JoinColumn(name = "roundId")
+    private Rounds roundId; 
+
     private Long durationInSeconds;
 
     //constructors 
@@ -28,11 +33,20 @@ public class Time {
     public void setTimeId(Long timeId) {
         this.timeId = timeId;
     }
+
+    public Rounds getRoundId() {
+        return roundId;
+    }
+    public void setRoundId(Rounds roundId) {
+        this.roundId = roundId;
+    }
+
     public Long getDurationInSeconds() {
         return durationInSeconds;
     }
     public void setDurationInSeconds(Long durationInSeconds) {
         this.durationInSeconds = durationInSeconds;
     }
+    
    
 }

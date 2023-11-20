@@ -200,10 +200,14 @@
             </tr>
         </thead>
         <tbody>
-           
             <tr th:each="rounds : ${rounds}">
                 <td th:text="${rounds.roundId}"></td>
-                <td th:text="${rounds.winner}"></td>
+                <td>
+                    <!-- Iterate through players to find the winner's name -->
+                    <span th:each="player : ${playersList}" th:if="${player.id == round.winner}">
+                        <span th:text="${player.playerName}"></span>
+                    </span>
+                </td>
                 
             </tr>
         </tbody>

@@ -496,9 +496,11 @@
 
             function youWin(color) {
                 var winnerMessage = '';
+                //var winnerName = ''; 
                 if (color === 'red') {
                     $('.game-overlay').addClass('red-overlay').show();
                     winnerMessage = 'Player O ' + player2Name + ' wins';
+                    //winnerName = player2Name;
                     //record the ending time 
                     endTime = new Date().getTime(); 
                     var durationInSeconds = Math.floor((endTime-startTime)/1000); 
@@ -507,7 +509,7 @@
                     $.ajax({
                         type: "POST",
                         url: "/save-result",
-                        data: { winner: player2Name , durationInSeconds: durationInSeconds},
+                        data: { winnerId: color == 'red' ? 2 : 1 , durationInSeconds: durationInSeconds},
                         success: function(response) {
                             // Handle the response if needed
                             console.log(response);
@@ -520,6 +522,7 @@
                 } else if (color === 'blue') {
                     $('.game-overlay').addClass('blue-overlay').show();
                     winnerMessage = 'Player X ' + player1Name + ' wins';
+                    //winnerName = player1Name; 
                     //record the ending time 
                     endTime = new Date().getTime(); 
                     var durationInSeconds = Math.floor((endTime-startTime)/1000); 
@@ -528,7 +531,7 @@
                     $.ajax({
                         type: "POST",
                         url: "/save-result",
-                        data: { winner: player1Name , durationInSeconds: durationInSeconds},
+                        data: { winnerId: color == 'blue' ? 1 : 2 , durationInSeconds: durationInSeconds},
                         success: function(response) {
                             // Handle the response if needed
                             console.log(response);

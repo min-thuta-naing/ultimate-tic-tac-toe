@@ -1,5 +1,6 @@
 package th.mfu;   
 
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.beans.propertyeditors.CustomDateEditor;  
 import org.springframework.stereotype.Controller;  
@@ -15,12 +16,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import th.mfu.domain.Players;
 import th.mfu.domain.Rounds;
 import th.mfu.domain.Time;   
-import th.mfu.domain.Comments; 
+import th.mfu.domain.Comments;
+import th.mfu.domain.Leaderboard; 
 
 @Controller
 public class TictactoeController {
     @Autowired
     private PlayersRepository playersRepository;
+    @Autowired
+    private LeaderboardRepository leaderboardRepository;
 
     public TictactoeController(PlayersRepository playersRepository){
         this.playersRepository = playersRepository;
@@ -42,10 +46,27 @@ public class TictactoeController {
     @PostMapping("/name-entry")
         public String saveNameX(@ModelAttribute Players name, Model model){
         playersRepository.save(name);
-        
+        //new codes here (RUBY)
+        Leaderboard leaderboardEntry = new Leaderboard();
+        leaderboardEntry.setPlayer(name);
+        leaderboardRepository.save(leaderboardEntry);
+
         Iterable<Players> playersList = playersRepository.findAll();
         model.addAttribute("players", playersList);
         return "redirect:/name-entry";
+    }
+
+    // Method to update leaderboard statistics
+    public void updateLeaderboardStats() {
+        Iterable<Leaderboard> leaderboards = leaderboardRepository.findAllWithPlayers();
+
+        for (Leaderboard leaderboard : leaderboards) {
+            Long playerId = leaderboard.getPlayer().getId();
+            Iterable<Rounds> playerRounds = roundsRepository.findByWinner_Id(playerId);
+            leaderboard.updateStats(playerRounds);
+        }
+
+        leaderboardRepository.saveAll(leaderboards);
     }
 
     //method for help page (help page)
@@ -85,21 +106,24 @@ public class TictactoeController {
 
     //method for saving game rounds winner and timeStamps (updating)
     @PostMapping("/save-result")
-    public String saveGameResult(@RequestParam("winner") String winner, @RequestParam("durationInSeconds") long durationInSeconds, Model model) {
+    public String saveGameResult(@RequestParam("winnerId") Long winnerId, @RequestParam("durationInSeconds") long durationInSeconds, Model model) {
 
-        if ("tie".equals(winner)) {
-            Rounds tieRound = new Rounds();
-            tieRound.setWinner("tie");
-            roundsRepository.save(tieRound);
-            
+        Players winner = playersRepository.findById(winnerId)
+                .orElse(null);
+
+        Rounds round; 
+        if (winner == null) {
+            round = new Rounds();
+            round.setWinner(null);
         } else {
             // Assuming player1 and player2 names are stored in the player1Name and player2Name variables
-            Rounds winningRound = new Rounds();
-            winningRound.setWinner(winner);
-            roundsRepository.save(winningRound);
+            round = new Rounds();
+            round.setWinner(winner);
         }
+        roundsRepository.save(round);
 
         Time roundTime = new Time(); 
+        roundTime.setRoundId(round);
         roundTime.setDurationInSeconds(durationInSeconds);
         timeRepository.save(roundTime); 
 
