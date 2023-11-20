@@ -1,5 +1,6 @@
 package th.mfu;   
 
+import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
 import org.hibernate.mapping.List;
@@ -92,6 +93,10 @@ public class TictactoeController {
     @Autowired
     private TimeRepository timeRepository; 
 
+    @Autowired
+    private ResetAutoIncrementService resetAutoIncrementService;
+
+
     //method for saving game rounds winner and timeStamps (updating)
     @PostMapping("/save-result")
     public String saveGameResult(@RequestParam("winnerId") Long winnerId, @RequestParam("durationInSeconds") long durationInSeconds, Model model) {
@@ -121,10 +126,14 @@ public class TictactoeController {
     //method for quitting the game and deleting all the players and game data 
     @GetMapping("/quit-delete")
     public String quitAndDelete(){
+        
          timeRepository.deleteAll();        
          roundsRepository.deleteAll();
          playersRepository.deleteAll();
-        
+        // Reset auto-increment counter for each table
+        resetAutoIncrementService.resetAutoIncrement("time");
+        resetAutoIncrementService.resetAutoIncrement("rounds");
+        resetAutoIncrementService.resetAutoIncrement("players");
         return "redirect:/start-game";
     }
         //method for renaming (updating)
