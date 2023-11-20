@@ -183,29 +183,35 @@
             text-align: center;
         }
 
-        /* Style for the rating container */
-        .rating {
-        display: inline-block;
-        }
+       .rate-align {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
 
-        /* Style for the individual rating stars */
-        .rating input {
-        display: none;
-        }
+    .rating {
+      display: flex;
+      flex-direction: row-reverse;
+    }
 
-        .rating label {
-        font-size: 30px;
-        color: #ddd;
-        cursor: pointer;
-        }
+    /* Style for the individual rating stars */
+    .rating input {
+      display: none;
+    }
 
-        .rating label:hover,
-        .rating label:hover ~ label,
-        .rating input:checked ~ label {
-        color: #fdd835; /* Change this color to your desired highlight color */
-        }
+    .rating label {
+      font-size: 30px;
+      color: #ddd;
+      cursor: pointer;
+    }
 
-        .rate-popup{
+    .rating label:hover,
+    .rating label:hover ~ label,
+    .rating input:checked ~ label {
+      color: #fdd835; /* Change this color to your desired highlight color */
+    }
+    .rate-popup{
             display: none;
             position: fixed;
             top: 30%;
@@ -217,6 +223,38 @@
             text-align: center;
             border-radius: 15px;
         }
+    #rate {
+      position: fixed;
+      top: 30%;
+      left: 39%;
+      width: 300px;
+      height: 200px;
+      background-color: silver;
+      z-index: 1000;
+      text-align: center;
+      border-radius: 15px;
+    }
+
+    #rate-modal {
+      position: fixed;
+      top: 30%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1001; /* Place modal above overlay */
+      text-align: center;
+    }
+
+    .modal-button {
+      margin-top: 20px;
+      padding: 8px 12px;
+      cursor: pointer;
+      width: 100px;
+      font-size: 10px;
+      border-radius: 10px;
+    }
 
         .rate-topic{
             margin-top: 20px;
@@ -362,23 +400,26 @@
        
     </script>
 
-    <div class="rate-popup" id="rate">
-        <h2 class="rate-topic">Rate Us</h2>
-<div class="rating" id="rate-model">
-    <input type="radio" id="star1" name="rating" value="1">
-    <label for="star1">&#9733;</label>
-    <input type="radio" id="star2" name="rating" value="2">
-    <label for="star2">&#9733;</label>
-    <input type="radio" id="star3" name="rating" value="3">
-    <label for="star3">&#9733;</label>
-    <input type="radio" id="star4" name="rating" value="4">
-    <label for="star4">&#9733;</label>
-    <input type="radio" id="star5" name="rating" value="5">
-    <label for="star5">&#9733;</label>
-  </div>
-  <div >
-  <button class="modal-button" onclick="confirmQuit()">Submit</button>
-</div>
+<div class="rate-popup" id="rate">
+    <h2 class="rate-topic">Rate Us</h2>
+    <div id="rate-model" class="rate-align">
+      <div class="rating">
+        <input type="radio" id="star1" name="rating" value="1">
+        <label for="star1">&#9733;</label>
+        <input type="radio" id="star2" name="rating" value="2">
+        <label for="star2">&#9733;</label>
+        <input type="radio" id="star3" name="rating" value="3">
+        <label for="star3">&#9733;</label>
+        <input type="radio" id="star4" name="rating" value="4">
+        <label for="star4">&#9733;</label>
+        <input type="radio" id="star5" name="rating" value="5">
+        <label for="star5">&#9733;</label>
+      </div>
+      
+    </div>
+    <div>
+      <button class="modal-button" onclick="confirmQuit()">Submit</button>
+    </div>
   </div>
   <script>
     function goRate() { 
