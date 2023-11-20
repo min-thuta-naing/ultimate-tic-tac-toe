@@ -19,14 +19,14 @@ import th.mfu.domain.Players;
 import th.mfu.domain.Rounds;
 import th.mfu.domain.Time;   
 import th.mfu.domain.Comments;
-import th.mfu.domain.Leaderboard; 
+
 
 @Controller
 public class TictactoeController {
     @Autowired
     private PlayersRepository playersRepository;
-    @Autowired
-    private LeaderboardRepository leaderboardRepository;
+ 
+
 
     public TictactoeController(PlayersRepository playersRepository){
         this.playersRepository = playersRepository;
@@ -48,34 +48,13 @@ public class TictactoeController {
     @PostMapping("/name-entry")
         public String saveNameX(@ModelAttribute Players name, Model model){
         playersRepository.save(name);
-        //new codes here (RUBY)
-        Leaderboard leaderboardEntry = new Leaderboard();
-        leaderboardEntry.setPlayer(name);
-        leaderboardRepository.save(leaderboardEntry);
-
-        Iterable<Players> playersList = playersRepository.findAll();
+         Iterable<Players> playersList = playersRepository.findAll();
         model.addAttribute("players", playersList);
         return "redirect:/name-entry";
     }
 
-    // Method to update leaderboard statistics
-    @Transactional 
-    public void updateLeaderboardStats() {
-        try {
-            Iterable<Leaderboard> leaderboards = leaderboardRepository.findAllWithPlayers();
-    
-            for (Leaderboard leaderboard : leaderboards) {
-                Long playerId = leaderboard.getPlayer().getId();
-                Iterable<Rounds> playerRounds = roundsRepository.findByWinner_Id(playerId);
-                leaderboard.updateStats(playerRounds);
-            }
-    
-            leaderboardRepository.saveAll(leaderboards);
-        } catch (Exception e) {
-            // Log the exception for debugging
-            e.printStackTrace();
-        }
-    }
+
+   
 
     //method for help page (help page)
     @GetMapping("/help")
