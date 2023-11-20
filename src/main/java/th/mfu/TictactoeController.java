@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import th.mfu.domain.Players;
+import th.mfu.domain.Rating;
 import th.mfu.domain.Rounds;
 import th.mfu.domain.Time;   
 import th.mfu.domain.Comments;
@@ -163,6 +164,19 @@ public class TictactoeController {
             model.addAttribute("comments", commentList); 
             return "comments";
          }
+
+         @Autowired
+        private RatingRepository ratingRepository;
+
+
+        @PostMapping("/save-rating")
+        public String saveUserRating(@RequestParam("rating") int rating, Model model) {
+            Rating userRating = new Rating();
+            userRating.setRates(rating);
+            ratingRepository.save(userRating);
+            return "redirect:/name-list";
+        }
+
 }
 
 
