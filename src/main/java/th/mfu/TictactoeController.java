@@ -120,9 +120,10 @@ public class TictactoeController {
     //method for quitting the game and deleting all the players and game data 
     @GetMapping("/quit-delete")
     public String quitAndDelete(){
-        playersRepository.deleteAll();
-        roundsRepository.deleteAll();
-        timeRepository.deleteAll();
+         timeRepository.deleteAll();        
+         roundsRepository.deleteAll();
+         playersRepository.deleteAll();
+        
         return "redirect:/start-game";
     }
         //method for renaming (updating)

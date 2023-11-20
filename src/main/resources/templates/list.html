@@ -280,7 +280,7 @@
            
             <tr th:each="rounds : ${rounds}">
                 <td th:text="${rounds.roundId}"></td>
-                <td th:text="${rounds.winner}"></td>
+                <td th:text="${rounds.winner != null ? rounds.winner.name : 'No Winner'}"></td>
                 
             </tr>
         </tbody>
