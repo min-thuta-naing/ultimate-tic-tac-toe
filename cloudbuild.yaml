@@ -11,7 +11,7 @@ steps:
    args:
    - 'run'
    - 'deploy'
-   - 'lab-cd'
+   - 'lab-utttp'
    - '--image'
    - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/ultimatetictactoepro-gp13/lab-utttp:$COMMIT_SHA'
    - '--region'
