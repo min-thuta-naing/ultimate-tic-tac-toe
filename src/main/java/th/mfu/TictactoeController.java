@@ -64,15 +64,12 @@ public class TictactoeController {
         return "list"; 
     }
 
-    @Autowired
-    private GameService gameService;
+
     //method for displaying gameboard
     @GetMapping("/tictactoe")
     public String displayGameboard(Model model){
-        // Iterable<Players> playersList = playersRepository.findAll();
-        // model.addAttribute("players", playersList);
-        Iterable<Players>lastTwoPlayers = gameService.getLastTwoPlayers();
-        model.addAttribute("lastTwoPlayers", lastTwoPlayers);
+        Iterable<Players> playersList = playersRepository.findAll();
+        model.addAttribute("players", playersList);
         return "ticTacToe";
     }
     
@@ -80,8 +77,8 @@ public class TictactoeController {
     private RoundsRepository roundsRepository;
     @Autowired
     private TimeRepository timeRepository; 
-    // @Autowired
-    // private ResetAutoIncrementService resetAutoIncrementService;
+    @Autowired
+    private ResetAutoIncrementService resetAutoIncrementService;
     //method for saving game rounds winner and timeStamps (updating)
     @PostMapping("/save-result")
     public String saveGameResult(@RequestParam("winnerId") Long winnerId, @RequestParam("durationInSeconds") long durationInSeconds, Model model) {
@@ -112,13 +109,10 @@ public class TictactoeController {
          playersRepository.deleteAll();
 
          // Reset the auto-increment counter for Players table
-        // playersRepository.resetAutoIncrement();
-        // roundsRepository.resetAutoIncrement();
-        // timeRepository.resetAutoIncrement(); 
         // // Reset auto-increment counter for each table
-        // resetAutoIncrementService.resetAutoIncrement("time");
-        // resetAutoIncrementService.resetAutoIncrement("rounds");
-        // resetAutoIncrementService.resetAutoIncrement("players");
+        resetAutoIncrementService.resetAutoIncrement("time");
+        resetAutoIncrementService.resetAutoIncrement("rounds");
+        resetAutoIncrementService.resetAutoIncrement("players");
         return "redirect:/start-game";
     }
    @Autowired
