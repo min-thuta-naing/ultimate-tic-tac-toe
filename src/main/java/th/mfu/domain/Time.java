@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Table(name = "Time", schema = "new_schema")
 public class Time {
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO) 
+    @GeneratedValue(strategy =  GenerationType.IDENTITY) 
     private Long timeId;
 
     //@OneToOne

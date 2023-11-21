@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "Rounds", schema = "new_schema")
 public class Rounds {
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO) 
+    @GeneratedValue(strategy =  GenerationType.IDENTITY) 
     private Long roundId;
 
     //@ManyToOne(cascade = CascadeType.ALL)

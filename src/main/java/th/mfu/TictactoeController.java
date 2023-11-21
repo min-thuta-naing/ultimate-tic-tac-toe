@@ -115,10 +115,9 @@ public class TictactoeController {
     @GetMapping("/quit-delete")
     public String quitAndDelete(){
          
-        playersRepository.deleteAll();
         roundsRepository.deleteAll();
         timeRepository.deleteAll();
-
+        playersRepository.deleteAll();
         // Reset auto-increment counter for each table
         // resetAutoIncrementService.resetAutoIncrement("time");
         // resetAutoIncrementService.resetAutoIncrement("rounds");
