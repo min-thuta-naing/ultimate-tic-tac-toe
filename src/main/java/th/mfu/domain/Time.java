@@ -6,8 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Time", schema = "new_schema")
 public class Time {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO) 

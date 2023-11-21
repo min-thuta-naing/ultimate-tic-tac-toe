@@ -7,8 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Rounds", schema = "new_schema")
 public class Rounds {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO) 
