@@ -9,12 +9,16 @@ public class ResetAutoIncrementService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public void resetAutoIncrement(String tableName) {
-        String resetSql = "ALTER TABLE " + tableName + " AUTO_INCREMENT = 1";
-        jdbcTemplate.execute(resetSql);
+    // public void resetAutoIncrement(String tableName) {
+    //     String resetSql = "ALTER TABLE " + tableName + " AUTO_INCREMENT = 1";
+    //     jdbcTemplate.execute(resetSql);
 
-        // Additional statement for InnoDB engine
-        String setEngineSql = "ALTER TABLE " + tableName + " ENGINE=InnoDB";
-        jdbcTemplate.execute(setEngineSql);
+    //     // Additional statement for InnoDB engine
+    //     String setEngineSql = "ALTER TABLE " + tableName + " ENGINE=InnoDB";
+    //     jdbcTemplate.execute(setEngineSql);
+    // }
+    public void resetAutoIncrement(String tableName) {
+        String resetSql = "TRUNCATE TABLE " + tableName;
+        jdbcTemplate.execute(resetSql);
     }
 }
