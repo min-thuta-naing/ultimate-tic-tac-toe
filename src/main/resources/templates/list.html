@@ -242,10 +242,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="rounds : ${rounds}" th:sortedby="${rounds.roundId}" th:order="ascending">
+            <!-- <tr th:each="rounds : ${rounds}" th:sortedby="${rounds.roundId}" th:order="ascending">
                 <td th:text="${rounds.roundId}"></td>
                 <td th:text="${rounds.winner != null ? rounds.winner.name : 'No Winner'}"></td>
                 
+            </tr> -->
+            <tr th:each="rounds : ${rounds}">
+                <td th:text="${rounds.roundId}"></td>
+                <td th:text="${rounds.winner}"></td>
             </tr>
         </tbody>
     </table>

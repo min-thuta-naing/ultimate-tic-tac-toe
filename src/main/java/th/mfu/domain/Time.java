@@ -13,9 +13,9 @@ public class Time {
     @GeneratedValue(strategy =  GenerationType.IDENTITY) 
     private Long timeId;
 
-    @OneToOne
+    //@OneToOne
     //@JoinColumn(name = "roundId")
-    private Rounds roundId; 
+    //private Rounds roundId; 
 
     private Long durationInSeconds;
 
@@ -34,12 +34,12 @@ public class Time {
         this.timeId = timeId;
     }
 
-    public Rounds getRoundId() {
-        return roundId;
-    }
-    public void setRoundId(Rounds roundId) {
-        this.roundId = roundId;
-    }
+    // public Rounds getRoundId() {
+    //     return roundId;
+    // }
+    // public void setRoundId(Rounds roundId) {
+    //     this.roundId = roundId;
+    // }
 
     public Long getDurationInSeconds() {
         return durationInSeconds;

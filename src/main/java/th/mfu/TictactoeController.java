@@ -81,21 +81,32 @@ public class TictactoeController {
     private ResetAutoIncrementService resetAutoIncrementService;
     //method for saving game rounds winner and timeStamps (updating)
     @PostMapping("/save-result")
-    public String saveGameResult(@RequestParam("winnerId") Long winnerId, @RequestParam("durationInSeconds") long durationInSeconds, Model model) {
-        Players winner = playersRepository.findById(winnerId)
-                .orElse(null);
-        Rounds round; 
-        if (winner == null) {
-            round = new Rounds();
-            round.setWinner(null);
-        } else {
+    public String saveGameResult(@RequestParam("winner") String winner, @RequestParam("durationInSeconds") long durationInSeconds, Model model) {
+        // Players winner = playersRepository.findById(winnerId)
+        //         .orElse(null);
+        // Rounds round; 
+        // if (winner == null) {
+        //     round = new Rounds();
+        //     round.setWinner(null);
+        // } else {
+        //     // Assuming player1 and player2 names are stored in the player1Name and player2Name variables
+        //     round = new Rounds();
+        //     round.setWinner(winner);
+        // }
+        // roundsRepository.save(round);
+        if ("tie".equals(winner)) {
+            Rounds tieRound = new Rounds();
+            tieRound.setWinner(winner);
+            roundsRepository.save(tieRound);
+            } else {
             // Assuming player1 and player2 names are stored in the player1Name and player2Name variables
-            round = new Rounds();
-            round.setWinner(winner);
-        }
-        roundsRepository.save(round);
+            Rounds winningRound = new Rounds();
+            winningRound.setWinner(winner);
+            roundsRepository.save(winningRound);
+            }
+            
         Time roundTime = new Time(); 
-        roundTime.setRoundId(round);
+        //roundTime.setRoundId(round);
         roundTime.setDurationInSeconds(durationInSeconds);
         timeRepository.save(roundTime); 
         return "redirect:/name-list";
@@ -109,9 +120,9 @@ public class TictactoeController {
         timeRepository.deleteAll();
 
         // Reset auto-increment counter for each table
-        resetAutoIncrementService.resetAutoIncrement("time");
-        resetAutoIncrementService.resetAutoIncrement("rounds");
-        resetAutoIncrementService.resetAutoIncrement("players");
+        // resetAutoIncrementService.resetAutoIncrement("time");
+        // resetAutoIncrementService.resetAutoIncrement("rounds");
+        // resetAutoIncrementService.resetAutoIncrement("players");
 
         return "redirect:/start-game";
     }
