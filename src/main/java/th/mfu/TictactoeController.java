@@ -63,11 +63,16 @@ public class TictactoeController {
         model.addAttribute("time", timeList);
         return "list"; 
     }
+
+    @Autowired
+    private GameService gameService;
     //method for displaying gameboard
     @GetMapping("/tictactoe")
     public String displayGameboard(Model model){
-        Iterable<Players> playersList = playersRepository.findAll();
-        model.addAttribute("players", playersList);
+        // Iterable<Players> playersList = playersRepository.findAll();
+        // model.addAttribute("players", playersList);
+        Iterable<Players>lastTwoPlayers = gameService.getLastTwoPlayers();
+        model.addAttribute("lastTwoPlayers", lastTwoPlayers);
         return "ticTacToe";
     }
     
@@ -107,9 +112,9 @@ public class TictactoeController {
          playersRepository.deleteAll();
 
          // Reset the auto-increment counter for Players table
-        playersRepository.resetAutoIncrement();
-        roundsRepository.resetAutoIncrement();
-        timeRepository.resetAutoIncrement(); 
+        // playersRepository.resetAutoIncrement();
+        // roundsRepository.resetAutoIncrement();
+        // timeRepository.resetAutoIncrement(); 
         // // Reset auto-increment counter for each table
         // resetAutoIncrementService.resetAutoIncrement("time");
         // resetAutoIncrementService.resetAutoIncrement("rounds");
