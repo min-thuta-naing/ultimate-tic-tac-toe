@@ -9,13 +9,12 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
         body {
-		  background-image: url("img/bg.png");
-		  background-size: cover;
+          background-image: url("img/bg.png");
+          background-size: cover;
             font-family: Arial, sans-serif;
             height: 100%;
             background-repeat: no-repeat;
         }
-
         #header {
             height: 250px;
             background-color: #808080; 
@@ -23,44 +22,33 @@
             text-align: center;
             padding: 20px;
         }
-
         #logo {
             max-width: 100%;
             height: auto;
             display: block;
             margin: 0 auto;
         }
-
         #leaderboard-table {
             width: 50%;
             margin: 20px auto;
             border-collapse: collapse;
             background-color: silver;
         }
-
         #leaderboard-table th, #leaderboard-table td {
             border: 1px solid #ddd;
             padding: 15px;
             text-align: center;
         }
-
         #leaderboard-table th {
             background-color: #808080; /* Change to gray color */
-            color: #fff;
-            
+            color: #fff;  
         }
-
         #buttons-container {
             display: flex;
             justify-content: space-between;
             margin-top: 250px;
-
-            
-
         }
-
         #next-round-button {
-           
             background-color: #808080; /* Red button color */
             color: #fff;
             padding: 10px 20px;
@@ -72,9 +60,7 @@
             font-size: 18px;
             border-radius: 10px;
         }
-
         #quit-button {
-            
             background-color: #808080; /* Button color */
             color: #fff;
             padding: 10px 20px;
@@ -85,9 +71,7 @@
             height: 50px;
             font-size: 18px;
             border-radius: 10px;
-
         }
-
         #feedback {
             background-color: silver;
             color: black;
@@ -99,7 +83,6 @@
             height: 50px;
             font-size: 18px;
             border-radius: 10px;
-
         }
         /*quit overlay*/
         #overlay {
@@ -117,7 +100,6 @@
         .warn{
             color: red;
         }
-
         /* Styles for the modal */
         #quit-modal {
             position: fixed;
@@ -130,7 +112,6 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             z-index: 1001; /* Place modal above overlay */
             text-align: center;
-            
         }
         .modal-button {
             margin-right: 10px;
@@ -139,7 +120,6 @@
             width: 100px;
             border-radius: 10px;
         }
-
         /* Styles for the new comment popup */
         .comment-popup {
             display: none;
@@ -153,13 +133,11 @@
             text-align: center;
             border-radius: 15px;
         }
-
         .comment-popup textarea {
             width: 100%;
             height: 100px;
             margin-bottom: 10px;
         }
-
         .comment-popup button {
             margin-right: 10px;
             padding: 8px 12px;
@@ -167,9 +145,6 @@
             width: 100px;
             border-radius: 10px;
         }
-
-      
-
         #smallestDuration {
             border-radius: 10px;
             width: 200px;
@@ -182,36 +157,30 @@
             margin: 0 auto;
             text-align: center;
         }
-
        .rate-align {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      
-    }
-
-    .rating {
-      display: flex;
-      flex-direction: row-reverse;
-    }
-
-    /* Style for the individual rating stars */
-    .rating input {
-      display: none;
-    }
-
-    .rating label {
-      font-size: 30px;
-      color: #ddd;
-      cursor: pointer;
-    }
-
-    .rating label:hover,
-    .rating label:hover ~ label,
-    .rating input:checked ~ label {
-      color: #fdd835; /* Change this color to your desired highlight color */
-    }
-    .rate-popup{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .rating {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+        /* Style for the individual rating stars */
+        .rating input {
+            display: none;
+        }
+        .rating label {
+            font-size: 30px;
+            color: #ddd;
+            cursor: pointer;
+        }
+        .rating label:hover,
+        .rating label:hover ~ label,
+        .rating input:checked ~ label {
+            color: #fdd835; /* Change this color to your desired highlight color */
+        }
+        .rate-popup{
             display: none;
             position: fixed;
             top: 30%;
@@ -223,52 +192,48 @@
             text-align: center;
             border-radius: 15px;
         }
-    #rate {
-      position: fixed;
-      top: 30%;
-      left: 39%;
-      width: 300px;
-      height: 250px;
-      background-color: silver;
-      z-index: 1000;
-      text-align: center;
-      border-radius: 15px;
-    }
-
-    #rate-modal {
-      position: fixed;
-      top: 30%;
-      transform: translate(-50%, -50%);
-      padding: 20px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      z-index: 1001; /* Place modal above overlay */
-      text-align: center;
-    }
-
-    .modal-button {
-      margin-top: 20px;
-      padding: 8px 12px;
-      cursor: pointer;
-      width: 100px;
-      font-size: 20px;
-      border-radius: 10px;
-    }
-
+        #rate {
+            position: fixed;
+            top: 30%;
+            left: 39%;
+            width: 300px;
+            height: 250px;
+            background-color: silver;
+            z-index: 1000;
+            text-align: center;
+            border-radius: 15px;
+        }
+        #rate-modal {
+            position: fixed;
+            top: 30%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1001; /* Place modal above overlay */
+            text-align: center;
+        }
+        .modal-button {
+            margin-top: 20px;
+            padding: 8px 12px;
+            cursor: pointer;
+            width: 100px;
+            font-size: 20px;
+            border-radius: 10px;
+        }
         .rate-topic{
             margin-top: 20px;
         }
-
-
     </style>
 </head>
 <body>
+    <!--Champion image here-->
     <div id="header">
         <img src="img/champion.png" alt="Logo" id="logo" width="150px" height="150px">
         <h1>Leaderboard</h1>
     </div>
-
+    <!--Table for displaying rounds and winners-->
     <table class="table" id="leaderboard-table">
         <thead>
             <tr>
@@ -277,7 +242,6 @@
             </tr>
         </thead>
         <tbody>
-           
             <tr th:each="rounds : ${rounds}" th:sortedby="${rounds.roundId}" th:order="ascending">
                 <td th:text="${rounds.roundId}"></td>
                 <td th:text="${rounds.winner != null ? rounds.winner.name : 'No Winner'}"></td>
@@ -285,8 +249,7 @@
             </tr>
         </tbody>
     </table>
-
-
+    <!--tables just for extracting data-->
     <table style="display: none;">
         <thead>
             <tr>
@@ -301,18 +264,8 @@
             </tr>
         </tbody>
     </table>
-
     <div id="smallestDuration"></div>
-
-    <!--overlay for comment popup-->
-    <div class="comment-popup" id="commentPopup">
-        <label for="comments">Comments:</label>
-        <textarea id="comments" name="comments" placeholder="Enter your comments"></textarea>
-        <br>
-        <button onclick="closeCommentPopup()">Cancel</button>
-        <button onclick="submitComment()">Submit</button>
-    </div>
-
+    
     <script th:inline="javascript">
         var rows = document.querySelectorAll("tbody tr"); 
         var minDuration = Number.MAX_VALUE; 
@@ -332,18 +285,23 @@
             document.getElementById("smallestDuration").innerHTML = "There is no rows."; 
         }
     </script>
-
+    <!--3 buttons of the page-->
     <div id="buttons-container">
-        
-        <button id="quit-button" onclick="openQuitPopup()" >Quit</button>
-       
-           
-            <button id="feedback" onclick="openCommentPopup()">Leave Feedback</button>
-        
-        
+        <button id="quit-button" onclick="openQuitPopup()" >Quit</button>   
+        <button id="feedback" onclick="openCommentPopup()">Leave Feedback</button>
         <button id="next-round-button" onclick="location.href='/tictactoe'">Next Round</button>
     </div>
-
+                                <!--
+                                    overlays parts 
+                                -->
+    <!--overlay for comment popup-->
+    <div class="comment-popup" id="commentPopup">
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments" placeholder="Enter your comments"></textarea>
+        <br>
+        <button onclick="closeCommentPopup()">Cancel</button>
+        <button onclick="submitComment()">Submit</button>
+    </div>
     <!--overlay for quit comfirmation-->
     <div id="overlay">
         <div id="quit-model">
@@ -353,7 +311,27 @@
             <button class="modal-button" onclick="goRate()">Quit</button>
         </div>
     </div>
-
+    <!--overlay for rate pop up-->
+    <div class="rate-popup" id="rate">
+        <h2 class="rate-topic">Rate Us</h2>
+        <div id="rate-model" class="rate-align">
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2">&#9733;</label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1">&#9733;</label>
+            </div>
+        </div>
+        <div>
+        <button class="modal-button" onclick="submitAndDelete()">Submit</button>
+        </div>
+    </div>
     
     <script> 
         //code for confirmation for quitting the game 
@@ -365,18 +343,36 @@
             document.getElementById('overlay').style.display = 'none'; 
             document.getElementById('quit-modal').style.display='none';
         }
-        function confirmQuit() { 
+        function deletePlayerInfos() {
             location.href='/quit-delete';
+        }
+        function saveRating() { 
+            var selectedRating = document.querySelector('input[name="rating"]:checked').value;
+            $.ajax({
+                type: "POST",
+                url: "/save-rating", 
+                data: {
+                    rating: selectedRating
+                },
+                success: function (response) {
+                    console.log("Rating submitted successfully");
+                },
+                error: function (error) {
+                    console.error("Error submitting rating: " + error.responseText);
+                }
+            });
+        }
+        function submitAndDelete() {
+            saveRating();
+            deletePlayerInfos();
         }
         //code for commnet popup 
         function openCommentPopup() {
             document.getElementById('commentPopup').style.display = 'block';
         }
-
         function closeCommentPopup() {
             document.getElementById('commentPopup').style.display = 'none';
         }
-
         function submitComment() {
             var comments = document.getElementById('comments').value.trim();
             if (comments !== "") {
@@ -397,35 +393,12 @@
                 alert("Please enter comments before submitting.");
             }
         }
-       
-    </script>
-
-<div class="rate-popup" id="rate">
-    <h2 class="rate-topic">Rate Us</h2>
-    <div id="rate-model" class="rate-align">
-      <div class="rating">
-        <input type="radio" id="star1" name="rating" value="1">
-        <label for="star1">&#9733;</label>
-        <input type="radio" id="star2" name="rating" value="2">
-        <label for="star2">&#9733;</label>
-        <input type="radio" id="star3" name="rating" value="3">
-        <label for="star3">&#9733;</label>
-        <input type="radio" id="star4" name="rating" value="4">
-        <label for="star4">&#9733;</label>
-        <input type="radio" id="star5" name="rating" value="5">
-        <label for="star5">&#9733;</label>
-      </div>
-      
-    </div>
-    <div>
-      <button class="modal-button" onclick="confirmQuit()">Submit</button>
-    </div>
-  </div>
-  <script>
-    function goRate() { 
+        //code for rating pop up 
+        function goRate() { 
             document.getElementById('rate').style.display = 'block'; 
             document.getElementById('rate-modal').style.display='block';
         }
-  </script>
+    </script>
 </body>
 </html>
+

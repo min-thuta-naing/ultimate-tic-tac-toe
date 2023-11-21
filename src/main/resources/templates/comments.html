@@ -2,42 +2,103 @@
 <html> 
 <head>
     <title>users feedback and comments</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-         #feedback-table {
+        #content {
+            display: flex;
+        }
+    
+        #feedback-table {
             width: 50%;
-            margin: 20px auto;
             border-collapse: collapse;
         }
-
-        #feedback-table th, #feedback-table td {
+    
+        #feedback-table th,
+        #feedback-table td {
             border: 1px solid #ddd;
             padding: 15px;
             text-align: center;
         }
-
+    
         #feedback-table th {
-            background-color: #808080; /* Change to gray color */
+            background-color: #808080;
             color: #fff;
         }
+    
+        #rating-chart-container {
+            width: 50%;
+        }
     </style>
+    
 </head>
 <body>
     <h1>Users feedbacks</h1>
-    <table class="table" id="feedback-table">
-        <thead>
-            <tr>
-                <th>Sir No.</th>
-                <th>Feedbacks</th>
-            </tr>
-        </thead>
-        <tbody>
-           
-            <tr th:each="comments : ${comments}">
-                <td th:text="${comments.commentId}"></td>
-                <td th:text="${comments.comment}"></td>
-                
-            </tr>
-        </tbody>
-    </table>
+    <div id="content">
+        <table class="table" id="feedback-table">
+            <thead>
+                <tr>
+                    <th>Sir No.</th>
+                    <th>Feedbacks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="comments : ${comments}">
+                    <td th:text="${comments.commentId}"></td>
+                    <td th:text="${comments.comment}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="rating-chart-container">
+            <canvas id="rating-chart"></canvas>
+        </div>
+    </div>
+    
+   
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Fetch ratings data from your backend (adjust the URL accordingly)
+            fetch('/get-ratings')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Fetched data:', data);
+    
+                    // Extract rating values from the data
+                    const ratings = data.map(item => item.rates);
+                    console.log('Extracted ratings:', ratings);
+    
+                    // Create a bar chart using Chart.js
+                    const ctx = document.getElementById('rating-chart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: Array.from({ length: ratings.length }, (_, i) => i + 1), // Y-axis values
+                            datasets: [{
+                                label: 'User Ratings',
+                                data: ratings, // X-axis values
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Adjust the color as needed
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                x: { // X-axis configuration
+                                    beginAtZero: true,
+                                    max: 5 // Fixed X-axis from 0 to 5
+                                },
+                                y: { // Y-axis configuration
+                                    beginAtZero: true,
+                                    // You can customize the Y-axis configuration as needed
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => console.error('Error fetching ratings:', error));
+        });
+    </script>
+    
+    
+    
 </body>
 </html>
