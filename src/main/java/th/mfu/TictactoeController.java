@@ -101,10 +101,13 @@ public class TictactoeController {
     //method for quitting the game and deleting all the players and game data 
     @GetMapping("/quit-delete")
     public String quitAndDelete(){
-         playersRepository.deleteAll();
+         
          timeRepository.deleteAll();        
          roundsRepository.deleteAll();
-         
+         playersRepository.deleteAll();
+
+         // Reset the auto-increment counter for Players table
+        playersRepository.resetAutoIncrement();
         // // Reset auto-increment counter for each table
         // resetAutoIncrementService.resetAutoIncrement("time");
         // resetAutoIncrementService.resetAutoIncrement("rounds");
