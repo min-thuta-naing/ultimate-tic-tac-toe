@@ -14,15 +14,7 @@ public class Players {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @Column(name = "created_date")
-    private LocalDateTime createdDate;
-
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
+    
     // Constructor
     public Players(){
     }

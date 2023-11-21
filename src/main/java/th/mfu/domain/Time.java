@@ -14,7 +14,7 @@ public class Time {
     private Long timeId;
 
     @OneToOne
-    @JoinColumn(name = "roundId")
+    //@JoinColumn(name = "roundId")
     private Rounds roundId; 
 
     private Long durationInSeconds;

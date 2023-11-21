@@ -15,7 +15,7 @@ public class Rounds {
     private Long roundId;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "winner_id")
+    //@JoinColumn(name = "winner_id")
     private Players winner;
 
     // constructor
