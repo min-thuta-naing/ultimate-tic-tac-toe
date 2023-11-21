@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Time {
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO) 
+    @GeneratedValue(strategy =  GenerationType.IDENTITY) 
     private Long timeId;
 
     @OneToOne

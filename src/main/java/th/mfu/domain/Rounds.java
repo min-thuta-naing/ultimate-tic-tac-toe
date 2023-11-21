@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Rounds {
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO) 
+    @GeneratedValue(strategy =  GenerationType.IDENTITY) 
     private Long roundId;
 
     @ManyToOne(cascade = CascadeType.ALL)
