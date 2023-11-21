@@ -1,5 +1,8 @@
 package th.mfu.domain;
 
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +14,15 @@ public class Players {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(name = "created_date")
+    private LocalDateTime createdDate;
 
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
     // Constructor
     public Players(){
     }
