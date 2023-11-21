@@ -109,7 +109,7 @@ public class TictactoeController {
         timeRepository.deleteAll();
 
         // Reset auto-increment counter for each table
-        resetAutoIncrementService.resetAutoIncrement("players");
+        resetAutoIncrementService.resetAutoIncrement("Players");
         resetAutoIncrementService.resetAutoIncrement("rounds");
         resetAutoIncrementService.resetAutoIncrement("time");
 
