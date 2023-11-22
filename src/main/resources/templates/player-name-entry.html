@@ -98,16 +98,16 @@ position: fixed;
     </div>
     <div class="wrapper">
         <div class="username">
-            <form th:action="@{/name-entry}" th:object="${player1}" method="post">
-                <input type="text" placeholder="Player X" id="nameX" th:field="*{name}" required><br>
+            <form th:action="@{/name-entry}" th:object="${name}" method="post">
+                <input type="text" placeholder="Player X" id="name" th:field="*{name}" required><br>
                 <button type="submit" class="enter">Enter</button>
-            </form>
+                </form>
         </div>
         <div class="username">
-            <form th:action="@{/name-entry}" th:object="${player2}" method="post">
-                <input type="text" placeholder="Player O" id="nameO" th:field="*{name}" required><br>
+            <form th:action="@{/name-entry}" th:object="${name}" method="post">
+                <input type="text" placeholder="Player O" id="name" th:field="*{name}" required><br>
                 <button type="submit" class="enter">Enter</button>
-            </form>
+                </form>
         </div>  
     </div>
     <div class="button">

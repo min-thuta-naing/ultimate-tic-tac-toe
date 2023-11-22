@@ -35,50 +35,19 @@ public class TictactoeController {
         return "start";
     }
     //method for accepting players's names (player name entry)
-    // @GetMapping("/name-entry")
-    //     public String addNameForm(Model model){
-    //     model.addAttribute("name", new Players());
-    //     return "player-name-entry";
-    // }
-    // @PostMapping("/name-entry")
-    //     public String saveNameX(@ModelAttribute Players name, Model model){
-    //     playersRepository.save(name);
-    //      Iterable<Players> playersList = playersRepository.findAll();
-    //     model.addAttribute("players", playersList);
-    //     return "redirect:/name-entry";
-    // }
-
     @GetMapping("/name-entry")
-    public String addNameForm(Model model, HttpSession session) {
-        // Check if player names are already in the session
-        if (session.getAttribute("player1") == null || session.getAttribute("player2") == null) {
-            session.setAttribute("player1", new Players());
-            session.setAttribute("player2", new Players());
-        }
-
-        model.addAttribute("player1", session.getAttribute("player1"));
-        model.addAttribute("player2", session.getAttribute("player2"));
-
+        public String addNameForm(Model model){
+        model.addAttribute("name", new Players());
         return "player-name-entry";
     }
-
     @PostMapping("/name-entry")
-    public String saveNameX(@ModelAttribute Players name, Model model, HttpSession session) {
-        // Save the player names to the session
-        if (session.getAttribute("player1") == null) {
-            session.setAttribute("player1", name);
-        } else if (session.getAttribute("player2") == null) {
-            session.setAttribute("player2", name);
-        }
-
-        // Retrieve player names from the session
-        Players player1 = (Players) session.getAttribute("player1");
-        Players player2 = (Players) session.getAttribute("player2");
-
-        // Use player1 and player2 in your model or any other logic
-
+        public String saveNameX(@ModelAttribute Players name, Model model){
+        playersRepository.save(name);
+         Iterable<Players> playersList = playersRepository.findAll();
+        model.addAttribute("players", playersList);
         return "redirect:/name-entry";
     }
+
 
     //method for help page (help page)
     @GetMapping("/help")
