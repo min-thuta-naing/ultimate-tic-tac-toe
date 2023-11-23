@@ -44,7 +44,7 @@ public class TictactoeController {
     //method for start page
     @GetMapping("/start-game")
     public String displayStartPage(Model model){
-        model.addAttribute("game", new Game());
+        model.addAttribute("gameName", new Game());
         return "start";
     }
 
