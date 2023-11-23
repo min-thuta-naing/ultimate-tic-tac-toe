@@ -22,7 +22,7 @@ public class Time {
     private Long durationInSeconds;
 
     //constructors 
-    public Time() {
+    public Time()  {
     }
     public Time(Long durationInSeconds) {
         this.durationInSeconds = durationInSeconds;

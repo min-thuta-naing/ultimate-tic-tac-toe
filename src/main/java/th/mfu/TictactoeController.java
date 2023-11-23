@@ -1,4 +1,6 @@
 package th.mfu;   
+import java.util.Optional;
+
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
@@ -51,8 +53,8 @@ public class TictactoeController {
     @PostMapping("/addId")
     public String addingGameId(@ModelAttribute Game game, Model model){
         gameRepository.save(game);
-        model.addAttribute("gameName", gameRepository.findAll());
-        return "redirect:/name-entry";
+        //model.addAttribute("gameName", gameRepository.findAll());
+        return "redirect:/name-entry/" + game.getId();
     }
 
     //method for help page (help page)
@@ -62,17 +64,35 @@ public class TictactoeController {
     }
 
     //method for accepting players's names (player name entry)
-    @GetMapping("/name-entry")
-    public String addNameForm(Model model){
+    @GetMapping("/name-entry/{gameId}")
+    public String addNameForm(@PathVariable Long gameId, Model model){
+        model.addAttribute("gameId", gameId);
         model.addAttribute("name", new Players());
         return "player-name-entry";
     }
     @PostMapping("/name-entry")
-    public String saveNameX(@ModelAttribute Players name, Model model){
-        playersRepository.save(name);
-        Iterable<Players> playersList = playersRepository.findAll();
-        model.addAttribute("players", playersList);
-        return "redirect:/name-entry";
+    public String saveNameX(@PathVariable Long gameId, @ModelAttribute Players name, Model model){
+        // playersRepository.save(name);
+        // Iterable<Players> playersList = playersRepository.findAll();
+        // model.addAttribute("players", playersList);
+        // return "redirect:/name-entry";
+        // Retrieve the game by ID
+        Optional<Game> optionalGame = gameRepository.findById(gameId);
+        if (optionalGame.isPresent()) {
+            Game game = optionalGame.get();
+
+            // Set the game for the player
+            name.setGame(game);
+
+            // Save the player to the repository
+            playersRepository.save(name);
+
+            // Redirect to the same name-entry page for additional players
+            return "redirect:/name-entry/" + gameId;
+        } else {
+            // Handle the case where the game is not found
+            return "redirect:/start-game";
+        }
     }
 
 
