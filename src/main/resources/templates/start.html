@@ -106,39 +106,26 @@
 	<div class="container">
 		<div class="wrapper">
 			<img src="img/logo.png" alt="Logo">
-			<button type="button" class="btn" onclick="location.href='/name-entry'">Start</button>
+            <button type="button" class="btn" onclick="addId()">Start</button>
 		</div>
 	</div>
-	<div id="overlay" onclick="off()">
-		<div class="text">
-			<h1>Game Instructions</h1>
-			<p>The game is built on a 3x3 grid, but each cell contains another smaller 3x3 grid.</p>
-			<h2>How to play?</h2>
-			<p>- Player X starts by marking the first move on any empty cell in one of the smaller tic-tac-toe boards.</p>
-			<p>- Player O then clicks on an empty cell in a smaller board corresponding to the opponent's last move.</p>
-			<p>- After the initial moves, players take turns to make the moves, but only on the small board corresponding to the opponent's last move.</p>
-			<h2>Winning Condition</h2>
-			<p>- When a player wins a smaller board, they will get the cell in the larger 3X3 grid.</p>
-			<p>- The game is won when the player successfully wins three smaller boards in a row (horizontally, vertically, diagonally) OR when a player wins more smaller boards than another player.</p>
-		</div>
-	  </div>
-
-	  
-		<div class="help">
-			<button type="button" onclick="location.href='/help'">
-				<img src="img/help.jpeg" alt="Button Image">
-			</button>
-		</div>
 	
+	<div class="help">
+		<button type="button" onclick="location.href='/help'">
+			<img src="img/help.jpeg" alt="Button Image">
+		</button>
+	</div>
 	  
-	  <script>
-	  function on() {
-		document.getElementById("overlay").style.display = "block";
-	  }
-	  
-	  function off() {
-		document.getElementById("overlay").style.display = "none";
-	  }
-	  </script>
+	<script>
+		function addId() {
+            $.ajax({
+                type: "POST",
+                url: "/addId",
+                success: function (response){
+                    alert(response);
+                }
+            })
+        }
+	</script>
 </body>
 </html>

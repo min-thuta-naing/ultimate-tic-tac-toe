@@ -17,4 +17,6 @@ public interface PlayersRepository extends CrudRepository<Players,Long>{
     // @Modifying
     // @Query(value = "ALTER TABLE players AUTO_INCREMENT = 1", nativeQuery = true)
     // void resetAutoIncrement();
+    public List<Players> findByGameId(Long gameId);
+    public List<Players> deleteByGameId(Long id);
 }

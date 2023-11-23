@@ -2,12 +2,15 @@ package th.mfu.domain;
 
 import java.time.LocalDateTime;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.CascadeType; 
 
 @Entity
 @Table(name = "Players", schema = "new_schema")
@@ -17,6 +20,9 @@ public class Players {
     private Long id;
     private String name;
     
+    @ManyToOne (cascade = CascadeType.MERGE)
+    private Game game;
+    
     // Constructor
     public Players(){
     }
@@ -24,7 +30,7 @@ public class Players {
         this.name = name;
     }
 
-    // Getter setter for id
+    // Getter setter 
     public Long getId() {
         return id;
     }
@@ -32,12 +38,18 @@ public class Players {
         this.id = id;
     }
 
-    // Getter setter for nameX
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+    public void setGame(Game game) {
+        this.game = game;
     }
 
 }

@@ -509,8 +509,8 @@
                     $.ajax({
                         type: "POST",
                         url: "/save-result",
-                        //data: { winnerId: color == 'red' ? 2 : 1 , durationInSeconds: durationInSeconds},
-                        data: { winner: player2Name , durationInSeconds: durationInSeconds},
+                        data: { winnerId: color == 'red' ? 2 : 1 , durationInSeconds: durationInSeconds},
+                        //data: { winner: player2Name , durationInSeconds: durationInSeconds},
                         success: function(response) {
                             // Handle the response if needed
                             console.log(response);
@@ -532,8 +532,8 @@
                     $.ajax({
                         type: "POST",
                         url: "/save-result",
-                        //data: { winnerId: color == 'blue' ? 1 : 2 , durationInSeconds: durationInSeconds},
-                        data: { winner: player1Name , durationInSeconds: durationInSeconds},
+                        data: { winnerId: color == 'blue' ? 1 : 2 , durationInSeconds: durationInSeconds},
+                        //data: { winner: player1Name , durationInSeconds: durationInSeconds},
                         success: function(response) {
                             // Handle the response if needed
                             console.log(response);

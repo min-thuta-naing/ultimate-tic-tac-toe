@@ -16,14 +16,14 @@ public class Rounds {
     @GeneratedValue(strategy =  GenerationType.AUTO) 
     private Long roundId;
 
-    //@ManyToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "winner_id")
-    private String winner;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "winner_id")
+    private Players winner;
 
     // constructor
     public Rounds() {
     }
-    public Rounds(Long roundId, String winner) {
+    public Rounds(Long roundId, Players winner) {
         this.roundId = roundId;
         this.winner = winner;
     }
@@ -36,11 +36,11 @@ public class Rounds {
         this.roundId = roundId;
     }
 
-    public String getWinner() {
+    public Players getWinner() {
         return winner;
     }
 
-    public void setWinner(String winner) {
+    public void setWinner(Players winner) {
         this.winner = winner;
     }
 
