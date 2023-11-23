@@ -12,12 +12,14 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; 
+    private String gameName;
     
+   
     //constructor 
     public Game(){
     }
-    public Game(Long id) {
-        this.id = id;
+    public Game(String gameName) {
+        this.gameName = gameName;
     }
     
 
@@ -28,5 +30,11 @@ public class Game {
     public void setId(Long id) {
         this.id = id;
     }
-
+    
+    public String getGameName() {
+        return gameName;
+    }
+    public void setGameName(String gameName) {
+        this.gameName = gameName;
+    }
 }

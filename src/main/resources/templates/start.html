@@ -110,8 +110,11 @@
 			<!-- <form id="addIdForm">
 				<button type="submit" class="btn">Start</button>
 			</form> -->
-			<button type="submit" class="btn" onclick="addId()">Start</button>
-
+			<!-- <button type="submit" class="btn" onclick="addId()">Start</button> -->
+			<form th:action="@{/addId}" th:object="${gameName}" method="POST"> 
+				<input type="text" placeholder="game name" id="gameName" th:field="*{gameName}" required><br> 
+				<button type="submit" class="btn">Start</button>
+			</form>
 		</div>
 	</div>
 	
@@ -121,7 +124,7 @@
 		</button>
 	</div>
 	  
-	<script>
+	<!-- <script>
 		function addId() {
 			$.ajax({
 				type: "POST",
@@ -135,7 +138,7 @@
 				}
 			});
 		}
-	</script>
+	</script> -->
 	<!-- <script>
 		$(document).ready(function () {
 			$("#addIdForm").submit(function (event) {

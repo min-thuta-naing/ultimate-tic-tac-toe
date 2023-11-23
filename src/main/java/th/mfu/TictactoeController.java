@@ -49,8 +49,9 @@ public class TictactoeController {
     }
 
     @PostMapping("/addId")
-    public String addingGameId(@ModelAttribute Game game){
+    public String addingGameId(@ModelAttribute Game game, Model model){
         gameRepository.save(game);
+        model.addAttribute("gameName", gameRepository.findAll());
         return "redirect:/name-entry";
     }
 
