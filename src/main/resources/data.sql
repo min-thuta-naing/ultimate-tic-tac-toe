@@ -1,1 +1,0 @@
-INSERT INTO GAME (id) VALUES (1); 

@@ -107,10 +107,11 @@
 		<div class="wrapper">
 			<img src="img/logo.png" alt="Logo">
             <!-- <button type="button" class="btn" onclick="addId()">Start</button> -->
-			<form id="addIdForm">
-				<!-- Your other form fields go here if any -->
+			<!-- <form id="addIdForm">
 				<button type="submit" class="btn">Start</button>
-			</form>
+			</form> -->
+			<button type="button" class="btn" onclick="addId()">Start</button>
+
 		</div>
 	</div>
 	
@@ -120,18 +121,22 @@
 		</button>
 	</div>
 	  
-	<!-- <script>
-		function addId() {
-            $.ajax({
-                type: "POST",
-                url: "/addId",
-                success: function (response){
-                    alert(response);
-                }
-            })
-        }
-	</script> -->
 	<script>
+		function addId() {
+			$.ajax({
+				type: "POST",
+				url: "/addId",
+				success: function (response) {
+					alert(response);
+					window.location.href = "/name-entry"; // Redirect after success
+				},
+				error: function (error) {
+					console.log(error);
+				}
+			});
+		}
+	</script>
+	<!-- <script>
 		$(document).ready(function () {
 			$("#addIdForm").submit(function (event) {
 				event.preventDefault();
@@ -149,6 +154,6 @@
 				});
 			});
 		});
-	</script>
+	</script> -->
 </body>
 </html>
