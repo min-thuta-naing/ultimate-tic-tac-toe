@@ -11,22 +11,22 @@ import javax.persistence.Table;
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long gameId; 
+    private Long id; 
     
     //constructor 
     public Game(){
     }
-    public Game(Long gameId) {
-        this.gameId = gameId;
+    public Game(Long id) {
+        this.id = id;
     }
+    
 
     //getter and setter 
-    public Long getGameId() {
-        return gameId;
+    public Long getId() {
+        return id;
     }
-
-    public void setGameId(Long gameId) {
-        this.gameId = gameId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }
