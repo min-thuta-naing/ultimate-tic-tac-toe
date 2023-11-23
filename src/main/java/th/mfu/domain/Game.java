@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity 
-@Table(name = "GAME", schema = "new_schema")
+@Table(name = "Game", schema = "new_schema")
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class Game {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     public String getGameName() {
         return gameName;
     }
