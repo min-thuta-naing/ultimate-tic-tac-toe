@@ -22,9 +22,9 @@ public class Players {
     private Long id;
     private String name;
     
-    @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "game_id")
-    private Game game;
+    // @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    // @JoinColumn(name = "game_id")
+    // private Game game;
     
     // Constructor
     public Players(){
@@ -48,11 +48,11 @@ public class Players {
         this.name = name;
     }
 
-    public Game getGame() {
-        return game;
-    }
-    public void setGame(Game game) {
-        this.game = game;
-    }
+    // public Game getGame() {
+    //     return game;
+    // }
+    // public void setGame(Game game) {
+    //     this.game = game;
+    // }
 
 }

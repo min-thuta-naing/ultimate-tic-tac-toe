@@ -23,12 +23,12 @@ import th.mfu.domain.Rating;
 import th.mfu.domain.Rounds;
 import th.mfu.domain.Time;   
 import th.mfu.domain.Comments;
-import th.mfu.domain.Game; 
+//import th.mfu.domain.Game; 
  
 @Controller
 public class TictactoeController {
-    @Autowired
-    private GameRepository gameRepository;
+    // @Autowired
+    // private GameRepository gameRepository;
 
     @Autowired
     private PlayersRepository playersRepository;
@@ -43,60 +43,44 @@ public class TictactoeController {
         this.playersRepository = playersRepository;
     }
 
-    //method for start page
+    //method for displaying start page
     @GetMapping("/start-game")
     public String displayStartPage(Model model){
-        model.addAttribute("gameName", new Game());
+        //model.addAttribute("gameName", new Game());
         return "start";
     }
 
-    @PostMapping("/addId")
-    public String addingGameId(@ModelAttribute Game game, Model model){
-        gameRepository.save(game);
-        //model.addAttribute("gameName", gameRepository.findAll());
-        return "redirect:/name-entry/" + game.getId();
-    }
+    // @PostMapping("/addId")
+    // public String addingGameId(@ModelAttribute Game game, Model model){
+    //     gameRepository.save(game);
+    //     //model.addAttribute("gameName", gameRepository.findAll());
+    //     return "redirect:/name-entry/";
+    // }
 
-    //method for help page (help page)
+    //method for displaying help page
     @GetMapping("/help")
     public String displayHelp(Model model){
         return "help";
     }
 
-    //method for accepting players's names (player name entry)
-    @GetMapping("/name-entry/{gameId}")
-    public String addNameForm(@PathVariable Long gameId, Model model){
-        model.addAttribute("gameId", gameId);
+    //method for accepting players's names (player name entry) ---- CREATING ----
+    @GetMapping("/name-entry")
+    public String addNameForm(Model model){
         model.addAttribute("name", new Players());
+
         return "player-name-entry";
     }
+
     @PostMapping("/name-entry")
-    public String saveNameX(@PathVariable Long gameId, @ModelAttribute Players name, Model model){
-        // playersRepository.save(name);
-        // Iterable<Players> playersList = playersRepository.findAll();
-        // model.addAttribute("players", playersList);
-        // return "redirect:/name-entry";
-        // Retrieve the game by ID
-        Optional<Game> optionalGame = gameRepository.findById(gameId);
-        if (optionalGame.isPresent()) {
-            Game game = optionalGame.get();
-
-            // Set the game for the player
-            name.setGame(game);
-
-            // Save the player to the repository
-            playersRepository.save(name);
-
-            // Redirect to the same name-entry page for additional players
-            return "redirect:/name-entry/" + gameId;
-        } else {
-            // Handle the case where the game is not found
-            return "redirect:/start-game";
-        }
+    public String saveNameX(@ModelAttribute Players name, Model model){
+        playersRepository.save(name);
+        Iterable<Players> playersList = playersRepository.findAll();
+        model.addAttribute("players", playersList);
+        return "redirect:/name-entry";
     }
 
 
-     //method for displaying gameboard
+     //method for displaying gameboard 
     @GetMapping("/tictactoe")
     public String displayGameboard(Model model){
         Iterable<Players> playersList = playersRepository.findAll();
@@ -106,7 +90,7 @@ public class TictactoeController {
 
     // @Autowired
     // private ResetAutoIncrementService resetAutoIncrementService;
-    //method for saving game rounds winner and timeStamps (updating)
+    //method for saving game rounds winner and timeStamps  ---- UPDATING ----
     @PostMapping("/save-result")
     public String saveGameResult(@RequestParam("winnerId") Long winnerId, @RequestParam("durationInSeconds") long durationInSeconds, Model model) {
         Players winner = playersRepository.findById(winnerId)
@@ -139,7 +123,7 @@ public class TictactoeController {
         return "redirect:/name-list";
     }
 
-    //method for scoreboard page (listing)
+    //method for scoreboard page  ---- LISTING ----
     @GetMapping("/name-list")
     public String nameList(Model model){
     //model.addAttribute("rounds", roundsRepository.findAll());    
@@ -152,19 +136,13 @@ public class TictactoeController {
         return "list"; 
     }
 
-
-   
-    
-    
-    
-
-    //method for quitting the game and deleting all the players and game data 
+    //method for quitting the game and deleting all the players and game data  ---- DELETING ----
     @GetMapping("/quit-delete")
     public String quitAndDelete(){
          
-        // roundsRepository.deleteAll();
-        // timeRepository.deleteAll();
-        // playersRepository.deleteAll();
+        roundsRepository.deleteAll();
+        timeRepository.deleteAll();
+        playersRepository.deleteAll();
         
         // Reset auto-increment counter for each table
         // resetAutoIncrementService.resetAutoIncrement("time");
@@ -174,8 +152,6 @@ public class TictactoeController {
         return "redirect:/start-game";
     }
    
-
-
     /* 
     * 
     * 
@@ -190,7 +166,7 @@ public class TictactoeController {
     @Autowired
     private RatingRepository ratingRepository;
 
-    //saving rating 
+    //saving rating  ---- CREATING AND UPDATING ----
     @PostMapping("/save-rating")
     public String saveUserRating(@RequestParam("rating") int rating, Model model) {
         Rating userRating = new Rating();
