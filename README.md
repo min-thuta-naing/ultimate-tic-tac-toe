@@ -2,13 +2,15 @@ Group 13
 Ultimate Tic-Tac-Toe Pro
 =======================
 
-Group Members
-- Htet Yunn Shwe Yi         6531503143
-- Lwin Moe Aung             6531503151
-- Min Thuta Naing           6531503157
-- Shwin Pyone Thu           6531503183
-- Phue Phue Soe Lwin        6531503170
-- Soe Yu Yu Kyaw            6531503186 
+<b>Group Members</b>
+|  Student ID  |  Name  |  Github Account  |
+|  ---  |  ---  |  ---  |
+|  6531503143  |  Htet Yunn Shwe Yi  |  Htet-Yunn-Shwe-Yi  |
+|  6531503151  |  Lwin Moe Aung |  DanielLweis  |           
+|  6531503157  |  Min Thuta Naing |  mtn94887  |        
+|  6531503183  |  Shwin Pyone Thu |  shwinpyonethu  |    
+|  6531503170  |  Phue Phue Soe Lwin |  PhuePhueSowLwin  |      
+|  6531503186  |  Soe Yu Yu Kyaw |  SoeYuYuKyaw  |         
 
   The very fist page is the "Start" page, serves as a cover before getting into the game. Two functioning components on this page are "Start" and "i", information button on the bottom left corner of the page. "Start" button will take players to the next page where player will enter their names before continuing to play. Moreover, the "i", information button serves as an access to the "Help" page. On this page players can learn about how the game works and some other basic informations. "Back" button will allow the access back to the start page.
 
