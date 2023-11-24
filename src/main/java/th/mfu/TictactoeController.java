@@ -64,19 +64,48 @@ public class TictactoeController {
     }
 
     //method for accepting players's names (player name entry) ---- CREATING ----
-    @GetMapping("/name-entry")
-    public String addNameForm(Model model){
-        model.addAttribute("name", new Players());
+    // @GetMapping("/name-entry")
+    // public String addNameForm(Model model){
+    //     model.addAttribute("name", new Players());
 
-        return "player-name-entry";
+    //     return "player-name-entry";
+    // }
+
+    // @PostMapping("/name-entry")
+    // public String saveNameX(@ModelAttribute Players name, Model model){
+    //     playersRepository.save(name);
+    //     Iterable<Players> playersList = playersRepository.findAll();
+    //     model.addAttribute("players", playersList);
+    //     return "redirect:/name-entry";
+    // }
+
+    //method for x-entry page (x entry)
+    @GetMapping("/x_entry")
+         public String xentry(Model model){
+        model.addAttribute("name", new Players());
+        return "x_entry";
     }
 
-    @PostMapping("/name-entry")
+    @PostMapping("/x_entry")
     public String saveNameX(@ModelAttribute Players name, Model model){
         playersRepository.save(name);
         Iterable<Players> playersList = playersRepository.findAll();
         model.addAttribute("players", playersList);
-        return "redirect:/name-entry";
+        return "redirect:/o_entry";
+    }
+    //method for o-entry page (o entry)
+    @GetMapping("/o_entry")
+        public String addNameForm(Model model){
+        model.addAttribute("name", new Players());
+        return "o_entry";
+    }
+
+    @PostMapping("/o_entry")
+        public String saveNameO(@ModelAttribute Players name, Model model){
+        playersRepository.save(name);
+         Iterable<Players> playersList = playersRepository.findAll();
+        model.addAttribute("players", playersList);
+        return "redirect:/tictactoe";
     }
 
 

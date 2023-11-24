@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+ body {
+            background: pink;
+            
+            font-family: Arial, sans-serif;
+            height: 100%;
+            background-size: cover;
+            margin-left: 0px;
+            display: flex;
+        }
+
+        #sider {
+            margin-left: 0px;
+            height: 800px;
+            width: 50%;
+            background-color: #FDEFA9; 
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #logo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .o_char {
+            margin-top: 220px;
+        }
+
+      
+
+        .login-container h2 {
+            color: #333;
+        }
+
+        
+        .enter{
+    margin-top: 20px;
+    width: 80px;
+    height: 30px;
+    background: grey;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+.username input {
+  margin-top: 10px;
+    width: 80%;
+    height: 50px;
+    background: grey;
+    text-align: center;
+    font-size: 50px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 5px 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.btn {
+  margin-top: 20px;
+    width: 100px;
+    height: 40px;
+    background: grey;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}
+.username {
+            border: 2px solid #7CABFD ;
+            background: silver ;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            width: 400px;
+            height: 200px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 340px;
+            margin-left: 130px;
+
+}
+    </style>
+</head>
+<body>
+    <div id="sider" class="sider">
+        
+
+        <img src="img/o_char.png" alt="Logo" id="char" width="450px" height="400px" class="o_char">
+    </div>
+    <div class="username">
+            <h2>Player O</h2>
+            
+                 <form th:action="@{/o_entry}" th:object="${name}" method="post">
+                <input type="text" placeholder="Player O" id="name" th:field="*{name}" required><br>
+                <button type="button" class="btn">Play</button>
+                
+                </form>
+            
+           
+        </div>
+</body>
+</html>
