@@ -91,8 +91,7 @@ public class TictactoeController {
         return "ticTacToe";
     }
 
-    // @Autowired
-    // private ResetAutoIncrementService resetAutoIncrementService;
+   
     //method for saving game rounds winner and timeStamps  ---- UPDATING ----
     @PostMapping("/save-result")
     public String saveGameResult(@RequestParam("winnerId") Long winnerId, @RequestParam("durationInSeconds") long durationInSeconds, Model model) {
@@ -139,6 +138,8 @@ public class TictactoeController {
         return "list"; 
     }
 
+    @Autowired
+    private ResetAutoIncrementService resetAutoIncrementService;
     //method for quitting the game and deleting all the players and game data  ---- DELETING ----
     @GetMapping("/quit-delete")
     public String quitAndDelete(){
@@ -148,9 +149,9 @@ public class TictactoeController {
         playersRepository.deleteAll();
         
         // Reset auto-increment counter for each table
-        // resetAutoIncrementService.resetAutoIncrement("time");
-        // resetAutoIncrementService.resetAutoIncrement("rounds");
-        // resetAutoIncrementService.resetAutoIncrement("players");
+        resetAutoIncrementService.resetAutoIncrement("time");
+        resetAutoIncrementService.resetAutoIncrement("rounds");
+        resetAutoIncrementService.resetAutoIncrement("players");
 
         return "redirect:/start-game";
     }
