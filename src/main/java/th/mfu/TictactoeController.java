@@ -23,12 +23,9 @@ import th.mfu.domain.Rating;
 import th.mfu.domain.Rounds;
 import th.mfu.domain.Time;   
 import th.mfu.domain.Comments;
-//import th.mfu.domain.Game; 
  
 @Controller
 public class TictactoeController {
-    // @Autowired
-    // private GameRepository gameRepository;
 
     @Autowired
     private PlayersRepository playersRepository;
@@ -46,38 +43,15 @@ public class TictactoeController {
     //method for displaying start page
     @GetMapping("/start-game")
     public String displayStartPage(Model model){
-        //model.addAttribute("gameName", new Game());
         return "start";
     }
 
-    // @PostMapping("/addId")
-    // public String addingGameId(@ModelAttribute Game game, Model model){
-    //     gameRepository.save(game);
-    //     //model.addAttribute("gameName", gameRepository.findAll());
-    //     return "redirect:/name-entry/";
-    // }
 
     //method for displaying help page
     @GetMapping("/help")
     public String displayHelp(Model model){
         return "help";
     }
-
-    //method for accepting players's names (player name entry) ---- CREATING ----
-    // @GetMapping("/name-entry")
-    // public String addNameForm(Model model){
-    //     model.addAttribute("name", new Players());
-
-    //     return "player-name-entry";
-    // }
-
-    // @PostMapping("/name-entry")
-    // public String saveNameX(@ModelAttribute Players name, Model model){
-    //     playersRepository.save(name);
-    //     Iterable<Players> playersList = playersRepository.findAll();
-    //     model.addAttribute("players", playersList);
-    //     return "redirect:/name-entry";
-    // }
 
     //method for x-entry page (x entry)
     @GetMapping("/x_entry")

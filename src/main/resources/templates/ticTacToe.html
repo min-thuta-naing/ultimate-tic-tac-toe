@@ -263,8 +263,8 @@
     
     <div class="starting-popup" id="starting-popup">
       <h1 id="starting-popup-message"></h1>
-      <button class="player1" th:text="${players[0].name}" style="background-color: #0274FB; color: black">Player X</button>
-      <button class="player2" th:text="${players[1].name}" style="background-color: #FFE70C; color:black">Player O</button>
+      <button class="player1" data-player-id="${players[0].id}" style="background-color: #0274FB; color: black">${players[0].name}</button>
+      <button class="player2" data-player-id="${players[1].id}" style="background-color: #FFE70C; color:black">${players[1].name}</button>
     </div>
 
     <div class="closing-popup" id="closing-popup">
@@ -288,6 +288,10 @@
 <script>
     $(document).ready(function() {
         $(document).ready(function() {
+
+            var player1Id = $('.player1').data('player-id'); 
+            var player2Id = $('.player2').data('player-id'); 
+
             //new code 18Nov 
             var startTime; 
             var endTime; 
@@ -509,7 +513,7 @@
                     $.ajax({
                         type: "POST",
                         url: "/save-result",
-                        data: { winnerId: color == 'red' ? 2 : 1 , durationInSeconds: durationInSeconds},
+                        data: { winnerId: color == 'red' ? player2Id : player1Id , durationInSeconds: durationInSeconds},
                         //data: { winner: player2Name , durationInSeconds: durationInSeconds},
                         success: function(response) {
                             // Handle the response if needed
@@ -532,7 +536,7 @@
                     $.ajax({
                         type: "POST",
                         url: "/save-result",
-                        data: { winnerId: color == 'blue' ? 1 : 2 , durationInSeconds: durationInSeconds},
+                        data: { winnerId: color == 'blue' ? player1Id : player2Id , durationInSeconds: durationInSeconds},
                         //data: { winner: player1Name , durationInSeconds: durationInSeconds},
                         success: function(response) {
                             // Handle the response if needed
