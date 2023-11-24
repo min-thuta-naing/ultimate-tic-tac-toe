@@ -509,7 +509,7 @@
                     $.ajax({
                         type: "POST",
                         url: "/save-result",
-                        data: { winnerId: color == 'red' ? "${players[1].id}" : "${players[0].id}" , durationInSeconds: durationInSeconds},
+                        data: { winnerId: color == 'red' ? 2 : 1 , durationInSeconds: durationInSeconds},
                         //data: { winner: player2Name , durationInSeconds: durationInSeconds},
                         success: function(response) {
                             // Handle the response if needed
@@ -532,7 +532,7 @@
                     $.ajax({
                         type: "POST",
                         url: "/save-result",
-                        data: { winnerId: color == 'blue' ? "${players[0].id}" : "${players[1].id}" , durationInSeconds: durationInSeconds},
+                        data: { winnerId: color == 'blue' ? 1 : 2 , durationInSeconds: durationInSeconds},
                         //data: { winner: player1Name , durationInSeconds: durationInSeconds},
                         success: function(response) {
                             // Handle the response if needed
