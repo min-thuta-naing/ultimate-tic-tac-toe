@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
- body {
+    <style>
+        body {
             background: pink;
             
             font-family: Arial, sans-serif;
@@ -42,42 +42,42 @@
 
         
         .enter{
-    margin-top: 20px;
-    width: 80px;
-    height: 30px;
-    background: grey;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    color: white;
-    cursor: pointer;
-}
-.username input {
-  margin-top: 10px;
-    width: 80%;
-    height: 50px;
-    background: grey;
-    text-align: center;
-    font-size: 50px;
-    border: 1px solid #ccc;
-    border-radius: 30px;
-    padding: 5px 10px;
-    font-size: 16px;
-    outline: none;
-}
+            margin-top: 20px;
+            width: 80px;
+            height: 30px;
+            background: grey;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            color: white;
+            cursor: pointer;
+        }
+        .username input {
+            margin-top: 10px;
+            width: 80%;
+            height: 50px;
+            background: grey;
+            text-align: center;
+            font-size: 50px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            padding: 5px 10px;
+            font-size: 16px;
+            outline: none;
+        }
 
-.btn {
-  margin-top: 20px;
-    width: 100px;
-    height: 40px;
-    background: grey;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
-    color: white;
-    cursor: pointer;
-}
-.username {
+        .btn {
+            margin-top: 20px;
+            width: 100px;
+            height: 40px;
+            background: grey;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+        }
+        .username {
   
             background: silver ;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -89,8 +89,7 @@
             text-align: center;
             margin-top: 320px;
             margin-left: 130px;
-
-}
+        }
     </style>
 </head>
 <body>
@@ -100,14 +99,11 @@
         <img src="img/x_char.png" alt="Logo" id="char" width="400px" height="400px" class="x_char">
     </div>
     <div class="username">
-            <h2>Player X</h2>
-            
-                <form th:action="@{/x_entry}" th:object="${name}" method="post">
-                <input type="text" placeholder="Player X" id="name" th:field="*{name}" required><br>
-                <button type="submit" class="btn" >Play</button>
-                </form>
-            
-           
-        </div>
+            <h2>Player X</h2>   
+            <form th:action="@{/x_entry}" th:object="${name}" method="post">
+            <input type="text" placeholder="Player X" id="name" th:field="*{name}" required><br>
+            <button type="submit" class="btn" >Play</button>
+            </form>  
+    </div>
 </body>
 </html>
