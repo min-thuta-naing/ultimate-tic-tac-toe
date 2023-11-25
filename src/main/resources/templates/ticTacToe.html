@@ -278,6 +278,7 @@
 </head>
 
 <body>
+
 <div id="container">
     <!--<div id="options">
         <button class="player1" th:text="${players[0].name}"></button>   
@@ -305,7 +306,6 @@
     
 </div>
 
-
 <div  id="turn-display"></div> 
 
 <div class="turn-display">
@@ -315,6 +315,7 @@
     </button>
     
 </div>
+
  <div id="overlay">
         <div id="quit-model">
             
@@ -322,7 +323,7 @@
             <button class="modal-button" onclick="location.reload()">Yes</button>
             <button class="modal-button" onclick="closeQuitPopup()">No</button>
         </div>
-    </div>
+</div>
 
 <script>
     $(document).ready(function() {
@@ -473,11 +474,11 @@
                 updateTurnDisplay();
             })
 
-            
+            //isBoxDraw, isGameDraw and isWinner functions 
             function isBoxDraw(boxIndex, element, globalArray){
                 $(element).siblings('.overlay').removeClass('gray-overlay').addClass('draw-overlay').show();
-                //globalArray.push(boxIndex);
-                globalArray.push('globalLimit: ' + boxIndex); 
+                globalArray.push(boxIndex);
+                //globalArray.push('globalLimit: ' + boxIndex); 
             }
 
             function isGameDraw(winStatus) {
@@ -495,24 +496,6 @@
                         
                         $('.game-overlay').addClass('draw-overlay').show();
                         showClosingPopup("It is a draw!");
-                        /*$('#popup-message').text("It is a draw!").append('<br>View the leaderboard in<br>');
-                        $('#popup button.player1, #popup button.player2').hide();
-                        //$('#popup button#redirect-button').show();
-                        $('#popup').show();
-
-                        var countdown = 4;
-                        var countdownInterval = setInterval(function() {
-                            $('#popup-message').append(countdown + '...');
-
-                            countdown--;
-
-                            if (countdown < 0) {
-                            clearInterval(countdownInterval);
-
-                            // Automatically redirect after countdown
-                            window.location.href = "/name-list";
-                            }
-                        }, 1000);*/
                     }
                 }
             }
@@ -589,21 +572,6 @@
                 }
 
                 showClosingPopup(winnerMessage);
-                //$('#popup-message').text(winnerMessage).append('<br>View your scores in<br>');
-                //$('#popup button.player1, #popup button.player2').hide();
-                //$('#popup button#redirect-button').show();
-                // Show the popup
-                //$('#popup').show();
-                /*var countdown = 4;
-                var countdownInterval = setInterval(function() {
-                    $('#popup-message').append('<br>'+countdown + '<br>');
-                    countdown--;
-                    if (countdown < 0) {
-                    clearInterval(countdownInterval);
-                    // Automatically redirect after countdown
-                    window.location.href = "/name-list";
-                    }
-                }, 1000);*/
             }
 
             function updateTurnDisplay() {
@@ -620,7 +588,7 @@
         });
     });
 
- function openQuitPopup() { 
+        function openQuitPopup() { 
             document.getElementById('overlay').style.display = 'block'; 
             document.getElementById('quit-modal').style.display='block';
         }
