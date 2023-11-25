@@ -241,6 +241,43 @@
           border-radius: 50%;
         }
 
+
+
+ #overlay {
+            display: none;
+            position: fixed;
+            top: 30%;
+            left: 39%;
+            width: 300px;
+            height: 250px;
+            background-color: silver;
+            z-index: 1000;
+            text-align: center;
+            border-radius: 15px;
+        }
+        .warn{
+            color: red;
+        }
+        /* Styles for the modal */
+        #quit-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1001; /* Place modal above overlay */
+            text-align: center;
+        }
+        .modal-button {
+            margin-right: 10px;
+            padding: 8px 12px;
+            cursor: pointer;
+            width: 100px;
+            border-radius: 10px;
+        }
      
 
   </style>
@@ -279,11 +316,19 @@
 
 <div class="turn-display">
 
-    <button class="turn-display" id="restartButton">
+    <button class="turn-display" id="restartButton"onclick="openQuitPopup()">
         <img src="img/restart.png" alt=" Button Image">    
     </button>
     
 </div>
+ <div id="overlay">
+        <div id="quit-model">
+            <h1 class="warn">Warning</h1>
+            <p>Are you sure to restart the game?</p>
+            <button class="modal-button" onclick="location.reload()">Yes</button>
+            <button class="modal-button" onclick="closeQuitPopup()">No</button>
+        </div>
+    </div>
 
 <script>
     $(document).ready(function() {
@@ -317,9 +362,7 @@
             
 
             // game restart button 
-            $('#restartButton').click(function(){
-                location.reload();
-            });
+            
 
             // redirect to /name-list page 
             $('#redirect-button').click(function() { 
@@ -582,6 +625,15 @@
 
         });
     });
+
+ function openQuitPopup() { 
+            document.getElementById('overlay').style.display = 'block'; 
+            document.getElementById('quit-modal').style.display='block';
+        }
+        function closeQuitPopup() { 
+            document.getElementById('overlay').style.display = 'none'; 
+            document.getElementById('quit-modal').style.display='none';
+        }
 </script>
 </body>
 </html>
