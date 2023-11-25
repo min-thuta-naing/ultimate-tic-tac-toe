@@ -493,9 +493,9 @@
                     }else if(redWinsCount> blueWinsCount){
                         youWin('red', player2Name);
                     }else {
-                        
-                        $('.game-overlay').addClass('draw-overlay').show();
-                        showClosingPopup("It is a draw!");
+                        // $('.game-overlay').addClass('draw-overlay').show();
+                        // showClosingPopup("It is a draw!");
+                        youWin('tie');
                     }
                 }
             }
@@ -546,6 +546,7 @@
                             console.error(error);
                         }
                     });
+
                 } else if (color === 'blue') {
                     $('.game-overlay').addClass('blue-overlay').show();
                     winnerMessage = 'Player X ' + player1Name + ' wins';
@@ -559,6 +560,26 @@
                         type: "POST",
                         url: "/save-result",
                         data: { winnerId: color == 'blue' ? players[0].id : players[1].id , durationInSeconds: durationInSeconds},
+                        //data: { winner: player1Name , durationInSeconds: durationInSeconds},
+                        success: function(response) {
+                            // Handle the response if needed
+                            console.log(response);
+                        },
+                        error: function(error) {
+                            // Handle the error if needed
+                            console.error(error);
+                        }
+                    });
+                }else {
+                    $('.game-overlay').addClass('draw-overlay').show();
+                    winnerMessage ='It is a tie!';
+                    endTime = new Date().getTime();
+                    var durationInSeconds = Math.floor((endTime-startTime)/1000); 
+                    console.log('Elapsed Time: ' + durationInSeconds + ' seconds'); 
+                    $.ajax({
+                        type: "POST",
+                        url: "/save-result",
+                        data: { winnerId: -1 , durationInSeconds: durationInSeconds},
                         //data: { winner: player1Name , durationInSeconds: durationInSeconds},
                         success: function(response) {
                             // Handle the response if needed

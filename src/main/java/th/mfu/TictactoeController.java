@@ -95,8 +95,13 @@ public class TictactoeController {
     //method for saving game rounds winner and timeStamps  ---- UPDATING ----
     @PostMapping("/save-result")
     public String saveGameResult(@RequestParam("winnerId") Long winnerId, @RequestParam("durationInSeconds") long durationInSeconds, Model model) {
-        Players winner = playersRepository.findById(winnerId)
+        Players winner;
+        if (winnerId == -1){
+            winner = null;
+        }else {
+            winner = playersRepository.findById(winnerId)
                 .orElse(null);
+        }
         Rounds round; 
         if (winner == null) {
             round = new Rounds();
