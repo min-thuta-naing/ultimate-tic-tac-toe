@@ -414,8 +414,11 @@
                 },
                 success: function (response) {
                     console.log("successfully commented")
-                    document.getElementById('commentPopup').style.display = 'none';
+                    
                 },
+                error: function (error){
+                    document.getElementById('commentPopup').style.display = 'none';
+                }
                 
                 
             });
