@@ -22,9 +22,10 @@ link to our web app: https://lab-utttpr-meibtcsfoq-uc.a.run.app/start-game
 
   The very fist page is the "Start" page, serves as a cover before getting into the game. Two functioning components on this page are "Start" and "i", information button on the bottom left corner of the page. "Start" button will take players to the next page where player will enter their names before continuing to play. Moreover, the "i", information button serves as an access to the "Help" page. On this page players can learn about how the game works and some other basic informations. "Back" button will allow the access back to the start page.
 
-![Image 24-11-2566 BE at 6 08 PM (1)](https://github.com/maefahluang-uni/99-project-ultimatetictactoepro_group13/assets/122962636/567f90ec-a5b3-46c5-9da0-63998d29a96e)
-
-![Image 24-11-2566 BE at 6 09 PM](https://github.com/maefahluang-uni/99-project-ultimatetictactoepro_group13/assets/122962636/02ed0be4-6dc3-498b-a119-86e340f75309)
+<p float="left">
+  <img src="https://github.com/maefahluang-uni/99-project-ultimatetictactoepro_group13/assets/122962636/567f90ec-a5b3-46c5-9da0-63998d29a96e" width="400" />
+  <img src="https://github.com/maefahluang-uni/99-project-ultimatetictactoepro_group13/assets/122962636/02ed0be4-6dc3-498b-a119-86e340f75309" width="400" /> 
+</p>
 
 
   Once players click "Start", players will be asked to enter a name to continue. First the player who will take the part of "X" will fill the name. When "Enter" is clicked the input data will go into the "Players" table. Without this players cannot proceed to the next step. The next page will ask to do the for player who is taking part of "O". This input data will also go into its respective table "!!!".
