@@ -28,7 +28,7 @@ link to our web app: https://lab-utttpr-meibtcsfoq-uc.a.run.app/start-game
 </p>
 
 
-  Once players click "Start", players will be asked to enter a name to continue. First the player who will take the part of "X" will fill the name. When "Enter" is clicked the input data will go into the "Players" table. Without this players cannot proceed to the next step. The next page will ask to do the for player who is taking part of "O". This input data will also go into its respective table "!!!".
+  Once players click "Start", players will be asked to enter a name to continue. First the player who will take the part of "X" will fill the name. When "Play" button is clicked the input data will go into the "Players" table. Without this, players cannot proceed to the next step. The next page will ask to do the for player who is taking part of "O". This input data will also go into its respective table "Players" table.
 
 <img src="https://github.com/maefahluang-uni/99-project-ultimatetictactoepro_group13/assets/122962636/6166d3ce-e4d1-4a7c-98b2-0dc700330733" alt="Screenshot" width="400" />
 
@@ -39,4 +39,5 @@ link to our web app: https://lab-utttpr-meibtcsfoq-uc.a.run.app/start-game
   The last page is to display leaderboard. The graph will display the results from each round. When the game is over the results will be stored in the "Rounds" and "Time" tables respectively, with the name of the player who wins along side the round ID. Players can choose to continue to the next round by clicking on "Next Round" button on the bottom right corner. If the players continue to play the round ID will increase with the number of replays and corresponding winner will for each round will continue to display on the table. However, is the players decide to quit to game by clicking on "Quit" button, all the previous data stored on the "Players", "Rounds" and "Time" tables will be erased and this will take players back to the start page. The game will have to start again for the database to collect data again.
 
   Some other functions on the last page include "Leave Feedback". Here players can comment and express their thoughts on the web application. Another function is rating, this will only appear one the players click on "Quit". After the pop up to confirm players actually want to quit the game, there will be stars to rate from 1 to 5. Both ratings and feedbacks from the players can be viewed by developers side to accept supports and compaints to improve further. 
+  
 <img src="https://github.com/maefahluang-uni/99-project-ultimatetictactoepro_group13/assets/122962636/7983f447-75a7-4a02-8e68-0b08db7dd4b9" alt="Image" width="400" />
