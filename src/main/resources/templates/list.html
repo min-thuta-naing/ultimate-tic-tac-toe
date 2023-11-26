@@ -404,22 +404,23 @@
             if (comments !== "") {
                 $.ajax({
                     type: "POST",
-                    // url: "/save-feedbacks",
-                    url: "https://lab-utttpr-meibtcsfoq-uc.a.run.app/save-feedbacks",
+                    url: "/save-feedbacks",
                     data: {
-                        comments: comments
+                        comments: comments 
                     },
-                    success: function (response) {
-                        console.log("Successfully commented");
-                        closeCommentPopup();
-                    },
-                    error: function (xhr, status, error) {
-                        console.error("Error submitting comments: " + error);
-                        console.log("XHR object:", xhr);
-                        console.log("Status:", status);
-                    }
+                    
+                    // success: function (response) {
+                    //     console.log("Successfully commented");
+                    //     closeCommentPopup();
+                    // },
+                    // error: function (xhr, status, error) {
+                    //     console.error("Error submitting comments: " + error);
+                    //     console.log("XHR object:", xhr);
+                    //     console.log("Status:", status);
+                    // }
 
                 });
+                closeCommentPopup(); 
             } else {
                 alert("Please enter comments before submitting.");
             }
