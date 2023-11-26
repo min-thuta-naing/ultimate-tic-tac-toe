@@ -415,8 +415,10 @@
                     },
                     error: function (xhr, status, error) {
                         console.error("Error submitting comments: " + error);
-                        alert("Error submitting comments. Please try again or contact support with error details: " + error);
+                        console.log("XHR object:", xhr);
+                        console.log("Status:", status);
                     }
+
                 });
             } else {
                 alert("Please enter comments before submitting.");
