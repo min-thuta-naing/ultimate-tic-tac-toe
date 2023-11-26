@@ -141,7 +141,7 @@ public class TictactoeController {
 
         roundsList.sort(Comparator.comparing(Rounds::getRoundId));
         model.addAttribute("rounds", roundsList);
-        //method for displaying shortest game play duration 
+        //displaying shortest game play duration 
         Iterable<Time> timeList = timeRepository.findAll();
         model.addAttribute("time", timeList);
         return "list"; 
@@ -157,7 +157,7 @@ public class TictactoeController {
         roundsRepository.deleteAll();
         playersRepository.deleteAll();
         
-        // Reset auto-increment counter for each table
+        // auto-increment for each table
         resetAutoIncrementService.resetAutoIncrement("Time", "new_schema");
         resetAutoIncrementService.resetAutoIncrement("Rounds", "new_schema");
         resetAutoIncrementService.resetAutoIncrement("Players", "new_schema");
@@ -203,7 +203,7 @@ public class TictactoeController {
         return "redirect:/name-list";
     }
 
-    //method for view comments page 
+    //method for viewing comments page (admin-page)
     @GetMapping("/admin-page")
         public String viewUsersFeedbacks(Model model){
         Iterable<Comments> commentList = commentsRepository.findAll();

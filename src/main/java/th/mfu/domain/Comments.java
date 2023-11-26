@@ -19,7 +19,7 @@ public class Comments {
         this.comment = comment;
     }
     
-    //getter setter 
+    //getter and setter 
     public Long getCommentId() {
         return commentId;
     }

@@ -29,7 +29,7 @@ public class Players {
         this.name = name;
     }
 
-    // Getter setter 
+    // Getter and setter 
     public Long getId() {
         return id;
     }

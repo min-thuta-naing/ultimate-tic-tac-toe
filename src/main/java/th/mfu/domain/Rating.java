@@ -9,11 +9,15 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rId;
     private int rates;
+
+    //constructor 
     public Rating() {
     }
     public Rating(int rates) {
         this.rates = rates;
     }
+
+    //getter and setter 
     public Long getrId() {
         return rId;
     }
