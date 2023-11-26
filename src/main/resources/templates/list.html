@@ -410,6 +410,7 @@
                 },
                 success: function (response) {
                     closeCommentPopup(); // Close the popup after submitting
+                    document.getElementById('commentPopup').style.display = 'none';
                 },
                 error: function (error) {
                     alert("Error submitting comments: " + error.responseText);
