@@ -7,74 +7,74 @@
   <title>Tic Tac Toe</title>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <style>
-      * {
+        * {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
-      }
+        }
 
-      body {
+        body {
           background-image: url("img/bg.png");
-      }
+        }
 
-      button {
+        button {
           padding: 5px;
           margin: 20px;
           color: #fff;
-      }
+        }
 
-      .cell {
+        .cell {
           width: 33.3%;
           height: 33.3%;
           background-color: #999;
           border: 1px solid #666;
           display: flex;
           flex-wrap: wrap;
-      }
+        }
 
-      .blue {
+        .blue {
           background-color: #00f;
-      }
+        }
 
-      .draw-overlay {
-        background-image: url("img/tie.jpg");
-          background-size: cover;
-          background-position: center;
-      }
+        .draw-overlay {
+            background-image: url("img/tie.jpg");
+            background-size: cover;
+            background-position: center;
+        }
 
-      .gray-overlay {
+        .gray-overlay {
           background-color: rgba(0, 0, 0, 0.2);
-      }
+        }
 
-      .box {
+        .box {
           width: 150px;
           display: flex;
           flex-wrap: wrap;
           border: 2px solid black;
           position: relative;
           border-radius: 10px;
-      }
+        }
 
-      .blue {
+        .blue {
           background-color: #0274FB;
-      }
+        }
 
-      .blue-overlay {
+        .blue-overlay {
           background-image: url("img/x.jpeg");
           background-size: cover;
           background-position: center;
-      }
+        }
 
-      .overlay {
+        .overlay {
           width: 150px;
           height: 150px;
           position: absolute;
           top: 0;
           left: 0;
           display: none;
-      }
+        }
 
-      .game-overlay {
+        .game-overlay {
           width: 450px;
           height: 450px;
           position: absolute;
@@ -82,48 +82,48 @@
           left: 10;
           z-index: 10;
           display: none;
-      }
+        }
 
-      .player1 {
+        .player1 {
           border: 1px solid #0274FB;
           border-radius: 30px;
           padding: 5px 10px;
           width: 150px;
           font-size: 15px;
           background-color: #0274FB;
-      }
+        }
 
-      .player2 {
+        .player2 {
           background-color: #FFE70C;
           border: 1px solid #FFE70C;
           border-radius: 30px;
           padding: 5px 10px;
           width: 150px;
           font-size: 15px;
-      }
+        } 
 
-      .red {
+        .red {
           background-color: #FFE70C;
-      }
+        }
 
-      .red-overlay {
+        .red-overlay {
           background-image: url("img/o.jpeg");
           background-size: cover;
           background-position: center;
-      }
+        }
 
-      #container {
+        #container {
           width: 70%;
           margin: 100px auto;
           display: flex;
           justify-content: space-around;
-      }
+        }
 
-      #container.active {
+        #container.active {
           width: 90%;
-      }
+        }
 
-      #game {
+        #game {
           width: 470px;
           height: 470px;
           padding: 10px;
@@ -132,9 +132,9 @@
           flex-wrap: wrap;
           position: relative;
           border-radius: 15px;
-      }
+        }
 
-      #turn-display {
+        #turn-display {
           margin-top: 20px;
           font-size: 18px;
           font-family: Arial, sans-serif; 
@@ -144,16 +144,16 @@
           max-width: 200px;
           margin-left: auto;
           margin-right: auto;
-      }
+        }
 
-      #options {
+        #options {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-      }
+        }
 
-      #winner {
+        #winner {
           display: none;
           position: absolute;
           top: 50%;
@@ -161,9 +161,9 @@
           transform: translate(-50%, -50%);
           background-color: yellow;
           z-index: 11;
-      }
+        }
 
-      .starting-popup {
+        .starting-popup {
           font-family: "Poppins", sans-serif;
           border-radius: 10px;
           display: none;
@@ -175,9 +175,9 @@
           padding: 20px;
           z-index: 12;
           text-align: center;
-      }
+        }
 
-      .closing-popup {
+        .closing-popup {
           font-family: "Poppins", sans-serif;
           border-radius: 10px;
           display: none;
@@ -189,29 +189,29 @@
           padding: 20px;
           z-index: 12;
           text-align: center;
-      }
+        }
 
-      .closing-popup-button{
+        .closing-popup-button{
           border: 1px solid #999;
           border-radius: 30px;
           padding: 5px 10px;
           width: 150px;
           font-size: 15px;
-      }
+        }
 
-      .popup button {
+        .popup button {
           padding: 10px;
           margin-top: 10px;
           background-color: #3498db;
           color: #fff;
           border: none;
           cursor: pointer;
-      }
+        }
 
-      .popup button:hover {
+        .popup button:hover {
           background-color: #2980b9;
-      }
-      .turn-display {
+        }
+        .turn-display {
           position: absolute;
           bottom: 30px;
           left: 40px;
@@ -236,7 +236,7 @@
           border-radius: 50%;
         }
 
-    #overlay {
+        #overlay {
             display: none;
             position: fixed;
             top: 30%;
@@ -274,10 +274,8 @@
             font-size: 20px;
         }
      
-
   </style>
 </head>
-
 <body>
 
 <div id="container">
