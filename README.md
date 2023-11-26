@@ -30,7 +30,7 @@ link to our web app: https://lab-utttpr-meibtcsfoq-uc.a.run.app/start-game
 
   Once players click "Start", players will be asked to enter a name to continue. First the player who will take the part of "X" will fill the name. When "Enter" is clicked the input data will go into the "Players" table. Without this players cannot proceed to the next step. The next page will ask to do the for player who is taking part of "O". This input data will also go into its respective table "!!!".
 
-<img width="1510" alt="Screenshot 2566-11-22 at 12 39 20 PM" src="https://github.com/maefahluang-uni/99-project-ultimatetictactoepro_group13/assets/122962636/6166d3ce-e4d1-4a7c-98b2-0dc700330733">
+![Screenshot](https://github.com/maefahluang-uni/99-project-ultimatetictactoepro_group13/assets/122962636/6166d3ce-e4d1-4a7c-98b2-0dc700330733 | width=400)
 
   Then it will take the players to the main page where the players will play the game. Before anything, players will be asked to chooese who would like to go first. When that is done each players will take turns to play againts each other. On this page there is one icon, "Restart" button on the bottom left corner. At any point of the game players can restart the game. When players click on the icon there will be a pop up window to confirm from any accidental clicks. Players can choose to restart or click "Cancel" to continue playing.
 
