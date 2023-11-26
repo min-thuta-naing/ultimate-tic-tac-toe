@@ -40,4 +40,5 @@ link to our web app: https://lab-utttpr-meibtcsfoq-uc.a.run.app/start-game
 
   Some other functions on the last page include "Leave Feedback". Here players can comment and express their thoughts on the web application. Another function is rating, this will only appear one the players click on "Quit". After the pop up to confirm players actually want to quit the game, there will be stars to rate from 1 to 5. Both ratings and feedbacks from the players can be viewed by developers side to accept supports and compaints to improve further. 
   
-<img src="https://github.com/maefahluang-uni/99-project-ultimatetictactoepro_group13/assets/122962636/7983f447-75a7-4a02-8e68-0b08db7dd4b9" alt="Image" width="400" />
+<img src="https://github.com/maefahluang-uni/99-project-ultimatetictactoepro_group13/assets/122962636/d8c9d619-c4e7-43b8-875a-73123f132bf0" alt="Image" width="400" />
+
