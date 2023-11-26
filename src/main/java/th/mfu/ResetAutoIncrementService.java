@@ -21,7 +21,7 @@ public class ResetAutoIncrementService {
         try {
             jdbcTemplate.execute(dropFK);
         } catch (Exception e) {
-            e.printStackTrace(); // Log the exception
+            e.printStackTrace(); 
         }
     }
 }

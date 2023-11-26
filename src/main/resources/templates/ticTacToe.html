@@ -322,7 +322,6 @@
     $(document).ready(function() {
         $(document).ready(function() {
 
-            //new code 18Nov 
             var startTime; 
             var endTime; 
             
@@ -349,7 +348,6 @@
             
             // redirect to /name-list page 
             $('#redirect-button').click(function() { 
-                // Redirect to /name-list
                 window.location.href = "/name-list";
             });
 
@@ -458,7 +456,6 @@
                     }
                 }
 
-                <!--new nainai-->
                 updateTurnDisplay();
             })
 
@@ -523,11 +520,9 @@
                         data: { winnerId: color == 'red' ? players[1].id : players[0].id , durationInSeconds: durationInSeconds},
                         
                         success: function(response) {
-                            // Handle the response if needed
                             console.log(response);
                         },
                         error: function(error) {
-                            // Handle the error if needed
                             console.error(error);
                         }
                     });
@@ -547,11 +542,9 @@
                         data: { winnerId: color == 'blue' ? players[0].id : players[1].id , durationInSeconds: durationInSeconds},
                         
                         success: function(response) {
-                            // Handle the response if needed
                             console.log(response);
                         },
                         error: function(error) {
-                            // Handle the error if needed
                             console.error(error);
                         }
                     });
@@ -567,11 +560,9 @@
                         data: { winnerId: -1 , durationInSeconds: durationInSeconds},
                         
                         success: function(response) {
-                            // Handle the response if needed
                             console.log(response);
                         },
                         error: function(error) {
-                            // Handle the error if needed
                             console.error(error);
                         }
                     });
@@ -585,9 +576,9 @@
                 $('#turn-display').text(currentPlayerName + "'s Turn");
 
                 if ($('.current').hasClass('player1')) {
-                    $('#turn-display').css('background-color', '#0274FB'); // Blue color for Player 1
+                    $('#turn-display').css('background-color', '#0274FB'); 
                 } else if ($('.current').hasClass('player2')) {
-                    $('#turn-display').css('background-color', '#FFE70C'); // Yellow color for Player 2
+                    $('#turn-display').css('background-color', '#FFE70C'); 
                 }
             }
 

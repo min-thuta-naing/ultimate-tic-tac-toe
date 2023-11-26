@@ -9,8 +9,8 @@
     <style>
 
         body {
-          background-image: url("img/bg.png");
-          background-size: cover;
+            background-image: url("img/bg.png");
+            background-size: cover;
             font-family: Arial, sans-serif;
             height: 100%;
             background-repeat: no-repeat;
@@ -392,7 +392,8 @@
             saveRating();
             deletePlayerInfos();
         }
-        //code for commnet popup 
+
+        //code for comment popup 
         function openCommentPopup() {
             document.getElementById('commentPopup').style.display = 'block';
         }
@@ -407,18 +408,7 @@
                     url: "/save-feedbacks",
                     data: {
                         comments: comments 
-                    },
-                    
-                    // success: function (response) {
-                    //     console.log("Successfully commented");
-                    //     closeCommentPopup();
-                    // },
-                    // error: function (xhr, status, error) {
-                    //     console.error("Error submitting comments: " + error);
-                    //     console.log("XHR object:", xhr);
-                    //     console.log("Status:", status);
-                    // }
-
+                    }
                 });
                 closeCommentPopup(); 
             } else {

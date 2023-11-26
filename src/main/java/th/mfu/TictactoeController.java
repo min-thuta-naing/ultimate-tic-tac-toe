@@ -1,23 +1,14 @@
 package th.mfu;   
 import java.util.ArrayList;
-import java.util.Optional;
 
 import java.util.*; 
-import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpSession;
-import javax.transaction.Transactional;
-//import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;  
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;  
 import org.springframework.ui.Model;  
-import org.springframework.web.bind.WebDataBinder;  
 import org.springframework.web.bind.annotation.GetMapping;  
-import org.springframework.web.bind.annotation.InitBinder;  
-import org.springframework.web.bind.annotation.ModelAttribute;  
-import org.springframework.web.bind.annotation.PathVariable;  
+import org.springframework.web.bind.annotation.ModelAttribute;   
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import th.mfu.domain.Players;
@@ -113,16 +104,6 @@ public class TictactoeController {
             round.setWinner(winner);
         }
         roundsRepository.save(round);
-        // if ("tie".equals(winner)) {
-        //     Rounds tieRound = new Rounds();
-        //     tieRound.setWinner(winner);
-        //     roundsRepository.save(tieRound);
-        //     } else {
-        //     // Assuming player1 and player2 names are stored in the player1Name and player2Name variables
-        //     Rounds winningRound = new Rounds();
-        //     winningRound.setWinner(winner);
-        //     roundsRepository.save(winningRound);
-        //     }
             
         Time roundTime = new Time();
         roundTime.setRoundId(round);
