@@ -399,6 +399,29 @@
         function closeCommentPopup() {
             document.getElementById('commentPopup').style.display = 'none';
         }
+        // function submitComment() {
+        //     var comments = document.getElementById('comments').value.trim();
+        //     if (comments !== "") {
+        //         $.ajax({
+        //             type: "POST",
+        //             url: "/save-feedbacks",
+        //             data: {
+        //                 comments: comments
+        //             },
+        //             success: function (response) {
+        //                 console.log("Successfully commented");
+        //                 closeCommentPopup();
+        //             },
+        //             error: function (xhr, status, error) {
+        //                 console.error("Error submitting comments: " + error);
+        //                 alert("Error submitting comments. Please try again or contact support with error details: " + error);
+        //             }
+        //         });
+        //     } else {
+        //         alert("Please enter comments before submitting.");
+        //     }
+        // }
+
         function submitComment() {
             var comments = document.getElementById('comments').value.trim();
             if (comments !== "") {
@@ -421,6 +444,7 @@
                 alert("Please enter comments before submitting.");
             }
         }
+
 
         //code for rating pop up 
         function goRate() { 
