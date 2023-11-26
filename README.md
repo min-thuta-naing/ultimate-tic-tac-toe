@@ -14,8 +14,10 @@ Ultimate Tic-Tac-Toe Pro
 
 link to our web app: https://lab-utttpr-meibtcsfoq-uc.a.run.app/start-game
 
-<img width="1509" alt="Screenshot 2566-11-22 at 12 36 28 PM" src="https://github.com/maefahluang-uni/99-project-ultimatetictactoepro_group13/assets/122962636/16c70243-ee73-4bf6-ab46-1362049cab90">
-<img width="1512" alt="Screenshot 2566-11-22 at 12 37 40 PM" src="https://github.com/maefahluang-uni/99-project-ultimatetictactoepro_group13/assets/122962636/dc57208f-b51e-47e4-8035-e32b2f6ac9e4">
+<div style="display: flex;">
+  <img width="1509" alt="Screenshot 1" src="https://github.com/maefahluang-uni/99-project-ultimatetictactoepro_group13/assets/122962636/16c70243-ee73-4bf6-ab46-1362049cab90">
+  <img width="1512" alt="Screenshot 2" src="https://github.com/maefahluang-uni/99-project-ultimatetictactoepro_group13/assets/122962636/dc57208f-b51e-47e4-8035-e32b2f6ac9e4">
+</div>
 
   The very fist page is the "Start" page, serves as a cover before getting into the game. Two functioning components on this page are "Start" and "i", information button on the bottom left corner of the page. "Start" button will take players to the next page where player will enter their names before continuing to play. Moreover, the "i", information button serves as an access to the "Help" page. On this page players can learn about how the game works and some other basic informations. "Back" button will allow the access back to the start page.
 
