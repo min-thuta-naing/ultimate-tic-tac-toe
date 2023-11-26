@@ -1,10 +1,12 @@
 package th.mfu;   
+import java.util.ArrayList;
 import java.util.Optional;
 
+import java.util.*; 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
-import org.hibernate.mapping.List;
+//import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpStatus;
@@ -135,7 +137,12 @@ public class TictactoeController {
     public String nameList(Model model){
     //model.addAttribute("rounds", roundsRepository.findAll());    
         //return "list";
-        Iterable<Rounds> roundsList = roundsRepository.findAll();
+        //Iterable<Rounds> roundsList = roundsRepository.findAll();
+        Iterable<Rounds> roundsIterable = roundsRepository.findAll();
+        List<Rounds> roundsList = new ArrayList<>();
+        roundsIterable.forEach(roundsList::add);
+
+        roundsList.sort(Comparator.comparing(Rounds::getRoundId));
         model.addAttribute("rounds", roundsList);
         //method for displaying shortest game play duration 
         Iterable<Time> timeList = timeRepository.findAll();
