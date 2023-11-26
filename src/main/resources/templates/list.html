@@ -400,7 +400,7 @@
             document.getElementById('commentPopup').style.display = 'none';
 
            
-            document.getElementById('comments').style.display = 'none'; 
+            
             
         }
         function submitComment() {
@@ -414,7 +414,9 @@
                 },
                 success: function (response) {
                     console.log("successfully commented")
+                    document.getElementById('commentPopup').style.display = 'none';
                 },
+                
                 
             });
             } else {
