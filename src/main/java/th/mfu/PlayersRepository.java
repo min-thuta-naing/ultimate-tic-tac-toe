@@ -12,11 +12,5 @@ import org.springframework.data.repository.CrudRepository;
 import th.mfu.domain.Players;
 
 public interface PlayersRepository extends CrudRepository<Players,Long>{
-    // @Query(value = "ALTER TABLE players AUTO_INCREMENT = 1000", nativeQuery = true)
-    // void setInitialAutoIncrementValue();
-    // @Modifying
-    // @Query(value = "ALTER TABLE players AUTO_INCREMENT = 1", nativeQuery = true)
-    // void resetAutoIncrement();
-    // public List<Players> findByGameId(Long id);
-    // public List<Players> deleteByGameId(Long id);
+   
 }

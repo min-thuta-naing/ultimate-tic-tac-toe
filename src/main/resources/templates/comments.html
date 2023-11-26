@@ -71,11 +71,11 @@
                     new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: Array.from({ length: ratings.length }, (_, i) => i + 1), // Y-axis values
+                            labels: Array.from({ length: ratings.length }, (_, i) => i + 1), 
                             datasets: [{
                                 label: 'User Ratings',
-                                data: ratings, // X-axis values
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Adjust the color as needed
+                                data: ratings, 
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)', 
                                 borderColor: 'rgba(75, 192, 192, 1)',
                                 borderWidth: 1
                             }]
@@ -84,11 +84,11 @@
                             scales: {
                                 x: { // X-axis configuration
                                     beginAtZero: true,
-                                    max: 5 // Fixed X-axis from 0 to 5
+                                    max: 5 
                                 },
                                 y: { // Y-axis configuration
                                     beginAtZero: true,
-                                    // You can customize the Y-axis configuration as needed
+                                   
                                 }
                             }
                         }

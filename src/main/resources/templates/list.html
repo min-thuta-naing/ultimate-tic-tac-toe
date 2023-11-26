@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Name List</title>
-    <!-- Include Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
+
         body {
           background-image: url("img/bg.png");
           background-size: cover;
@@ -15,6 +15,7 @@
             height: 100%;
             background-repeat: no-repeat;
         }
+
         #header {
             height: 250px;
             background-color: #808080; 
@@ -22,34 +23,40 @@
             text-align: center;
             padding: 20px;
         }
+
         #logo {
             max-width: 100%;
             height: auto;
             display: block;
             margin: 0 auto;
         }
+
         #leaderboard-table {
             width: 50%;
             margin: 20px auto;
             border-collapse: collapse;
             background-color: silver;
         }
+
         #leaderboard-table th, #leaderboard-table td {
             border: 1px solid #ddd;
             padding: 15px;
             text-align: center;
         }
+
         #leaderboard-table th {
-            background-color: #808080; /* Change to gray color */
+            background-color: #808080;
             color: #fff;  
         }
+
         #buttons-container {
             display: flex;
             justify-content: space-between;
             margin-top: 250px;
         }
+
         #next-round-button {
-            background-color: #808080; /* Red button color */
+            background-color: #808080;
             color: #fff;
             padding: 10px 20px;
             border: none;
@@ -60,8 +67,9 @@
             font-size: 18px;
             border-radius: 10px;
         }
+
         #quit-button {
-            background-color: #808080; /* Button color */
+            background-color: #808080;
             color: #fff;
             padding: 10px 20px;
             border: none;
@@ -72,6 +80,7 @@
             font-size: 18px;
             border-radius: 10px;
         }
+
         #feedback {
             background-color: silver;
             color: black;
@@ -84,6 +93,7 @@
             font-size: 18px;
             border-radius: 10px;
         }
+
         /*quit overlay*/
         #overlay {
             display: none;
@@ -97,9 +107,11 @@
             text-align: center;
             border-radius: 15px;
         }
+
         .warn{
             color: red;
         }
+
         /* Styles for the modal */
         #quit-modal {
             position: fixed;
@@ -110,9 +122,10 @@
             background-color: #fff;
             border: 1px solid #ccc;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1001; /* Place modal above overlay */
+            z-index: 1001; 
             text-align: center;
         }
+
         .modal-button {
             margin-right: 10px;
             padding: 8px 12px;
@@ -120,6 +133,7 @@
             width: 100px;
             border-radius: 10px;
         }
+
         /* Styles for the new comment popup */
         .comment-popup {
             display: none;
@@ -133,11 +147,13 @@
             text-align: center;
             border-radius: 15px;
         }
+
         .comment-popup textarea {
             width: 100%;
             height: 100px;
             margin-bottom: 10px;
         }
+
         .comment-popup button {
             margin-right: 10px;
             padding: 8px 12px;
@@ -145,6 +161,7 @@
             width: 100px;
             border-radius: 10px;
         }
+
         #smallestDuration {
             border-radius: 10px;
             width: 200px;
@@ -157,29 +174,35 @@
             margin: 0 auto;
             text-align: center;
         }
+
        .rate-align {
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .rating {
             display: flex;
             flex-direction: row-reverse;
         }
+
         /* Style for the individual rating stars */
         .rating input {
             display: none;
         }
+
         .rating label {
             font-size: 30px;
             color: #ddd;
             cursor: pointer;
         }
+
         .rating label:hover,
         .rating label:hover ~ label,
         .rating input:checked ~ label {
-            color: #fdd835; /* Change this color to your desired highlight color */
+            color: #fdd835;
         }
+
         .rate-popup{
             display: none;
             position: fixed;
@@ -192,6 +215,7 @@
             text-align: center;
             border-radius: 15px;
         }
+
         #rate {
             position: fixed;
             top: 30%;
@@ -203,6 +227,7 @@
             text-align: center;
             border-radius: 15px;
         }
+
         #rate-modal {
             position: fixed;
             top: 30%;
@@ -211,9 +236,10 @@
             background-color: #fff;
             border: 1px solid #ccc;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1001; /* Place modal above overlay */
+            z-index: 1001;
             text-align: center;
         }
+
         .modal-button {
             margin-top: 20px;
             padding: 8px 12px;
@@ -222,13 +248,14 @@
             font-size: 20px;
             border-radius: 10px;
         }
+
         .rate-topic{
             margin-top: 20px;
         }
+        
     </style>
 </head>
 <body>
-    <!--Champion image here-->
     <div id="header">
         <img src="img/champion.png" alt="Logo" id="logo" width="150px" height="150px">
         <h1>Leaderboard</h1>
@@ -246,10 +273,6 @@
                 <td th:text="${rounds.roundId}"></td>
                 <td th:text="${rounds.winner != null ? rounds.winner.name : 'No Winner'}"></td>
             </tr>
-            <!-- <tr th:each="rounds : ${rounds}">
-                <td th:text="${rounds.roundId}"></td>
-                <td th:text="${rounds.winner}"></td>
-            </tr> -->
         </tbody>
     </table>
     <!--tables just for extracting data-->
@@ -283,7 +306,7 @@
                 }
             });
     
-            document.getElementById("smallestDuration").innerHTML = "The shortest duration of gameplay is " + minDuration + " seconds in round " + minId; 
+            document.getElementById("smallestDuration").innerHTML = "The shortest duration of gameplay is " + minDuration + " seconds in Round " + minId; 
         } else {
             document.getElementById("smallestDuration").innerHTML = "There is no result to display currently."; 
         }
@@ -381,7 +404,7 @@
             if (comments !== "") {
                 $.ajax({
                 type: "POST",
-                url: "/save-feedbacks",  // The URL of your Spring Boot endpoint
+                url: "/save-feedbacks", 
                 data: {
                     comments: comments
                 },
@@ -404,4 +427,3 @@
     </script>
 </body>
 </html>
-

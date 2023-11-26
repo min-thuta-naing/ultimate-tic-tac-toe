@@ -109,7 +109,6 @@ public class TictactoeController {
             round = new Rounds();
             round.setWinner(null);
         } else {
-            // Assuming player1 and player2 names are stored in the player1Name and player2Name variables
             round = new Rounds();
             round.setWinner(winner);
         }
@@ -135,9 +134,7 @@ public class TictactoeController {
     //method for scoreboard page  ---- LISTING ----
     @GetMapping("/name-list")
     public String nameList(Model model){
-    //model.addAttribute("rounds", roundsRepository.findAll());    
-        //return "list";
-        //Iterable<Rounds> roundsList = roundsRepository.findAll();
+    
         Iterable<Rounds> roundsIterable = roundsRepository.findAll();
         List<Rounds> roundsList = new ArrayList<>();
         roundsIterable.forEach(roundsList::add);
